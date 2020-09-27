@@ -106,7 +106,7 @@ RectTransform:
   m_GameObject: {fileID: 3113840737420375712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 1}
   m_Children:
   - {fileID: 7052803378547458365}
   - {fileID: 2420636442484171622}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 66624304479308016}
   - component: {fileID: 3222089375412879828}
   m_Layer: 5
-  m_Name: Text
+  m_Name: CardHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
