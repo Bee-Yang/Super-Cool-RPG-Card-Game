@@ -323,10 +323,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (1)
+      value: NobleCard (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -442,6 +448,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -651,10 +663,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (4)
+      value: NobleCard (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -850,10 +868,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (7)
+      value: NobleCard (7)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -975,6 +999,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -1100,6 +1130,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -1219,10 +1255,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (1)
+      value: NobleCard (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -1433,10 +1475,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (2)
+      value: NobleCard (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -1772,10 +1820,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard
+      value: NobleCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -1897,6 +1951,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -2016,6 +2076,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -2135,6 +2201,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -2260,10 +2332,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard
+      value: NobleCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -2379,6 +2457,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -2498,6 +2582,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -2617,6 +2707,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -2742,6 +2838,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -2941,10 +3043,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (3)
+      value: NobleCard (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -3078,6 +3186,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -3197,6 +3311,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -3340,10 +3460,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (3)
+      value: NobleCard (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -3459,10 +3585,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (5)
+      value: NobleCard (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -3584,10 +3716,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (4)
+      value: NobleCard (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -3821,10 +3959,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (4)
+      value: NobleCard (4)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -4045,6 +4189,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -4164,6 +4314,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -4283,6 +4439,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -4592,6 +4754,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -4813,6 +4981,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -4944,10 +5118,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (2)
+      value: NobleCard (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -5069,10 +5249,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (5)
+      value: NobleCard (5)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -5194,6 +5380,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -5399,10 +5591,46 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 327246231603506155, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d4e0c63bafc84f54ea69002b1856683e,
+        type: 3}
+    - target: {fileID: 1145822981985418279, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (8)
+      value: NobleCard (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222089375412879828, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582353743921832768, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883276109802654467, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489032846012360979, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -5518,10 +5746,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (1)
+      value: NobleCard (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -5637,10 +5871,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (3)
+      value: NobleCard (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -5762,6 +6002,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -6005,10 +6251,56 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 327246231603506155, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d4e0c63bafc84f54ea69002b1856683e,
+        type: 3}
+    - target: {fileID: 1145822981985418279, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
       value: EvilCard (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3222089375412879828, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3382221085116855753, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5582353743921832768, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883276109802654467, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Maskable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6883276109802654467, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489032846012360979, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Text
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -6136,6 +6428,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -6255,10 +6553,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard
+      value: NobleCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -6579,10 +6883,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard
+      value: NobleCard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -6704,6 +7014,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -7129,10 +7445,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (6)
+      value: NobleCard (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -7254,10 +7576,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (2)
+      value: NobleCard (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -7373,6 +7701,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a9d9f054742ade149b794934497c0bb2,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
@@ -7596,10 +7930,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (6)
+      value: NobleCard (6)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
@@ -7721,10 +8061,16 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1084932578742246411, guid: ef88a3d46ede333408d90239d504d097,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0,
+        type: 3}
     - target: {fileID: 3113840737420375712, guid: ef88a3d46ede333408d90239d504d097,
         type: 3}
       propertyPath: m_Name
-      value: EvilCard (1)
+      value: NobleCard (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef88a3d46ede333408d90239d504d097, type: 3}
