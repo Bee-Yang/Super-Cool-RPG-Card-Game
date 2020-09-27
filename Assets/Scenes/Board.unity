@@ -613,7 +613,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -97
+  m_Spacing: -135
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -729,7 +729,7 @@ SortingGroup:
   m_GameObject: {fileID: 1032464163}
   m_Enabled: 1
   m_SortingLayerID: -1324427539
-  m_SortingLayer: 4
+  m_SortingLayer: 1
   m_SortingOrder: -1
 --- !u!114 &1032464165
 MonoBehaviour:
@@ -1077,7 +1077,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -97
+  m_Spacing: -135
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1380,7 +1380,7 @@ SortingGroup:
   m_GameObject: {fileID: 1568331127}
   m_Enabled: 1
   m_SortingLayerID: -895849105
-  m_SortingLayer: 3
+  m_SortingLayer: 2
   m_SortingOrder: 0
 --- !u!1 &1655117603
 GameObject:
@@ -1553,7 +1553,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -98
+  m_Spacing: -135
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -1653,7 +1653,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: -97
+  m_Spacing: -135
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
