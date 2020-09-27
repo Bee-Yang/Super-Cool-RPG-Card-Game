@@ -15,7 +15,7 @@ TagManager:
   - 
   - Foreground
   - Background
-  - CardText
+  - 
   - 
   - 
   - 
@@ -41,15 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: CardText
-    uniqueID: 2104711881
-    locked: 0
-  - name: Foreground
-    uniqueID: 3523636571
+  - name: Background
+    uniqueID: 2970539757
     locked: 0
   - name: UI
     uniqueID: 3399118191
     locked: 0
-  - name: Background
-    uniqueID: 2970539757
+  - name: Foreground
+    uniqueID: 3523636571
     locked: 0
