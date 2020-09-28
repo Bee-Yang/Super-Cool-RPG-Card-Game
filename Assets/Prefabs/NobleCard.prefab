@@ -161,6 +161,8 @@ GameObject:
   - component: {fileID: 776373956943833898}
   - component: {fileID: -2100922084536341542}
   - component: {fileID: 5849477606227504450}
+  - component: {fileID: -6212122994077080587}
+  - component: {fileID: 5140817967994744117}
   m_Layer: 8
   m_Name: NobleCard
   m_TagString: Untagged
@@ -258,6 +260,31 @@ SortingGroup:
   m_SortingLayerID: -771330725
   m_SortingLayer: 3
   m_SortingOrder: 1
+--- !u!114 &-6212122994077080587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159104732739743920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 757c2df13aa78564290c0afe547b8b78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currParent: {fileID: 0}
+--- !u!225 &5140817967994744117
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9159104732739743920}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &8960811646599389286
 PrefabInstance:
   m_ObjectHideFlags: 0
