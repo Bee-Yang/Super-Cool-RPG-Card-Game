@@ -6,14 +6,15 @@ using UnityEngine.UI;
 public class EnemyManaBehavior : MonoBehaviour
 {
     private Text thisText;
-    private int mana;
+    private int mana, maxMana;
     
     void Start()
     {
         thisText = GetComponent<Text>();
-        
+
         // set mana initially to be 1
-        mana = 1;
+        maxMana = 1;
+        mana = maxMana;
     }
     
     void Update() 
@@ -22,10 +23,10 @@ public class EnemyManaBehavior : MonoBehaviour
         // if(enemy turn ends)
         // {
         //     // add 1 to mana
-        //     mana += 1;
+        //     maxMana += 1;
         // }
         
         // update text of EnemyMana element
-        thisText.text = "Mana: " + mana;
+        thisText.text = "Mana: " + mana + "/" + maxMana;
     }
 }

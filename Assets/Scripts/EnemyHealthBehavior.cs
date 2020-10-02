@@ -9,13 +9,14 @@ public class EnemyHealthBehavior : MonoBehaviour
 {
     private Text thisText;
     private int health;
+    private static int maxHealth = 20;
     
     void Start()
     {
         thisText = GetComponent<Text>();
         
         // set health initially to be 20
-        health = 20;
+        health = maxHealth;
     }
     
     void Update() 
@@ -27,11 +28,11 @@ public class EnemyHealthBehavior : MonoBehaviour
         //     health += 0;
         // }
 
-        if(health < 20){
+        if(health < maxHealth){
             thisText.color = Color.red;
         }
 
         // update text of EnemyHealth element
-        thisText.text = "Health: " + health;
+        thisText.text = "Health: " + health + "/" + maxHealth;
     }
 }
