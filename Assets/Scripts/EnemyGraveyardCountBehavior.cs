@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class EnemyGraveyardCountBehavior : MonoBehaviour
 {
+    private GameObject graveyard;
     private Text thisText;
     private int count;
 
@@ -14,16 +15,17 @@ public class EnemyGraveyardCountBehavior : MonoBehaviour
         
         // set count initially to be 0
         count = 0;
+        graveyard = GameObject.Find("Board/OpponentGraveyard");
     }
 
     void Update()
     {
-        // // When a card goes into graveyard
-        // if(graveyard size increases)
-        // {
-        //     // add 1 to count
-        //     count += 1;
-        // }
+        // When a card goes into graveyard
+        if(graveyard.transform.childCount != count)
+        {
+            // change the count
+            count = graveyard.transform.childCount;
+        }
         
         // update text of EnemyGraveyardCount element
         thisText.text = "" + count;
