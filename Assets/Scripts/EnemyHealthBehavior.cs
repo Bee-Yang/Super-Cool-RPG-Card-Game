@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class PlayerHealthBehavior : MonoBehaviour
+public class EnemyHealthBehavior : MonoBehaviour
 {
     private Text thisText;
     private int health;
@@ -21,8 +21,8 @@ public class PlayerHealthBehavior : MonoBehaviour
     
     void Update() 
     {
-        // // When Player's health goes down
-        // if(player is hit)
+        // // When Enemy's health goes down
+        // if(enemy is hit)
         // {
         //     // subtract x amount from health
         //     health += 0;
@@ -32,7 +32,7 @@ public class PlayerHealthBehavior : MonoBehaviour
             thisText.color = Color.red;
         }
 
-        // update text of PlayerHealth element
+        // update text of EnemyHealth element
         thisText.text = "Health: " + health + "/" + maxHealth;
     }
 }

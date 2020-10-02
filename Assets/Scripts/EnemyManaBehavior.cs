@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerManaBehavior : MonoBehaviour
+public class EnemyManaBehavior : MonoBehaviour
 {
     private Text thisText;
     private int mana, maxMana;
@@ -19,15 +19,14 @@ public class PlayerManaBehavior : MonoBehaviour
     
     void Update() 
     {
-        // // When Player's turn ends
-        // if(player turn ends)
+        // // When Enemy's turn ends
+        // if(enemy turn ends)
         // {
         //     // add 1 to mana
         //     maxMana += 1;
         // }
         
-        // update text of PlayerMana element
+        // update text of EnemyMana element
         thisText.text = "Mana: " + mana + "/" + maxMana;
     }
-
 }
