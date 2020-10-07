@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+<<<<<<< HEAD
 using System.Linq;
+=======
+>>>>>>> master
 
 public class DeckStart : MonoBehaviour
 {
@@ -62,6 +65,7 @@ public class DeckStart : MonoBehaviour
         card.SetImage(cardData.cardImage);
         card.SetBorder(cardData.cardBorder);
     }
+<<<<<<< HEAD
 
     public void Shuffle()
     {
@@ -85,4 +89,6 @@ public class DeckStart : MonoBehaviour
             transform.GetChild(k).SetAsFirstSibling();
         }
     }
+=======
+>>>>>>> master
 }
