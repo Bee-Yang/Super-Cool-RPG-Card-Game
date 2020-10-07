@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     
     Transform currParent; //To save the parent to which this card is tied before/while being dragged
@@ -81,5 +81,4 @@ public class Card : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
 
         if (inPlay == true) { draggable = false; } //Set draggable to false if card is in play
     }
-
 }
