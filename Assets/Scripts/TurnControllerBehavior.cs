@@ -6,9 +6,10 @@ public class TurnControllerBehavior : MonoBehaviour
 {
     private bool isPlayerTurn;
     public bool IsPlayerTurn {
-    get { return isPlayerTurn; }
-    set { isPlayerTurn = value; }
+        get { return isPlayerTurn; }
+        set { isPlayerTurn = value; }
 }
+
     void Start()
     {
         isPlayerTurn = true;
@@ -17,7 +18,7 @@ public class TurnControllerBehavior : MonoBehaviour
 
     void Update()
     {
-        if (isPlayerTurn == true) {
+        if (isPlayerTurn) {
             playerGo();
         } 
         else {

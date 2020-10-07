@@ -15,7 +15,7 @@ public class EndTurnButtonScript : MonoBehaviour
 	}
 
 	void TaskOnClick(){
-		if (turnController.IsPlayerTurn == true) {
+		if (turnController.IsPlayerTurn) {
             turnController.AlternateTurn();
         }
 	}
