@@ -4,9 +4,9 @@ using System.Media;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
-public class Turn-Script : MonoBehaviour
+public class TurnScript : MonoBehaviour
 {
-        Public bool switchTurn = true;
+    private boolean switchTurn = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +24,7 @@ public class Turn-Script : MonoBehaviour
             opponentGo();
         }
     }
-    Public void AlternateTurn()
+    public void AlternateTurn()
     {
         switchTurn = !switchTurn;
     }
