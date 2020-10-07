@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class OOMAlertBehavior : MonoBehaviour
 {
-    private Text thisText;
+    private TMP_Text thisText;
     private PlayerManaBehavior playerManaBehavior;
     void Start()
     {
-        
+        thisText = GetComponent<TMP_Text>();
+        playerManaBehavior = GameObject.FindWithTag("PlayerMana").GetComponent<PlayerManaBehavior>();
     }
 
     // Update is called once per frame
