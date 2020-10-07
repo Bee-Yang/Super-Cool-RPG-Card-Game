@@ -65,7 +65,6 @@ public class DeckStart : MonoBehaviour
         card.SetImage(cardData.cardImage);
         card.SetBorder(cardData.cardBorder);
     }
-<<<<<<< HEAD
 
     public void Shuffle()
     {
@@ -89,6 +88,4 @@ public class DeckStart : MonoBehaviour
             transform.GetChild(k).SetAsFirstSibling();
         }
     }
-=======
->>>>>>> master
 }
