@@ -15,8 +15,8 @@ public class OppoDraw : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CardStack = GameObject.Find("Opponent-Player");
-        Card.transform.SetParent(Opponent-Player.transform);
+        // CardStack = GameObject.Find("Opponent-Player");
+        // Card.transform.SetParent(Opponent-Player.transform);
         Card.transform.localScale = Vector3.one;
         Card.transform.position = new Vector3(transform.position.x, transform.position.y, -48);
         Card.transform.eulerAngles = new Vector3(25, 0, 0);
