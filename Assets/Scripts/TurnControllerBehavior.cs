@@ -30,7 +30,7 @@ public class TurnControllerBehavior : MonoBehaviour
 
     void playerGo()
     {
-        //phases will be controlled here, turn ended manually by button
+        //add calls for functions for draw card, and begin battle here. turn ended manually by button
     }
     void opponentGo()
     {

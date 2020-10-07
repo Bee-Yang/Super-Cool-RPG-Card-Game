@@ -7,6 +7,7 @@ public class EndTurnButtonScript : MonoBehaviour
 {
     // Start is called before the first frame update
    public Button endTurnButton;
+   public TurnControllerBehavior turnController;
 
 	void Start () {
 		Button btn = endTurnButton.GetComponent<Button>();
@@ -14,6 +15,8 @@ public class EndTurnButtonScript : MonoBehaviour
 	}
 
 	void TaskOnClick(){
-		Debug.Log ("You have clicked the button!");
+		if (turnController.IsPlayerTurn == true) {
+            turnController.AlternateTurn();
+        }
 	}
 }
