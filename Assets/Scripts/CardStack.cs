@@ -5,11 +5,15 @@ using UnityEngine.EventSystems;
 
 public class CardStack : MonoBehaviour
 {
+<<<<<<< Updated upstream
     List<Card> cards = new List<Card>();
+=======
+>>>>>>> Stashed changes
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< Updated upstream
         //For every child in the card stack, add it to the card list. (This is entirely for the deck)
         for (int i = 0; i <  this.gameObject.transform.childCount; i++)
         {
@@ -17,6 +21,9 @@ public class CardStack : MonoBehaviour
             cards.Add(card);
         }
         Debug.Log(this.GetSize());
+=======
+
+>>>>>>> Stashed changes
     }
 
     // Update is called once per frame
@@ -25,6 +32,7 @@ public class CardStack : MonoBehaviour
         
     }
 
+<<<<<<< Updated upstream
     public int GetSize()
     {
         return cards.Count;
@@ -40,6 +48,8 @@ public class CardStack : MonoBehaviour
         cards.Remove(card); //Removes the drawn card from the card list
     }
 
+=======
+>>>>>>> Stashed changes
     //Shuffles the order of the cards
     public void Shuffle()
     {
