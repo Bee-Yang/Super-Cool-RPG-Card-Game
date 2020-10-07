@@ -7,6 +7,10 @@ public class PlayerManaBehavior : MonoBehaviour
 {
     private Text thisText;
     private int mana, maxMana;
+    public int Mana {
+        get { return mana; }
+        set { mana = value; }
+    }
     
     void Start()
     {
