@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class CardStack : MonoBehaviour
 {
-    List<Card> cards = new List<Card>();
+    List<CardBehavior> cards = new List<CardBehavior>();
 
     // Start is called before the first frame update
     void Start()
@@ -13,7 +13,7 @@ public class CardStack : MonoBehaviour
         //For every child in the card stack, add it to the card list. (This is entirely for the deck)
         for (int i = 0; i <  this.gameObject.transform.childCount; i++)
         {
-            Card card = this.gameObject.transform.GetChild(i).GetComponent<Card>();
+            CardBehavior card = this.gameObject.transform.GetChild(i).GetComponent<CardBehavior>();
             cards.Add(card);
         }
         Debug.Log(this.GetSize());
@@ -30,12 +30,12 @@ public class CardStack : MonoBehaviour
         return cards.Count;
     }
 
-    public void AddCard(Card card)
+    public void AddCard(CardBehavior card)
     {
         cards.Add(card);
     }
 
-    public void DrawCard(Card card)
+    public void DrawCard(CardBehavior card)
     {
         cards.Remove(card); //Removes the drawn card from the card list
     }

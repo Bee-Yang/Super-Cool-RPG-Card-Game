@@ -394,7 +394,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &237129101
 GameObject:
@@ -701,6 +701,7 @@ GameObject:
   - component: {fileID: 386898695}
   - component: {fileID: 386898694}
   - component: {fileID: 386898696}
+  - component: {fileID: 386898697}
   m_Layer: 5
   m_Name: OpponentDeck
   m_TagString: Untagged
@@ -789,6 +790,20 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
+--- !u!114 &386898697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386898692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e2c99c2bf8afb4c99c269d8416752a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881, type: 3}
+  deckID: 1
 --- !u!1 &421873991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1041,7 @@ RectTransform:
   - {fileID: 2065013325}
   - {fileID: 737134015}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1851,7 +1866,7 @@ RectTransform:
   - {fileID: 1530361547}
   - {fileID: 934332066}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2221,7 +2236,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226643878
 GameObject:
@@ -2449,6 +2464,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a73b863638e9d744f8c5ba39ae5f97d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1427322498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1427322500}
+  - component: {fileID: 1427322499}
+  m_Layer: 0
+  m_Name: Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1427322499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427322498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac738befc5a899645a3cb071ca0e0747, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards: {fileID: 11400000, guid: f0d3a27d3d8050447a70c30436f21aed, type: 2}
+  decks: {fileID: 11400000, guid: 58e9ae7f401f19f46bade59cfa092ff6, type: 2}
+--- !u!4 &1427322500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427322498}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 448.12134, y: 230.26894, z: -220.59375}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1491140411
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,7 +3051,7 @@ RectTransform:
   - {fileID: 2112377902}
   - {fileID: 1933277627}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3301,6 +3361,7 @@ GameObject:
   - component: {fileID: 1735172684}
   - component: {fileID: 1735172686}
   - component: {fileID: 1735172687}
+  - component: {fileID: 1735172688}
   m_Layer: 5
   m_Name: PlayerDeck
   m_TagString: Untagged
@@ -3401,6 +3462,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cfa6a029c19fd44b69de34105e35d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1735172688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735172682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e2c99c2bf8afb4c99c269d8416752a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881, type: 3}
+  deckID: 0
 --- !u!1 &1743950231
 GameObject:
   m_ObjectHideFlags: 0

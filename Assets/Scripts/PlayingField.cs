@@ -18,7 +18,7 @@ public class PlayingField : MonoBehaviour, IDropHandler, IPointerEnterHandler, I
 
     public void OnDrop(PointerEventData eventData)
     {
-        Card card = eventData.pointerDrag.GetComponent<Card>(); //Gets the card that was dropped
+        CardBehavior card = eventData.pointerDrag.GetComponent<CardBehavior>(); //Gets the card that was dropped
         if (card != null)
         {
             card.SetCurrParent(this.transform); //Sets the card's current parent to the player's field
