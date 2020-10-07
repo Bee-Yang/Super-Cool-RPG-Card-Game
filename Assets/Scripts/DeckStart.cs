@@ -18,21 +18,28 @@ public class DeckStart : MonoBehaviour
 
     void Awake()
     {
+        // Load decklist from the database
         decklist = Database.GetDeckByID(deckID);
 
+        // Create list of card gameobjects and cardAttribute Ojbects
         List<GameObject> card = new List<GameObject>();
         List<CardAttributes> cardAttribute = new List<CardAttributes>();
 
         for (int i = 0; i < decklist.cards.Count; ++i)
         {
+            // Create the card onto the board
             GameObject currCard = Instantiate(prefab, this.transform);
             card.Add(currCard);
 
+            // Find the cardAttribute component in order to modify the card
             CardAttributes currAttributes = card[i].GetComponent<CardAttributes>();
             cardAttribute.Add(currAttributes);
 
+            // Set the attributes of the card
             SetCardAttributes(cardAttribute[i], decklist.cards[i]);
-            card[i].transform.Find("CardBack").transform.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+            // Make the card back image visible while the card is in the deck
+            //card[i].transform.Find("CardBack").transform.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         }
     }
 
@@ -44,6 +51,7 @@ public class DeckStart : MonoBehaviour
 
     private void SetCardAttributes(CardAttributes card, Card cardData)
     {
+        // Set attributes of the card based on the card data retrieved from the database
         card.SetName(cardData.cardName);
         card.SetCost(cardData.cost);
         card.SetType(cardData.type);
