@@ -2,6 +2,8 @@
 
 [CreateAssetMenu(fileName = "New Card", menuName = "Assets/Card")]
 
+
+// Card Object for use in database
 public class Card : ScriptableObject
 {
     public int id;

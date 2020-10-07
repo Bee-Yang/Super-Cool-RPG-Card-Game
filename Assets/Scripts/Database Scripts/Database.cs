@@ -6,6 +6,7 @@ using System.Linq;
 
 public class Database : MonoBehaviour
 {
+    // Load card and deck database
     public CardDatabase cards;
     public DeckDatabase decks;
 
@@ -13,6 +14,7 @@ public class Database : MonoBehaviour
 
     private void Awake()
     {
+        // Create database instance if there is no active database
         if(instance == null)
         {
             instance = this;
@@ -26,11 +28,13 @@ public class Database : MonoBehaviour
 
     public static Card GetCardByID(int ID)
     {
+        // return the card from the card database that matches the given ID
         return instance.cards.allCards.FirstOrDefault(i => i.id == ID);
     }
 
     public static Deck GetDeckByID(int ID)
     {
+        // return the decklist from the deck database that matches the given ID
         return instance.decks.allDecks.FirstOrDefault(i => i.id == ID);
     }
 }
