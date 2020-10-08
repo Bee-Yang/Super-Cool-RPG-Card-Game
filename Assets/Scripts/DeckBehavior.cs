@@ -3,12 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-<<<<<<< HEAD
-using System.Linq;
-=======
->>>>>>> master
 
-public class DeckStart : MonoBehaviour
+
+public class DeckBehavior : MonoBehaviour
 {
     private Deck decklist;
 
@@ -45,6 +42,8 @@ public class DeckStart : MonoBehaviour
             // Make the card back image visible while the card is in the deck
             //card[i].transform.Find("CardBack").transform.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         }
+
+        Shuffle();
     }
 
     // Update is called once per frame
@@ -68,24 +67,23 @@ public class DeckStart : MonoBehaviour
 
     public void Shuffle()
     {
-        //Random num generator
+        // Random num generator
         System.Random rnd = new System.Random();
-        //Pull card list from the deck
-        List<Card> cards = decklist.cards;
 
-        //Pick a random card, swap it with the top card of the list
-        int n = cards.Count;
+        // Pick a random card, swap it with the card at position n of the deck
+        int n = this.transform.childCount;
         while (n > 1)
         {
-            //Updating the list
+            // Updating the card positions
             n--;
             int k = rnd.Next(n + 1);
-            Card tmp = cards[k];
-            cards[k] = cards[n];
-            cards[n] = tmp;
 
-            //Move the card GameObject at k to the first position
-            transform.GetChild(k).SetAsFirstSibling();
+            // Pull a random card from the deck
+            Transform tmp = this.transform.GetChild(k);
+            
+            // Swap the random card with the card at position n
+            this.transform.GetChild(n).SetSiblingIndex(k);
+            tmp.SetSiblingIndex(n);
         }
     }
 }
