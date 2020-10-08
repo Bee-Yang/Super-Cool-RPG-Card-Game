@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+<<<<<<< HEAD
+using System.Linq;
+=======
+>>>>>>> master
 
 public class DeckStart : MonoBehaviour
 {
@@ -60,5 +64,28 @@ public class DeckStart : MonoBehaviour
         card.SetHealth(cardData.health);
         card.SetImage(cardData.cardImage);
         card.SetBorder(cardData.cardBorder);
+    }
+
+    public void Shuffle()
+    {
+        //Random num generator
+        System.Random rnd = new System.Random();
+        //Pull card list from the deck
+        List<Card> cards = decklist.cards;
+
+        //Pick a random card, swap it with the top card of the list
+        int n = cards.Count;
+        while (n > 1)
+        {
+            //Updating the list
+            n--;
+            int k = rnd.Next(n + 1);
+            Card tmp = cards[k];
+            cards[k] = cards[n];
+            cards[n] = tmp;
+
+            //Move the card GameObject at k to the first position
+            transform.GetChild(k).SetAsFirstSibling();
+        }
     }
 }
