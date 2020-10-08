@@ -2322,7 +2322,7 @@ GameObject:
   - component: {fileID: 1162442895}
   m_Layer: 5
   m_Name: PlayerMana
-  m_TagString: Untagged
+  m_TagString: PlayerMana
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2633,7 +2633,6 @@ GameObject:
   - component: {fileID: 1293047883}
   - component: {fileID: 1293047885}
   - component: {fileID: 1293047887}
-  - component: {fileID: 1293047886}
   m_Layer: 5
   m_Name: PlayerPlayingField
   m_TagString: Untagged
@@ -2722,18 +2721,6 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
---- !u!114 &1293047886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293047881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cfa6a029c19fd44b69de34105e35d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1293047887
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3849,7 +3836,6 @@ GameObject:
   - component: {fileID: 1735172685}
   - component: {fileID: 1735172684}
   - component: {fileID: 1735172686}
-  - component: {fileID: 1735172687}
   - component: {fileID: 1735172688}
   m_Layer: 5
   m_Name: PlayerDeck
@@ -3939,18 +3925,6 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
---- !u!114 &1735172687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1735172682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cfa6a029c19fd44b69de34105e35d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1735172688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4292,7 +4266,6 @@ GameObject:
   - component: {fileID: 1872167409}
   - component: {fileID: 1872167408}
   - component: {fileID: 1872167410}
-  - component: {fileID: 1872167411}
   m_Layer: 5
   m_Name: PlayerGraveyard
   m_TagString: Untagged
@@ -4381,18 +4354,6 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
---- !u!114 &1872167411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1872167406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53cfa6a029c19fd44b69de34105e35d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1891951028
 GameObject:
   m_ObjectHideFlags: 0
@@ -5261,5 +5222,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand-Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8525035866776751158, guid: f9b619ce8a7a57c49b853963b96d1ab0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f9b619ce8a7a57c49b853963b96d1ab0, type: 3}
