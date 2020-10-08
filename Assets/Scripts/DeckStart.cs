@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-<<<<<<< HEAD
 using System.Linq;
-=======
->>>>>>> master
+
 
 public class DeckStart : MonoBehaviour
 {
