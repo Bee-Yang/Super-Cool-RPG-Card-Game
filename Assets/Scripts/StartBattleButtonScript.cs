@@ -16,7 +16,7 @@ public class StartBattleButtonScript : MonoBehaviour
 
 	void TaskOnClick(){
 		if (turnController.IsPlayerTurn) {
-
+		// start Battle Phase Here
         }
 	}
 }
