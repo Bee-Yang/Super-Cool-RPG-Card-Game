@@ -951,6 +951,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881, type: 3}
+  hand: {fileID: 2112377901}
   deckID: 1
 --- !u!1 &421873991
 GameObject:
@@ -3147,6 +3148,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e48e177cebb1e542a322bbaf6bb1810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDeck: {fileID: 1735172682}
+  enemyDeck: {fileID: 386898692}
 --- !u!4 &1520734922
 Transform:
   m_ObjectHideFlags: 0
@@ -3938,6 +3941,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881, type: 3}
+  hand: {fileID: 1921710224}
   deckID: 0
 --- !u!1 &1743950231
 GameObject:
@@ -4487,6 +4491,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1891951028}
   m_CullTransparentMesh: 0
+--- !u!1 &1921710224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8525035866776751181, guid: f9b619ce8a7a57c49b853963b96d1ab0,
+    type: 3}
+  m_PrefabInstance: {fileID: 8525035867861548786}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1933277626
 GameObject:
   m_ObjectHideFlags: 0

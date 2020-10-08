@@ -8,7 +8,7 @@ public class DeckBehavior : MonoBehaviour
 {
     private Deck decklist;
 
-    public GameObject prefab;
+    public GameObject prefab, hand;
     public int deckID;
 
     // Start is called before the first frame update
@@ -43,6 +43,11 @@ public class DeckBehavior : MonoBehaviour
         }
 
         Shuffle();
+
+        for(int i = 0; i < 5; ++i)
+        {
+            Draw();
+        }
     }
 
     // Update is called once per frame
@@ -84,5 +89,12 @@ public class DeckBehavior : MonoBehaviour
             this.transform.GetChild(n).SetSiblingIndex(k);
             tmp.SetSiblingIndex(n);
         }
+    }
+
+    public void Draw()
+    {
+        int top = (this.transform.childCount - 1);
+
+        this.transform.GetChild(top).SetParent(hand.transform);
     }
 }
