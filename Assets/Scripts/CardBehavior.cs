@@ -8,7 +8,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 {
     
     Transform currParent; //To save the parent to which this card is tied before/while being dragged
-    CardStack currStack;  //To save the parent CardStack
     bool inPlay;
     bool draggable;
     bool destroyed;
@@ -17,7 +16,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         //Set the current parent, set inPlay and destoryed flags to false
         currParent = this.transform.parent;
-        currStack = this.transform.parent.GetComponent<CardStack>();
         inPlay = false;
         draggable = true;
         destroyed = false;
@@ -57,8 +55,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         
         else
         {
-            currStack.DrawCard(this); //Draw the card from its current CardStack
-            Debug.Log(currStack.GetSize());
             this.transform.SetParent(this.transform.root); //Removes the card from its parent to the board while being dragged
             GetComponent<CanvasGroup>().blocksRaycasts = false; //Sets the card to not block raycasts, so panels can detect the pointer
         }
@@ -75,9 +71,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         this.transform.SetParent(currParent); //Puts card into its current parent
         GetComponent<CanvasGroup>().blocksRaycasts = true; //Sets the card to block raycasts once more
-        currStack = currParent.GetComponent<CardStack>(); //Sets the card's new CardStack
-        currStack.AddCard(this); //Adds this card to the new CardStack's list
-        Debug.Log(currStack.GetSize());
 
         if (inPlay == true) { draggable = false; } //Set draggable to false if card is in play
     }
