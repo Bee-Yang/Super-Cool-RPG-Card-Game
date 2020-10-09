@@ -571,7 +571,7 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 534545923}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -792,7 +792,7 @@ RectTransform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 534545923}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1175,9 +1175,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 251262429}
-  - {fileID: 1347382296}
   - {fileID: 348525466}
+  - {fileID: 1347382296}
+  - {fileID: 251262429}
   - {fileID: 237129102}
   - {fileID: 1162442892}
   - {fileID: 728019027}
@@ -3128,6 +3128,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1520734922}
   - component: {fileID: 1520734921}
+  - component: {fileID: 1520734925}
+  - component: {fileID: 1520734924}
+  - component: {fileID: 1520734923}
+  - component: {fileID: 1520734926}
   m_Layer: 0
   m_Name: TurnController
   m_TagString: Untagged
@@ -3162,6 +3166,57 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1520734923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520734920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5742ee3c000021f428a082f22ebc12e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTurn: {fileID: 348525465}
+  enemyTurn: {fileID: 1347382295}
+--- !u!114 &1520734924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520734920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3368338de4c89af4ca44449c009f2e64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1520734925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520734920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06301bf2e471d53468c111a96133d323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1520734926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520734920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3c386e25ab83d4cb1f23088f2523af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  notification: {fileID: 0}
 --- !u!1 &1530361546
 GameObject:
   m_ObjectHideFlags: 0

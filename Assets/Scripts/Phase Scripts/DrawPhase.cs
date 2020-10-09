@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DrawPhase : MonoBehaviour
 {
@@ -23,34 +24,30 @@ public class DrawPhase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check if the current phase is drawing phase based on turnController
-        if (turnController.GetPhase() == 1)
+        // Add time delay to the timer before drawing a card
+        time += Time.deltaTime;
+
+        // Draw a card after the time delay
+        if (time > timeDelay)
         {
-            // Add time delay to the timer before drawing a card
-            time += Time.deltaTime;
-
-            // Draw a card after the time delay
-            if (time > timeDelay)
+            // Draw a card depending on whose turn it is
+            if (turnController.IsPlayerTurn)
             {
-                // Draw a card depending on whose turn it is
-                if (turnController.GetIsPlayerTurn())
-                {
-                    player.Draw();
-                }
-                else
-                {
-                    enemy.Draw();
-                }
-
-                // Reset timer
-                time = 0;
-
-                // Change the phase to playing phase
-                turnController.SetPhase(2);
-
-                // Disable this script
-                this.enabled = false;
+                player.Draw();
             }
+            else
+            {
+                enemy.Draw();
+            }
+
+            // Reset timer
+            time = 0;
+
+            // Change the phase to playing phase
+            turnController.SetPhase(2);
+
+            // Disable this script
+            this.enabled = false;
         }
     }
 }
