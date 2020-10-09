@@ -3213,10 +3213,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1520734920}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b3c386e25ab83d4cb1f23088f2523af, type: 3}
+  m_Script: {fileID: 11500000, guid: 288e24cb2b6896f45b66243ac592b2a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notification: {fileID: 0}
+  notification: {fileID: 251262428}
 --- !u!1 &1530361546
 GameObject:
   m_ObjectHideFlags: 0
