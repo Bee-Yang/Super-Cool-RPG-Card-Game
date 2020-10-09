@@ -23,16 +23,23 @@ public class PlayerManaBehavior : MonoBehaviour
     }
     
     void Update() 
-    {
-        // // When Player's turn ends
-        // if(player turn ends)
-        // {
-        //     // add 1 to mana
-        //     maxMana += 1;
-        // }
-        
+    {        
         // update text of PlayerMana element
         thisText.text = "Mana: " + mana + "/" + maxMana;
+    }
+
+    public void increaseMana() {
+        if (maxMana < 10){
+            maxMana += 1;
+        }
+    }
+
+    public void resetMana() {
+        mana = maxMana;
+    }
+
+    public void decreaseMana(int cost) {
+        mana -= cost;
     }
 
 }

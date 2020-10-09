@@ -19,15 +19,22 @@ public class EnemyManaBehavior : MonoBehaviour
     }
     
     void Update() 
-    {
-        // // When Enemy's turn ends
-        // if(enemy turn ends)
-        // {
-        //     // add 1 to mana
-        //     maxMana += 1;
-        // }
-        
+    {   
         // update text of EnemyMana element
         thisText.text = "Mana: " + mana + "/" + maxMana;
+    }
+
+    public void increaseMana() {
+        if (maxMana < 10){
+            maxMana += 1;
+        }
+    }
+
+    public void resetMana() {
+        mana = maxMana;
+    }
+
+    public void decreaseMana(int cost) {
+        mana -= cost;
     }
 }

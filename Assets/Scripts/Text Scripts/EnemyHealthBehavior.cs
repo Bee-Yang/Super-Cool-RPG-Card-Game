@@ -10,6 +10,10 @@ public class EnemyHealthBehavior : MonoBehaviour
 {
     private TMP_Text thisText;
     private int health;
+    public int Health {
+        get { return health; }
+        set { health = value; }
+    }
     private static int maxHealth = 20;
     
     void Start()
@@ -22,18 +26,16 @@ public class EnemyHealthBehavior : MonoBehaviour
     
     void Update() 
     {
-        // // When Enemy's health goes down
-        // if(enemy is hit)
-        // {
-        //     // subtract x amount from health
-        //     health += 0;
-        // }
-
         if(health < maxHealth){
             thisText.color = Color.red;
         }
 
         // update text of EnemyHealth element
         thisText.text = "Health: " + health + "/" + maxHealth;
+    }
+
+    public void decreaseHealth(int amount) {
+        health -= amount;
+        if (health < 0) health = 0;
     }
 }
