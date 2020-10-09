@@ -28,10 +28,12 @@ public class DeckBehavior : MonoBehaviour
         Shuffle();
 
         // Draw 5 cards at the beginning of the game
+        /*
         for(int i = 0; i < 5; ++i)
         {
             Draw();
         }
+        */
     }
 
     // Update is called once per frame
