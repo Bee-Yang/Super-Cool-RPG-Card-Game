@@ -5232,6 +5232,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hand-Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8525035866776751181, guid: f9b619ce8a7a57c49b853963b96d1ab0,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8525035866776751158, guid: f9b619ce8a7a57c49b853963b96d1ab0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f9b619ce8a7a57c49b853963b96d1ab0, type: 3}
