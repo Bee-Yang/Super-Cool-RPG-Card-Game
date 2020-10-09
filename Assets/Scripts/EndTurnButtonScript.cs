@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class EndTurnButtonScript : MonoBehaviour
 {
     // Start is called before the first frame update
-   public Button endTurnButton;
- 	TurnControllerBehavior turnController;
+   	public Button endTurnButton;
+ 	private TurnControllerBehavior turnController;
 
 	void Start () {
 		Button btn = endTurnButton.GetComponent<Button>();
