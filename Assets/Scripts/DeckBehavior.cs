@@ -71,7 +71,7 @@ public class DeckBehavior : MonoBehaviour
             SetCardAttributes(cardAttribute, decklist.cards[i]);
 
             // Make the card back image visible while the card is in the deck
-            //card.GetComponent<CardBehavior>().FlipCard("back");
+            card.GetComponent<CardBehavior>().FlipCard("back");
 
             // Disable the card dragging script
             card.GetComponent<CardBehavior>().SetDraggable(false);
@@ -113,7 +113,7 @@ public class DeckBehavior : MonoBehaviour
         {
             card.GetComponent<CardBehavior>().SetDraggable(true);
             card.GetComponent<CardBehavior>().SetHoverable(true);
-            //card.GetComponent<CardBehavior>().FlipCard("front");
+            card.GetComponent<CardBehavior>().FlipCard("front");
         }
 
         // Move the card from the deck into the hand

@@ -20,8 +20,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         //Set the current parent, set inPlay and destoryed flags to false
         currParent = this.transform.parent;
         inPlay = false;
-        //draggable = false;
-        //hoverable = false;
         destroyed = false;
 
         this.originalScale = this.transform.localScale;
@@ -84,6 +82,26 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(false);
             }
         }
+
+        panel = GameObject.Find("PlayerPlayingField");
+
+        if (panel.transform.childCount > 0)
+        {
+            for (int i = 0; i < panel.transform.childCount; ++i)
+            {
+                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(false);
+            }
+        }
+
+        panel = GameObject.Find("OpponentPlayingField");
+
+        if (panel.transform.childCount > 0)
+        {
+            for (int i = 0; i < panel.transform.childCount; ++i)
+            {
+                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(false);
+            }
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -99,6 +117,26 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (inPlay == true) { draggable = false; } //Set draggable to false if card is in play
 
         GameObject panel = GameObject.Find("Hand-Player");
+
+        if (panel.transform.childCount > 0)
+        {
+            for (int i = 0; i < panel.transform.childCount; ++i)
+            {
+                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(true);
+            }
+        }
+
+        panel = GameObject.Find("PlayerPlayingField");
+
+        if (panel.transform.childCount > 0)
+        {
+            for (int i = 0; i < panel.transform.childCount; ++i)
+            {
+                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(true);
+            }
+        }
+
+        panel = GameObject.Find("OpponentPlayingField");
 
         if (panel.transform.childCount > 0)
         {
