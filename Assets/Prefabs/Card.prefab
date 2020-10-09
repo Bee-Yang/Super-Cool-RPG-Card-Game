@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9019148220676627964}
   - component: {fileID: 7155203412666187127}
   - component: {fileID: 2718364232713785771}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CardBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 5457168436748649579}
   - component: {fileID: 5262091174339338041}
   - component: {fileID: 222525490260778516}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CardName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 5926775761409978674}
   - component: {fileID: 1010448707775270058}
   - component: {fileID: 5852655041512095988}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CardAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 176708173941673949}
   - component: {fileID: 7624658974241719256}
   - component: {fileID: 79615344870384418}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -425,7 +425,7 @@ GameObject:
   - component: {fileID: 3583630513076606484}
   - component: {fileID: 4774622033747900769}
   - component: {fileID: 4574113449930009663}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CardDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 4542999274058624885}
   - component: {fileID: 3055216957034795202}
   - component: {fileID: 8928975254209887008}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: CardBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 5122890661488139152}
   - component: {fileID: 966579943841440783}
   - component: {fileID: 8214148357686912989}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CardHealth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 2116028828454927928}
   - component: {fileID: 665835423717810076}
   - component: {fileID: 3825693096124318845}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CardCost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: -3445787957005589923}
   - component: {fileID: 3429011280549366855}
   - component: {fileID: 2445553653362389864}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Card
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -968,6 +968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ac275e88499e5b4caac34c7c52d2b27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  draggable: 0
+  hoverable: 0
 --- !u!210 &-3445787957005589923
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -1020,7 +1022,7 @@ GameObject:
   - component: {fileID: 8286677351231868101}
   - component: {fileID: 5432226317047602074}
   - component: {fileID: 3304815578407138392}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CardType
   m_TagString: Untagged
   m_Icon: {fileID: 0}

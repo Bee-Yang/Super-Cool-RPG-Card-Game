@@ -23,7 +23,6 @@ public class PlayerHand : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPo
         if (card != null)
         {
             card.SetCurrParent(this.transform); //Sets the card's current parent to the player hand
-            card.FlipCard(); //Flips the card over
         }
     }
 }
