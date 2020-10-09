@@ -6,7 +6,7 @@ using TMPro;
 
 public class CardAttributes : MonoBehaviour
 {
-    private int id, cost, attack, health;
+    private int id, cost, attack, health, currentHealth;
     private string cardName, type, description;
     private Sprite cardImage, cardBorder;
 
@@ -15,6 +15,7 @@ public class CardAttributes : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        this.currentHealth = this.health;
     }
 
     // Update is called once per frame
@@ -25,9 +26,44 @@ public class CardAttributes : MonoBehaviour
         this.cardTypeText.text = this.type;
         this.cardDescriptionText.text = this.description;
         this.cardAttackText.text = "" + this.attack;
-        this.cardHealthText.text = "" + this.health;
+        this.cardHealthText.text = "" + this.currentHealth;
         this.transform.Find("CardImage").transform.GetComponent<Image>().sprite = this.cardImage;
         this.transform.Find("CardBorder").transform.GetComponent<Image>().sprite = this.cardBorder;
+    }
+
+    public string GetName()
+    {
+        return this.cardName;
+    }
+
+    public int GetCost()
+    {
+        return this.cost;
+    }
+
+    public string GetCardType()
+    {
+        return this.type;
+    }
+
+    public string GetDescription()
+    {
+        return this.description;
+    }
+
+    public int GetAttack()
+    {
+        return this.attack;
+    }
+
+    public int GetHealth()
+    {
+        return this.health;
+    }
+
+    public int GetCurrentHealth()
+    {
+        return this.currentHealth;
     }
 
     public void SetName(string newName)
@@ -40,7 +76,7 @@ public class CardAttributes : MonoBehaviour
         this.cost = newCost;
     }
 
-    public void SetType(string newType)
+    public void SetCardType(string newType)
     {
         this.type = newType;
     }
@@ -58,6 +94,11 @@ public class CardAttributes : MonoBehaviour
     public void SetHealth(int newHealth)
     {
         this.health = newHealth;
+    }
+
+    public void SetCurrentHealth(int newHealth)
+    {
+        this.currentHealth = newHealth;
     }
 
     public void SetImage(Sprite newSprite)
