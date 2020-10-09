@@ -17,7 +17,6 @@ public class TurnControllerBehavior : MonoBehaviour
     void Start()
     {
         isPlayerTurn = true;
-        playerGo();
         phase = 0;
 
         DisableAllPhases();
@@ -50,6 +49,16 @@ public class TurnControllerBehavior : MonoBehaviour
             case 1:
                 this.GetComponent<DrawPhase>().enabled = true;
                 break;
+               
+            // Enable the script for playing phase
+            case 2:
+                this.GetComponent<PlayingPhase>().enabled = true;
+                break;
+            
+            // Enable the script for battle phase
+            case 3:
+                this.GetComponent<BattlePhase>().enabled = true;
+                break;
 
             default:
                 DisableAllPhases();
@@ -59,12 +68,37 @@ public class TurnControllerBehavior : MonoBehaviour
     void opponentGo()
     {
         //phases will be controlled here, turn ended automatically
-        AlternateTurn();
-    }
+        switch (phase)
+        {
+            // Enable the script for drawing 5 cards at the beginning of the duel
+            case 0:
+                this.GetComponent<Beginning>().enabled = true;
+                break;
 
-    public bool GetIsPlayerTurn()
-    {
-        return this.isPlayerTurn;
+            // Enable the script for drawing phase
+            case 1:
+                this.GetComponent<DrawPhase>().enabled = true;
+                break;
+
+            // Enable the script for playing phase
+            case 2:
+                this.GetComponent<PlayingPhase>().enabled = true;
+                break;
+
+            // Enable the script for battle phase
+            case 3:
+                this.GetComponent<BattlePhase>().enabled = true;
+                break;
+
+            // End the opponent's turn
+            case 4:
+                AlternateTurn();
+                break;
+
+            default:
+                DisableAllPhases();
+                break;
+        }
     }
 
     public int GetPhase()
@@ -81,5 +115,7 @@ public class TurnControllerBehavior : MonoBehaviour
     {
         this.GetComponent<Beginning>().enabled = false;
         this.GetComponent<DrawPhase>().enabled = false;
+        this.GetComponent<PlayingPhase>().enabled = false;
+        this.GetComponent<BattlePhase>().enabled = false;
     }
 }
