@@ -21,29 +21,13 @@ public class DeckBehavior : MonoBehaviour
         // Load decklist from the database
         decklist = Database.GetDeckByID(deckID);
 
-        // Create list of card gameobjects and cardAttribute Ojbects
-        List<GameObject> card = new List<GameObject>();
-        List<CardAttributes> cardAttribute = new List<CardAttributes>();
+        // Generate the deck onto the board
+        DeckStart();
 
-        for (int i = 0; i < decklist.cards.Count; ++i)
-        {
-            // Create the card onto the board
-            GameObject currCard = Instantiate(prefab, this.transform);
-            card.Add(currCard);
-
-            // Find the cardAttribute component in order to modify the card
-            CardAttributes currAttributes = card[i].GetComponent<CardAttributes>();
-            cardAttribute.Add(currAttributes);
-
-            // Set the attributes of the card
-            SetCardAttributes(cardAttribute[i], decklist.cards[i]);
-
-            // Make the card back image visible while the card is in the deck
-            //card[i].transform.Find("CardBack").transform.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
-        }
-
+        // Shuffle the deck
         Shuffle();
 
+        // Draw 5 cards at the beginning of the game
         for(int i = 0; i < 5; ++i)
         {
             Draw();
@@ -53,7 +37,6 @@ public class DeckBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
     }
 
     private void SetCardAttributes(CardAttributes card, Card cardData)
@@ -69,6 +52,33 @@ public class DeckBehavior : MonoBehaviour
         card.SetBorder(cardData.cardBorder);
     }
 
+    // Method for generating the deck onto the board from the database
+    private void DeckStart()
+    {
+        // Declare temporary card gameobjects and cardAttribute Ojbects
+        GameObject card;
+        CardAttributes cardAttribute;
+
+        for (int i = 0; i < decklist.cards.Count; ++i)
+        {
+            // Create the card onto the board
+            card = Instantiate(prefab, this.transform);
+
+            // Find the cardAttribute component in order to modify the card
+            cardAttribute = card.GetComponent<CardAttributes>();
+
+            // Set the attributes of the card
+            SetCardAttributes(cardAttribute, decklist.cards[i]);
+
+            // Make the card back image visible while the card is in the deck
+            //card.transform.Find("CardBack").transform.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+            // Disable the card dragging script
+            card.GetComponent<CardBehavior>().enabled = false;
+        }
+    }
+
+    // Method for shuffling the deck
     public void Shuffle()
     {
         // Random num generator
@@ -93,8 +103,16 @@ public class DeckBehavior : MonoBehaviour
 
     public void Draw()
     {
+        // Get the index for the card at the top of the deck
         int top = (this.transform.childCount - 1);
 
+        // Enable dragging for the card if it is the player's card
+        if (hand.tag == "Player")
+        {
+            this.transform.GetChild(top).GetComponent<CardBehavior>().enabled = true;
+        }
+
+        // Move the card from the deck into the hand
         this.transform.GetChild(top).SetParent(hand.transform);
     }
 }
