@@ -71,36 +71,18 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             this.transform.SetParent(this.transform.root); //Removes the card from its parent to the board while being dragged
             GetComponent<CanvasGroup>().blocksRaycasts = false; //Sets the card to not block raycasts, so panels can detect the pointer
-        }
 
-        GameObject panel = GameObject.Find("Hand-Player");
+            // Disable hover for all cards in player hand
+            GameObject panel = GameObject.Find("Hand-Player");
+            SetHoverableInPanel(panel, false);
 
-        if(panel.transform.childCount > 0)
-        {
-            for(int i = 0; i < panel.transform.childCount; ++i)
-            {
-                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(false);
-            }
-        }
+            // Disable hover for all cards in player playing field
+            panel = GameObject.Find("PlayerPlayingField");
+            SetHoverableInPanel(panel, false);
 
-        panel = GameObject.Find("PlayerPlayingField");
-
-        if (panel.transform.childCount > 0)
-        {
-            for (int i = 0; i < panel.transform.childCount; ++i)
-            {
-                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(false);
-            }
-        }
-
-        panel = GameObject.Find("OpponentPlayingField");
-
-        if (panel.transform.childCount > 0)
-        {
-            for (int i = 0; i < panel.transform.childCount; ++i)
-            {
-                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(false);
-            }
+            // Disable hover for all cards in opponent playing field
+            panel = GameObject.Find("OpponentPlayingField");
+            SetHoverableInPanel(panel, false);
         }
     }
 
@@ -116,35 +98,17 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (inPlay == true) { draggable = false; } //Set draggable to false if card is in play
 
+        // Enable hover for all cards in player hand
         GameObject panel = GameObject.Find("Hand-Player");
+        SetHoverableInPanel(panel, true);
 
-        if (panel.transform.childCount > 0)
-        {
-            for (int i = 0; i < panel.transform.childCount; ++i)
-            {
-                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(true);
-            }
-        }
-
+        // Enable hover for all cards in player playing field
         panel = GameObject.Find("PlayerPlayingField");
+        SetHoverableInPanel(panel, true);
 
-        if (panel.transform.childCount > 0)
-        {
-            for (int i = 0; i < panel.transform.childCount; ++i)
-            {
-                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(true);
-            }
-        }
-
+        // Enable hover for all cards in opponent playing field
         panel = GameObject.Find("OpponentPlayingField");
-
-        if (panel.transform.childCount > 0)
-        {
-            for (int i = 0; i < panel.transform.childCount; ++i)
-            {
-                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(true);
-            }
-        }
+        SetHoverableInPanel(panel, true);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -176,5 +140,18 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void SetHoverable(bool status)
     {
         this.hoverable = status;
+    }
+
+    public void SetHoverableInPanel(GameObject panel, bool status)
+    {
+        // Check if the panel has no cards
+        if (panel.transform.childCount > 0)
+        {
+            // Set the hoverable to given status for all cards in the panel
+            for (int i = 0; i < panel.transform.childCount; ++i)
+            {
+                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(status);
+            }
+        }
     }
 }

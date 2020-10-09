@@ -44,7 +44,7 @@ public class DeckBehavior : MonoBehaviour
         // Set attributes of the card based on the card data retrieved from the database
         card.SetName(cardData.cardName);
         card.SetCost(cardData.cost);
-        card.SetType(cardData.type);
+        card.SetCardType(cardData.type);
         card.SetDescription(cardData.description);
         card.SetAttack(cardData.attack);
         card.SetHealth(cardData.health);
