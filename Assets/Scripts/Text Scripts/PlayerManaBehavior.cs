@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerManaBehavior : MonoBehaviour
 {
-    private Text thisText;
+    private TMP_Text thisText;
     private int mana, maxMana;
+    public int Mana {
+        get { return mana; }
+        set { mana = value; }
+    }
     
     void Start()
     {
-        thisText = GetComponent<Text>();
+        thisText = GetComponent<TMP_Text>();
 
         // set mana initially to be 1
         maxMana = 1;
