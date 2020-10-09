@@ -71,10 +71,11 @@ public class DeckBehavior : MonoBehaviour
             SetCardAttributes(cardAttribute, decklist.cards[i]);
 
             // Make the card back image visible while the card is in the deck
-            //card.transform.Find("CardBack").transform.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            //card.GetComponent<CardBehavior>().FlipCard("back");
 
             // Disable the card dragging script
-            card.GetComponent<CardBehavior>().enabled = false;
+            card.GetComponent<CardBehavior>().SetDraggable(false);
+            card.GetComponent<CardBehavior>().SetHoverable(false);
         }
     }
 
@@ -105,14 +106,17 @@ public class DeckBehavior : MonoBehaviour
     {
         // Get the index for the card at the top of the deck
         int top = (this.transform.childCount - 1);
+        Transform card = this.transform.GetChild(top);
 
         // Enable dragging for the card if it is the player's card
         if (hand.tag == "Player")
         {
-            this.transform.GetChild(top).GetComponent<CardBehavior>().enabled = true;
+            card.GetComponent<CardBehavior>().SetDraggable(true);
+            card.GetComponent<CardBehavior>().SetHoverable(true);
+            //card.GetComponent<CardBehavior>().FlipCard("front");
         }
 
         // Move the card from the deck into the hand
-        this.transform.GetChild(top).SetParent(hand.transform);
+        card.SetParent(hand.transform);
     }
 }
