@@ -12,19 +12,29 @@ public class PlayingPhase : MonoBehaviour
 
     public GameObject playerTurn, enemyTurn;
 
+    void OnEnable()
+    {
+        time = 0;
+        start = true;
+    }
+ 
     // Start is called before the first frame update
     void Start()
     {
         turnController = this.GetComponent<TurnControllerBehavior>();
-
-        time = 0;
-        start = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         TurnNotification();
+
+        // Temporary code to directly enter battle phase on opponents turn after draw phase
+        if(!turnController.IsPlayerTurn && !this.start)
+        {
+            turnController.DisableAllPhases();
+            turnController.SetPhase(3);
+        }
     }
 
     private void SetStart(bool status)

@@ -10,6 +10,12 @@ public class DrawPhase : MonoBehaviour
     private TurnControllerBehavior turnController;
     private double time;
 
+    void OnEnable()
+    {
+        // Reset time on enable
+        time = 0;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +23,6 @@ public class DrawPhase : MonoBehaviour
         player = GameObject.Find("PlayerDeck").GetComponent<DeckBehavior>();
         enemy = GameObject.Find("OpponentDeck").GetComponent<DeckBehavior>();
         turnController = this.GetComponent<TurnControllerBehavior>();
-
-        time = 0;
     }
 
     // Update is called once per frame
