@@ -21,6 +21,9 @@ public class EndTurnButtonScript : MonoBehaviour
 	public void TaskOnClick(){
 		if (turnController.IsPlayerTurn) {
 			manaBehavior.increaseMana();
+            manaBehavior.resetMana();
+            turnController.DisableAllPhases();
+            turnController.SetPhase(1);
             turnController.AlternateTurn();
         }
 	}

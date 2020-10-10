@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TurnControllerBehavior : MonoBehaviour
 {
     private bool isPlayerTurn;
+    public const int beginning = 0, drawPhase = 1, playPhase = 2, battlePhase = 3;
 
     public int phase;
 
@@ -41,22 +42,22 @@ public class TurnControllerBehavior : MonoBehaviour
         switch(phase)
         {
             // Enable the script for drawing 5 cards at the beginning of the duel
-            case 0:
+            case beginning:
                 this.GetComponent<Beginning>().enabled = true;
                 break;
 
             // Enable the script for drawing phase
-            case 1:
+            case drawPhase:
                 this.GetComponent<DrawPhase>().enabled = true;
                 break;
                
             // Enable the script for playing phase
-            case 2:
+            case playPhase:
                 this.GetComponent<PlayingPhase>().enabled = true;
                 break;
             
             // Enable the script for battle phase
-            case 3:
+            case battlePhase:
                 this.GetComponent<BattlePhase>().enabled = true;
                 break;
 
@@ -71,28 +72,23 @@ public class TurnControllerBehavior : MonoBehaviour
         switch (phase)
         {
             // Enable the script for drawing 5 cards at the beginning of the duel
-            case 0:
+            case beginning:
                 this.GetComponent<Beginning>().enabled = true;
                 break;
 
             // Enable the script for drawing phase
-            case 1:
+            case drawPhase:
                 this.GetComponent<DrawPhase>().enabled = true;
                 break;
 
             // Enable the script for playing phase
-            case 2:
+            case playPhase:
                 this.GetComponent<PlayingPhase>().enabled = true;
                 break;
 
             // Enable the script for battle phase
-            case 3:
+            case battlePhase:
                 this.GetComponent<BattlePhase>().enabled = true;
-                break;
-
-            // End the opponent's turn
-            case 4:
-                AlternateTurn();
                 break;
 
             default:
