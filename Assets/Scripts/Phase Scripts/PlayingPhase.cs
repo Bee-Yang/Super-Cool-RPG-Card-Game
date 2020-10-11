@@ -11,7 +11,7 @@ public class PlayingPhase : MonoBehaviour
     private double time;
     private bool start;
 
-    public GameObject playerTurn, enemyTurn;
+    public GameObject playerTurn, enemyTurn, notEnoughManaNotification, outOfMana;
 
     void OnEnable()
     {
@@ -46,6 +46,17 @@ public class PlayingPhase : MonoBehaviour
             turnController.DisableAllPhases();
             turnController.SetPhase(3);
         }
+        // Make sure that mana notifications are not showing up during opponent's turn
+        if(!turnController.IsPlayerTurn)
+        {
+	notEnoughManaNotification.SetActive(false);
+        }
+        // Check to see if mana is depleted, then show notification if so
+	if(playerMana.Mana <= 0) {
+		outOfMana.SetActive(true);
+	} else {
+		outOfMana.SetActive(false);
+	}
     }
 
     private void SetStart(bool status)
@@ -102,11 +113,15 @@ public class PlayingPhase : MonoBehaviour
         {
             // Decrease the player's mana by the card's cost
             playerMana.decreaseMana(manaCost);
+	// Disable Mana Notification if it's still up
+	notEnoughManaNotification.SetActive(false);
         }
         else
         {
             // Debug statement for not enough mana
             Debug.Log("Not Enough Mana");
+	// Enable Mana Notification to show that you don't have enough mana to play that card
+	notEnoughManaNotification.SetActive(true);
         }
 
         // Return condition of whether the card can be played
