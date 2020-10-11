@@ -114,4 +114,26 @@ public class TurnControllerBehavior : MonoBehaviour
         this.GetComponent<PlayingPhase>().enabled = false;
         this.GetComponent<BattlePhase>().enabled = false;
     }
+
+    // Enable dragging for player
+    public void EnableDraggingForPlayer()
+    {
+        Transform hand = GameObject.Find("Hand-Player").transform;
+
+        for (int i = 0; i < hand.childCount; ++i)
+        {
+            hand.GetChild(i).GetComponent<CardBehavior>().SetDraggable(true);
+        }
+    }
+
+    // Disable dragging for player
+    public void DisableDraggingForPlayer()
+    {
+        Transform hand = GameObject.Find("Hand-Player").transform;
+
+        for (int i = 0; i < hand.childCount; ++i)
+        {
+            hand.GetChild(i).GetComponent<CardBehavior>().SetDraggable(false);
+        }
+    }
 }
