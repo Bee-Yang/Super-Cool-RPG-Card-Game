@@ -61,6 +61,16 @@ public class CardAttributes : MonoBehaviour
         return this.health;
     }
 
+    public Sprite GetImage()
+    {
+        return this.cardImage;
+    }
+
+    public Sprite GetBorder()
+    {
+        return this.cardBorder;
+    }
+
     public int GetCurrentHealth()
     {
         return this.currentHealth;

@@ -4,8 +4,9 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
+public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    private GameObject enlargedCard;
     private static float scale = 0.8f;
     private Vector3 originalScale;
 
@@ -66,23 +67,27 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (draggable == false) { eventData.pointerDrag = null;  } //Cancels drag event if card is not draggable
-        
+
         else
         {
             this.transform.SetParent(this.transform.root); //Removes the card from its parent to the board while being dragged
+
             GetComponent<CanvasGroup>().blocksRaycasts = false; //Sets the card to not block raycasts, so panels can detect the pointer
+
+            // Destroy clone card when card is dragged
+            OnPointerExit();
 
             // Disable hover for all cards in player hand
             GameObject panel = GameObject.Find("Hand-Player");
-            SetHoverableInPanel(panel, false);
+            SetHoverAndRaycastsInPanel(panel, false);
 
             // Disable hover for all cards in player playing field
             panel = GameObject.Find("PlayerPlayingField");
-            SetHoverableInPanel(panel, false);
+            SetHoverAndRaycastsInPanel(panel, false);
 
             // Disable hover for all cards in opponent playing field
             panel = GameObject.Find("OpponentPlayingField");
-            SetHoverableInPanel(panel, false);
+            SetHoverAndRaycastsInPanel(panel, false);
         }
     }
 
@@ -100,35 +105,48 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         // Enable hover for all cards in player hand
         GameObject panel = GameObject.Find("Hand-Player");
-        SetHoverableInPanel(panel, true);
+        SetHoverAndRaycastsInPanel(panel, true);
 
         // Enable hover for all cards in player playing field
         panel = GameObject.Find("PlayerPlayingField");
-        SetHoverableInPanel(panel, true);
+        SetHoverAndRaycastsInPanel(panel, true);
 
         // Enable hover for all cards in opponent playing field
         panel = GameObject.Find("OpponentPlayingField");
-        SetHoverableInPanel(panel, true);
+        SetHoverAndRaycastsInPanel(panel, true);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter()
     {
         if (!hoverable) { return; }
 
-        // Enlarge the card and change its position to fit on the screen
-        this.transform.localScale = new Vector3(scale, scale, 1.0f);
-        this.transform.localPosition += new Vector3(0.0f, 25.0f, 0.0f);
+        // Create a clone card onto the board and disable all its behaviors
+        enlargedCard = Instantiate(this.gameObject, this.transform.root, true);
+        enlargedCard.GetComponent<CardBehavior>().enabled = false;
+        enlargedCard.GetComponent<CanvasGroup>().blocksRaycasts = false;
+
+        // Set the tag of the clone card to "Clone"
+        enlargedCard.tag = "Clone";
+
+        // Set the attributes of the clone card
+        SetCloneAttributes();
+
+        // Set the scale and position of the clone card
+        enlargedCard.transform.localScale = new Vector3(scale, scale, 1.0f);
+        enlargedCard.transform.localPosition += new Vector3(0.0f, 25.0f, 0.0f);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit()
     {
         if (!hoverable) { return; }
 
-        // Restore scale and position of the card
-        if (!this.transform.localScale.Equals(originalScale))
+        // Get an array of all of the clone cards currently on the board
+        GameObject[] clones = GameObject.FindGameObjectsWithTag("Clone");
+
+        // Destroy all clone cards on the board
+        foreach(GameObject clone in clones)
         {
-            this.transform.localScale = originalScale;
-            this.transform.localPosition -= new Vector3(0.0f, 25.0f, 0.0f);
+            Destroy(clone);
         }
     }
 
@@ -142,16 +160,36 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         this.hoverable = status;
     }
 
-    public void SetHoverableInPanel(GameObject panel, bool status)
+    public void SetHoverAndRaycastsInPanel(GameObject panel, bool status)
     {
         // Check if the panel has no cards
         if (panel.transform.childCount > 0)
         {
-            // Set the hoverable to given status for all cards in the panel
+            // Set the hoverable and raycast to given status for all cards in the panel
             for (int i = 0; i < panel.transform.childCount; ++i)
             {
                 panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(status);
+                panel.transform.GetChild(i).GetComponent<CanvasGroup>().blocksRaycasts = status;
             }
         }
+    }
+
+    public void SetCloneAttributes()
+    {
+        CardAttributes clone, original;
+
+        // Set values for CardAttributes of original and clone card
+        original = this.gameObject.GetComponent<CardAttributes>();
+        clone = enlargedCard.GetComponent<CardAttributes>();
+
+        // Set the attributes for clone card
+        clone.SetName(original.GetName());
+        clone.SetCost(original.GetCost());
+        clone.SetCardType(original.GetCardType());
+        clone.SetDescription(original.GetDescription());
+        clone.SetAttack(original.GetAttack());
+        clone.SetHealth(original.GetCurrentHealth());
+        clone.SetImage(original.GetImage());
+        clone.SetBorder(original.GetBorder());
     }
 }

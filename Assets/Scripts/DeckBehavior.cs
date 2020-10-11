@@ -26,14 +26,6 @@ public class DeckBehavior : MonoBehaviour
 
         // Shuffle the deck
         Shuffle();
-
-        // Draw 5 cards at the beginning of the game
-        /*
-        for(int i = 0; i < 5; ++i)
-        {
-            Draw();
-        }
-        */
     }
 
     // Update is called once per frame
@@ -106,19 +98,25 @@ public class DeckBehavior : MonoBehaviour
 
     public void Draw()
     {
-        // Get the index for the card at the top of the deck
-        int top = (this.transform.childCount - 1);
-        Transform card = this.transform.GetChild(top);
-
-        // Enable dragging for the card if it is the player's card
-        if (hand.tag == "Player")
+        if (this.transform.childCount > 0)
         {
-            card.GetComponent<CardBehavior>().SetDraggable(true);
-            card.GetComponent<CardBehavior>().SetHoverable(true);
-            card.GetComponent<CardBehavior>().FlipCard("front");
-        }
+            // Get the index for the card at the top of the deck
+            int top = (this.transform.childCount - 1);
+            Transform card = this.transform.GetChild(top);
 
-        // Move the card from the deck into the hand
-        card.SetParent(hand.transform);
+            // Enable dragging for the card if it is the player's card
+            if (hand.tag == "Player")
+            {
+                //card.GetComponent<CardBehavior>().SetDraggable(true);
+                card.GetComponent<CardBehavior>().SetHoverable(true);
+                card.GetComponent<CardBehavior>().FlipCard("front");
+            }
+
+            // Move the card from the deck into the hand
+            card.SetParent(hand.transform);
+            card.GetComponent<CardBehavior>().SetCurrParent(card.transform.parent);
+
+            hand.GetComponent<HandSpacing>().SetHandSpacing();
+        }
     }
 }
