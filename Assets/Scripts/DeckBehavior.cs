@@ -26,12 +26,6 @@ public class DeckBehavior : MonoBehaviour
 
         // Shuffle the deck
         Shuffle();
-
-        // Draw 5 cards at the beginning of the game
-        for(int i = 0; i < 5; ++i)
-        {
-            Draw();
-        }
     }
 
     // Update is called once per frame
@@ -44,7 +38,7 @@ public class DeckBehavior : MonoBehaviour
         // Set attributes of the card based on the card data retrieved from the database
         card.SetName(cardData.cardName);
         card.SetCost(cardData.cost);
-        card.SetType(cardData.type);
+        card.SetCardType(cardData.type);
         card.SetDescription(cardData.description);
         card.SetAttack(cardData.attack);
         card.SetHealth(cardData.health);
@@ -71,10 +65,11 @@ public class DeckBehavior : MonoBehaviour
             SetCardAttributes(cardAttribute, decklist.cards[i]);
 
             // Make the card back image visible while the card is in the deck
-            //card.transform.Find("CardBack").transform.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            card.GetComponent<CardBehavior>().FlipCard("back");
 
             // Disable the card dragging script
-            card.GetComponent<CardBehavior>().enabled = false;
+            card.GetComponent<CardBehavior>().SetDraggable(false);
+            card.GetComponent<CardBehavior>().SetHoverable(false);
         }
     }
 
@@ -103,16 +98,25 @@ public class DeckBehavior : MonoBehaviour
 
     public void Draw()
     {
-        // Get the index for the card at the top of the deck
-        int top = (this.transform.childCount - 1);
-
-        // Enable dragging for the card if it is the player's card
-        if (hand.tag == "Player")
+        if (this.transform.childCount > 0)
         {
-            this.transform.GetChild(top).GetComponent<CardBehavior>().enabled = true;
-        }
+            // Get the index for the card at the top of the deck
+            int top = (this.transform.childCount - 1);
+            Transform card = this.transform.GetChild(top);
 
-        // Move the card from the deck into the hand
-        this.transform.GetChild(top).SetParent(hand.transform);
+            // Enable dragging for the card if it is the player's card
+            if (hand.tag == "Player")
+            {
+                //card.GetComponent<CardBehavior>().SetDraggable(true);
+                card.GetComponent<CardBehavior>().SetHoverable(true);
+                card.GetComponent<CardBehavior>().FlipCard("front");
+            }
+
+            // Move the card from the deck into the hand
+            card.SetParent(hand.transform);
+            card.GetComponent<CardBehavior>().SetCurrParent(card.transform.parent);
+
+            hand.GetComponent<HandSpacing>().SetHandSpacing();
+        }
     }
 }

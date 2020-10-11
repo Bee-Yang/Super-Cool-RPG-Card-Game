@@ -20,4 +20,4 @@ MonoBehaviour:
   attack: 3
   health: 3
   cardImage: {fileID: 21300000, guid: b7bb5f8e947546c4abd75199ced02409, type: 3}
-  cardBorder: {fileID: 21300000, guid: cdcb12f3e4c05934d9a7a8270be8f6c0, type: 3}
+  cardBorder: {fileID: 21300000, guid: e62b547fdc9225b438c9b08f5c34fd55, type: 3}
