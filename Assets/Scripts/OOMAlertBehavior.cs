@@ -18,7 +18,7 @@ public class OOMAlertBehavior : MonoBehaviour
     void Update()
     {
         if (playerManaBehavior.Mana == 0){
-            thisText.text = "You are out of mana!";
+            thisText.text = "";
         }
         else
         {
