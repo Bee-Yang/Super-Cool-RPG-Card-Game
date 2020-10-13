@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeMonkey.Utils;
+//using CodeMonkey.Utils;
 using System;
 //find in UnityCodeMonkey.com
 
 public class HealthMeterHandlerCode : MonoBehaviour
 {
-
+    /*
     [SerializedField] private HealthMeter healthmeter;
     // Start is called before the first frame update
     private void Start()
@@ -40,4 +40,5 @@ public class HealthMeterHandlerCode : MonoBehaviour
     {
         
     }
+    */
 }

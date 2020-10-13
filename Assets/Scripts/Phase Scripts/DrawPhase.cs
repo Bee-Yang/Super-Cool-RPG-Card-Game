@@ -8,12 +8,17 @@ public class DrawPhase : MonoBehaviour
     private static double timeDelay = 1.0;
     private DeckBehavior player, enemy;
     private TurnControllerBehavior turnController;
-    private double time;
+    private Timer timer;
 
     void OnEnable()
     {
-        // Reset time on enable
-        time = 0;
+        if (!timer)
+        {
+            timer = GameObject.Find("Utility").GetComponent<Timer>();
+        }
+
+        timer.SetTimeDelay(timeDelay);
+        timer.enabled = true;
     }
 
     // Start is called before the first frame update
@@ -28,11 +33,8 @@ public class DrawPhase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Add time delay to the timer before drawing a card
-        time += Time.deltaTime;
-
         // Draw a card after the time delay
-        if (time > timeDelay)
+        if (this.timer.Delayed())
         {
             // Draw a card depending on whose turn it is
             if (turnController.IsPlayerTurn)
@@ -45,7 +47,7 @@ public class DrawPhase : MonoBehaviour
             }
 
             // Reset timer
-            time = 0;
+            this.timer.enabled = false;
 
             // Change the phase to playing phase
             turnController.SetPhase(2);

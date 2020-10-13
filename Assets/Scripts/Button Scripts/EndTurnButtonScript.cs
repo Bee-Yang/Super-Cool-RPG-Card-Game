@@ -24,6 +24,7 @@ public class EndTurnButtonScript : MonoBehaviour
         if (turnController.GetPhase() == 2)
         {
             turnController.DisableDraggingForPlayer();
+            turnController.DisableAllNotifications();
         }
 
         // Make the button not clickable

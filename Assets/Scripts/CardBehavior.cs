@@ -78,7 +78,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             OnPointerExit();
 
             // Disable hover for all cards in player hand
-            GameObject panel = GameObject.Find("Hand-Player");
+            GameObject panel = GameObject.Find("PlayerHand");
             SetHoverAndRaycastsInPanel(panel, false);
 
             // Disable hover for all cards in player playing field
@@ -104,7 +104,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (inPlay == true) { draggable = false; } //Set draggable to false if card is in play
 
         // Enable hover for all cards in player hand
-        GameObject panel = GameObject.Find("Hand-Player");
+        GameObject panel = GameObject.Find("PlayerHand");
         SetHoverAndRaycastsInPanel(panel, true);
 
         // Enable hover for all cards in player playing field
