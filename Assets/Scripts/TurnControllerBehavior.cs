@@ -118,7 +118,7 @@ public class TurnControllerBehavior : MonoBehaviour
     // Enable dragging for player
     public void EnableDraggingForPlayer()
     {
-        Transform hand = GameObject.Find("Hand-Player").transform;
+        Transform hand = GameObject.Find("PlayerHand").transform;
 
         for (int i = 0; i < hand.childCount; ++i)
         {
@@ -129,11 +129,16 @@ public class TurnControllerBehavior : MonoBehaviour
     // Disable dragging for player
     public void DisableDraggingForPlayer()
     {
-        Transform hand = GameObject.Find("Hand-Player").transform;
+        Transform hand = GameObject.Find("PlayerHand").transform;
 
         for (int i = 0; i < hand.childCount; ++i)
         {
             hand.GetChild(i).GetComponent<CardBehavior>().SetDraggable(false);
         }
+    }
+
+    public void DisableAllNotifications()
+    {
+        this.GetComponent<PlayingPhase>().DisableManaNotifications();
     }
 }

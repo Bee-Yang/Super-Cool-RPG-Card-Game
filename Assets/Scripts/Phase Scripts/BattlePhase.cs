@@ -7,7 +7,7 @@ public class BattlePhase : MonoBehaviour
 {
     private static double timeDelay = 0.5;
     private TurnControllerBehavior turnController;
-    private double time;
+    private Timer timer;
     private bool start;
 
     // Temporary variable for opponent turn to function
@@ -17,8 +17,14 @@ public class BattlePhase : MonoBehaviour
 
     void OnEnable()
     {
+        if(!timer)
+        {
+            timer = GameObject.Find("Utility").GetComponent<Timer>();
+        }
+
         start = true;
-        time = 0;
+        timer.SetTimeDelay(timeDelay);
+        timer.enabled = true;
     }
 
     // Start is called before the first frame update
@@ -50,10 +56,7 @@ public class BattlePhase : MonoBehaviour
     {
         if (this.start)
         {
-            // Add time delay to the timer
-            this.time += Time.deltaTime;
-
-            if (this.time > timeDelay)
+            if (this.timer.Delayed())
             {
                 // Notify the user about the battle phase by enabling/disabling the notification after a time delay
                 notification.SetActive(!notification.activeSelf);
@@ -62,10 +65,11 @@ public class BattlePhase : MonoBehaviour
                 if (!notification.activeSelf)
                 {
                     this.start = false;
+                    this.timer.enabled = false;
                 }
 
-                // Reset the timer
-                this.time = 0;
+                // Disable the timer
+                this.timer.ResetTimer();
             }
         }
     }

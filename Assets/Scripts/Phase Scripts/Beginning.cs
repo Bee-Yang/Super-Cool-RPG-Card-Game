@@ -10,7 +10,7 @@ public class Beginning : MonoBehaviour
     private static int beginningHand = 5;
     private DeckBehavior player, enemy;
     private TurnControllerBehavior turnController;
-    private double time;
+    private Timer timer;
 
     // Start is called before the first frame update
     void Start()
@@ -20,19 +20,18 @@ public class Beginning : MonoBehaviour
         enemy = GameObject.Find("OpponentDeck").GetComponent<DeckBehavior>();
         turnController = this.GetComponent<TurnControllerBehavior>();
 
-        time = 0;
+        timer = GameObject.Find("Utility").GetComponent<Timer>();
+        timer.SetTimeDelay(timeDelay);
+        timer.enabled = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Add time delay to the timer between drawing a card
-        time += Time.deltaTime;
-
         // Draw a card after time delay
-        if (time > timeDelay)
+        if (this.timer.Delayed())
         {
-            Transform hand = GameObject.Find("Hand-Player").transform;
+            Transform hand = GameObject.Find("PlayerHand").transform;
 
             // Draw a card for each player if the current hand is less than the specified amount
             if (hand.childCount < beginningHand)
@@ -41,7 +40,7 @@ public class Beginning : MonoBehaviour
                 enemy.Draw();
 
                 // Reset timer
-                time = 0;
+                this.timer.ResetTimer();
 
                 // Check if each player has the amount of cards specified for the beginning fo the duel
                 if (hand.childCount == beginningHand)
@@ -50,6 +49,7 @@ public class Beginning : MonoBehaviour
                     turnController.SetPhase(1);
 
                     // Disable this script
+                    this.timer.enabled = false;
                     this.enabled = false;
                 }
             }
