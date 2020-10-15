@@ -15,3 +15,4 @@ MonoBehaviour:
   allDecks:
   - {fileID: 11400000, guid: dce575f746d70b043ba6b7508e5f0cd0, type: 2}
   - {fileID: 11400000, guid: 2d4f3795ccb092441982a0748ebb9b48, type: 2}
+  - {fileID: 11400000, guid: 1a9cee4a97442084281cdc1561974b54, type: 2}

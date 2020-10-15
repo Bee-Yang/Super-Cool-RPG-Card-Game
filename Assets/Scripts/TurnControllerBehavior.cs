@@ -8,6 +8,7 @@ public class TurnControllerBehavior : MonoBehaviour
     private bool isPlayerTurn;
     private bool gameOver = false;
     public const int beginning = 0, drawPhase = 1, playPhase = 2, battlePhase = 3;
+    public const int win = -1, lose = -2;
 
     public int phase;
     public GameObject winScreen;
@@ -22,6 +23,12 @@ public class TurnControllerBehavior : MonoBehaviour
         set { isPlayerTurn = value; }
     }
 
+    public bool GameOver
+    {
+        get { return gameOver; }
+        set { gameOver = value; }
+    }
+
     void Start()
     {
         isPlayerTurn = true;
@@ -34,19 +41,17 @@ public class TurnControllerBehavior : MonoBehaviour
     {
         if (!gameOver)
         {
-            //Win Conditions
-            if (opponentDeck.transform.childCount == 0 /* OR AI Health is 0*/)
+            // Player won
+            if (phase == win)
             {
                 gameOver = true;
-                phase = -1;
                 GameObject tmp = (Instantiate(winScreen, board.transform) as GameObject);
             }
 
-            //Lose conditions
-            if (playerDeck.transform.childCount == 0 /* OR Player Health is 0*/)
+            // Player lost
+            if (phase == lose)
             {
                 gameOver = true;
-                phase = -1;
                 GameObject tmp = (Instantiate(loseScreen, board.transform) as GameObject);
             }
         }
@@ -166,5 +171,20 @@ public class TurnControllerBehavior : MonoBehaviour
     public void DisableAllNotifications()
     {
         this.GetComponent<PlayingPhase>().DisableManaNotifications();
+    }
+
+    public void CheckGameOverConditions()
+    {
+        //Win Conditions
+        if (!isPlayerTurn && opponentDeck.transform.childCount == 0) // OR AI Health is 0
+        {
+            phase = -1;
+        }
+
+        //Lose conditions
+        if (isPlayerTurn && playerDeck.transform.childCount == 0) // OR Player Health is 0*
+        {
+            phase = -2;
+        }
     }
 }

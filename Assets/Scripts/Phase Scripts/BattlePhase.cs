@@ -59,11 +59,13 @@ public class BattlePhase : MonoBehaviour
             if (this.timer.Delayed())
             {
                 // Notify the user about the battle phase by enabling/disabling the notification after a time delay
+                notification.transform.SetParent(GameObject.Find("Board").transform);
                 notification.SetActive(!notification.activeSelf);
 
                 // Disable this method once user has been notified about the start of the battle phase
                 if (!notification.activeSelf)
                 {
+                    notification.transform.SetParent(GameObject.Find("HUD").transform);
                     this.start = false;
                     this.timer.enabled = false;
                 }
