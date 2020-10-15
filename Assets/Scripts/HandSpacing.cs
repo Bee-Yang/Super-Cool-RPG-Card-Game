@@ -21,8 +21,13 @@ public class HandSpacing : MonoBehaviour
 
     public void SetHandSpacing()
     {
+        if(this.Equals(GameObject.Find("PlayerHand")))
+        {
+            Debug.Log("Hand Count: " + this.transform.childCount);
+        }
+
         // Set spacing for hand if there are more than 9 cards in the hand
-        if (this.transform.childCount > 9)
+        if (this.transform.childCount >= 9)
         {
             float newSpacing;
             

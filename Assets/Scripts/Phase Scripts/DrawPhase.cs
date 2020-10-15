@@ -17,6 +17,7 @@ public class DrawPhase : MonoBehaviour
             timer = GameObject.Find("Utility").GetComponent<Timer>();
         }
 
+        // Enable the timer when this script is enabled
         timer.SetTimeDelay(timeDelay);
         timer.enabled = true;
     }
@@ -36,21 +37,26 @@ public class DrawPhase : MonoBehaviour
         // Draw a card after the time delay
         if (this.timer.Delayed())
         {
-            // Draw a card depending on whose turn it is
-            if (turnController.IsPlayerTurn)
+            turnController.CheckGameOverConditions();
+
+            if (turnController.GetPhase() == 1)
             {
-                player.Draw();
-            }
-            else
-            {
-                enemy.Draw();
+                // Draw a card depending on whose turn it is
+                if (turnController.IsPlayerTurn)
+                {
+                    player.Draw();
+                }
+                else
+                {
+                    enemy.Draw();
+                }
+
+                // Change the phase to playing phase
+                turnController.SetPhase(2);
             }
 
-            // Reset timer
+            // Disable the timer
             this.timer.enabled = false;
-
-            // Change the phase to playing phase
-            turnController.SetPhase(2);
 
             // Disable this script
             this.enabled = false;

@@ -71,6 +71,7 @@ public class PlayingPhase : MonoBehaviour
             {
                 // Disable the notification and fader
                 outOfMana.SetActive(false);
+                outOfMana.transform.SetParent(GameObject.Find("HUD").transform);
                 this.fader.enabled = false;
             }
         }
@@ -86,6 +87,7 @@ public class PlayingPhase : MonoBehaviour
             {
                 // Disable the notification and fader
                 notEnoughManaNotification.SetActive(false);
+                notEnoughManaNotification.transform.SetParent(GameObject.Find("HUD").transform);
                 this.fader.enabled = false;
             }
         }
@@ -105,10 +107,28 @@ public class PlayingPhase : MonoBehaviour
                 // Notify the user about whose turn it is by enabling/disabling the turn notification after a time delay
                 if (turnController.IsPlayerTurn)
                 {
+                    if (!playerTurn.activeSelf)
+                    {
+                        playerTurn.transform.SetParent(GameObject.Find("Board").transform);
+                    }
+                    else
+                    {
+                        playerTurn.transform.SetParent(GameObject.Find("HUD").transform);
+                    }
+
                     playerTurn.SetActive(!playerTurn.activeSelf);
                 }
                 else
                 {
+                    if (!enemyTurn.activeSelf)
+                    {
+                        enemyTurn.transform.SetParent(GameObject.Find("Board").transform);
+                    }
+                    else
+                    {
+                        enemyTurn.transform.SetParent(GameObject.Find("HUD").transform);
+                    }
+
                     enemyTurn.SetActive(!enemyTurn.activeSelf);
                 }
 
@@ -142,6 +162,7 @@ public class PlayingPhase : MonoBehaviour
         if (playerMana.Mana <= 0)
         {
             // Enable the out of mana notification
+            outOfMana.transform.SetParent(GameObject.Find("Board").transform);
             outOfMana.SetActive(true);
             outOfMana.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
@@ -156,8 +177,9 @@ public class PlayingPhase : MonoBehaviour
         }
         else
         {
-	        // Enable Mana Notification to show that you don't have enough mana to play that card
-	        notEnoughManaNotification.SetActive(true);
+            // Enable Mana Notification to show that you don't have enough mana to play that card
+            notEnoughManaNotification.transform.SetParent(GameObject.Find("Board").transform);
+            notEnoughManaNotification.SetActive(true);
             notEnoughManaNotification.GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
 
             // Enable the fader to fade out the notification
@@ -174,11 +196,13 @@ public class PlayingPhase : MonoBehaviour
         if (notEnoughManaNotification.activeSelf)
         {
             notEnoughManaNotification.SetActive(false);
+            notEnoughManaNotification.transform.SetParent(GameObject.Find("HUD").transform);
         }
 
         if (outOfMana.activeSelf)
         {
             outOfMana.SetActive(false);
+            outOfMana.transform.SetParent(GameObject.Find("HUD").transform);
         }
 
         this.fader.enabled = false;

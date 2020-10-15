@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881, type: 3}
   hand: {fileID: 2112377901}
-  deckID: 1
+  deckID: 2
 --- !u!1 &421873991
 GameObject:
   m_ObjectHideFlags: 0
