@@ -6,9 +6,16 @@ using UnityEngine.UI;
 public class TurnControllerBehavior : MonoBehaviour
 {
     private bool isPlayerTurn;
+    private bool gameOver = false;
     public const int beginning = 0, drawPhase = 1, playPhase = 2, battlePhase = 3;
 
     public int phase;
+    public GameObject winScreen;
+    public GameObject loseScreen;
+    public GameObject board;
+    public GameObject opponentDeck;
+    public GameObject playerDeck;
+
 
     public bool IsPlayerTurn {
         get { return isPlayerTurn; }
@@ -25,6 +32,25 @@ public class TurnControllerBehavior : MonoBehaviour
 
     void Update()
     {
+        if (!gameOver)
+        {
+            //Win Conditions
+            if (opponentDeck.transform.childCount == 0 /* OR AI Health is 0*/)
+            {
+                gameOver = true;
+                phase = -1;
+                GameObject tmp = (Instantiate(winScreen, board.transform) as GameObject);
+            }
+
+            //Lose conditions
+            if (playerDeck.transform.childCount == 0 /* OR Player Health is 0*/)
+            {
+                gameOver = true;
+                phase = -1;
+                GameObject tmp = (Instantiate(loseScreen, board.transform) as GameObject);
+            }
+        }
+
         if (isPlayerTurn) {
             playerGo();
         } 
