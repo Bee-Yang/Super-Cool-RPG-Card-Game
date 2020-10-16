@@ -10,32 +10,47 @@ public class EnemyHealthBehavior : MonoBehaviour
 {
     private TMP_Text thisText;
     private int health;
-    public int Health {
+    public Slider slider;
+    public Image color;
+    public Gradient gradient;
+    private static int maxHealth = 20;
+    public int Health
+    {
         get { return health; }
         set { health = value; }
     }
-    private static int maxHealth = 20;
-    
+
+
     void Start()
     {
         thisText = GetComponent<TMP_Text>();
-        
         // set health initially to be 20
         health = maxHealth;
+        SetHealth(health);
+        SetMaxHealth(health);
     }
-    
-    void Update() 
+    public void SetMaxHealth(int health)
     {
-        if(health < maxHealth){
-            thisText.color = Color.red;
-        }
-
-        // update text of EnemyHealth element
+        slider.maxValue = health;
+        slider.value = health;
+        color.color = gradient.Evaluate(1f);
+    }
+    void Update()
+    {
+        // update text of PlayerHealth element
         thisText.text = "Health: " + health + "/" + maxHealth;
     }
+    public void SetHealth(int health)
+    {
+        slider.value = health;
+        color.color = gradient.Evaluate(slider.value);
+    }
 
-    public void decreaseHealth(int amount) {
-        health -= amount;
-        if (health < 0) health = 0;
+
+    public void decreaseHealth(int amount)
+    {
+
+        if (health < 0) health = amount;//prevents negative numbers
+        SetHealth(health -= amount);//changes health and sets the health, don't touch
     }
 }
