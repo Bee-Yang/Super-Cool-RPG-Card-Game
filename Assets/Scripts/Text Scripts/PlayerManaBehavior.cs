@@ -9,7 +9,7 @@ using TMPro;
 public class PlayerManaBehavior : MonoBehaviour
 {
     private TMP_Text thisText;
-    private int mana;
+    private int mana = 1;
     public Slider slider;
     public Image Color;
     public Gradient gradient;
@@ -32,7 +32,7 @@ public class PlayerManaBehavior : MonoBehaviour
     public void SetMaxMana(int mana)
     {
         slider.value = slider.maxValue = mana;
-        Color.color = gradient.Evaluate(1f);
+        Color.color = gradient.Evaluate(10f);
     }
     public void IncreaseMana()
     {
@@ -43,7 +43,8 @@ public class PlayerManaBehavior : MonoBehaviour
     }
     public void ResetMana()
     {
-        mana = maxMana;
+        //mana = maxMana;
+        mana = 1;
     }
     void Update()
     {
@@ -60,7 +61,7 @@ public class PlayerManaBehavior : MonoBehaviour
     public void DecreaseMana(int amount)
     {
         mana -= amount;//old code
-        if (mana <= amount) mana = amount;//prevents negative numbers
-        SetMana(mana -= amount);//changes health and sets the health, don't touch
+        //if (mana <= amount) mana = amount;//prevents negative numbers
+        //SetMana(mana -= amount);//changes health and sets the health, don't touch
     }
 }
