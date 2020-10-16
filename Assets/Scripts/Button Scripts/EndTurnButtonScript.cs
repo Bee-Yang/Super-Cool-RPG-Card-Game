@@ -31,8 +31,8 @@ public class EndTurnButtonScript : MonoBehaviour
         this.GetComponent<Button>().enabled = false;
 
         // End turn routine
-        manaBehavior.increaseMana();
-        manaBehavior.resetMana();
+        manaBehavior.IncreaseMana();
+        manaBehavior.ResetMana();
         turnController.DisableAllPhases();
         turnController.SetPhase(1);
         turnController.AlternateTurn();

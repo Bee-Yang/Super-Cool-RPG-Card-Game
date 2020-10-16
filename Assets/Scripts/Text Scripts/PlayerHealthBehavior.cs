@@ -11,7 +11,7 @@ public class PlayerHealthBehavior : MonoBehaviour
     private TMP_Text thisText;
     private int health;
     public Slider slider;
-    public Image color;
+    public Image Color;
     public Gradient gradient;
     private static int maxHealth = 20;
     public int Health
@@ -32,7 +32,7 @@ public class PlayerHealthBehavior : MonoBehaviour
     public void SetMaxHealth(int health)
     {
         slider.value = slider.maxValue = health;
-        color.color = gradient.Evaluate(1f);
+        Color.color = gradient.Evaluate(20f);
     }
     void Update()
     {
@@ -41,11 +41,12 @@ public class PlayerHealthBehavior : MonoBehaviour
     }
     public void SetHealth(int health)
     {
-        color.color = gradient.Evaluate(slider.value = health);
+        slider.value = health;
+        Color.color = gradient.Evaluate(slider.normalizedValue);
     }
 
 
-    public void decreaseHealth(int amount)
+    public void DecreaseHealth(int amount)
     {
 
         if (health <= amount) health = amount;//prevents negative numbers

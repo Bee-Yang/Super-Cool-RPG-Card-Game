@@ -173,7 +173,7 @@ public class PlayingPhase : MonoBehaviour
         else if (canBePlayed)
         {
             // Decrease the player's mana by the card's cost
-            playerMana.decreaseMana(manaCost);
+            playerMana.DecreaseMana(manaCost);
         }
         else
         {
