@@ -11,7 +11,7 @@ public class EnemyManaBehavior : MonoBehaviour
     private TMP_Text thisText;
     private int mana;
     public Slider slider;
-    public Image color;
+    public Image Color;
     public Gradient gradient;
     private static int maxMana = 10;
     public int Mana
@@ -32,7 +32,7 @@ public class EnemyManaBehavior : MonoBehaviour
     public void SetMaxMana(int mana)
     {
         slider.value = slider.maxValue = mana;
-        color.color = gradient.Evaluate(1f);
+        Color.color = gradient.Evaluate(1f);
     }
     public void IncreaseMana()
     {
@@ -52,7 +52,8 @@ public class EnemyManaBehavior : MonoBehaviour
     }
     public void SetMana(int mana)
     {
-        color.color = gradient.Evaluate(slider.value = mana);
+        slider.value = mana;
+        Color.color = gradient.Evaluate(slider.normalizedValue);
     }
 
 
