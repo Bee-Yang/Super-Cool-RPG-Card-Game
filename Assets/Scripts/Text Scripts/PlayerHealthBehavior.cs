@@ -14,12 +14,13 @@ public class PlayerHealthBehavior : MonoBehaviour
     public Image color;
     public Gradient gradient;
     private static int maxHealth = 20;
-    public int Health {
+    public int Health
+    {
         get { return health; }
         set { health = value; }
     }
-    
-    
+
+
     void Start()
     {
         thisText = GetComponent<TMP_Text>();
@@ -34,21 +35,21 @@ public class PlayerHealthBehavior : MonoBehaviour
         slider.value = health;
         color.color = gradient.Evaluate(1f);
     }
-    void Update() 
+    void Update()
     {
         // update text of PlayerHealth element
         thisText.text = "Health: " + health + "/" + maxHealth;
     }
     public void SetHealth(int health)
     {
-        slider.value = health;
-        color.color = gradient.Evaluate(slider.value);
+        color.color = gradient.Evaluate(slider.value = health);
     }
 
 
-    public void decreaseHealth(int amount) {
-       
-        if (health < 0) health = amount;//prevents negative numbers
+    public void decreaseHealth(int amount)
+    {
+
+        if (health <= amount) health = amount;//prevents negative numbers
         SetHealth(health -= amount);//changes health and sets the health, don't touch
     }
 }

@@ -42,15 +42,14 @@ public class EnemyHealthBehavior : MonoBehaviour
     }
     public void SetHealth(int health)
     {
-        slider.value = health;
-        color.color = gradient.Evaluate(slider.value);
+        color.color = gradient.Evaluate(slider.value = health);
     }
 
 
     public void decreaseHealth(int amount)
     {
 
-        if (health < 0) health = amount;//prevents negative numbers
+        if (health <= amount) health = amount;//prevents negative numbers
         SetHealth(health -= amount);//changes health and sets the health, don't touch
     }
 }
