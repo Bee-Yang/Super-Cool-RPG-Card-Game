@@ -31,8 +31,7 @@ public class PlayerHealthBehavior : MonoBehaviour
     }
     public void SetMaxHealth(int health)
     {
-        slider.maxValue = health;
-        slider.value = health;
+        slider.value = slider.maxValue = health;
         color.color = gradient.Evaluate(1f);
     }
     void Update()
