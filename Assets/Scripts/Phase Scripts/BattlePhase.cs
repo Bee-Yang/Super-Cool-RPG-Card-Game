@@ -44,8 +44,8 @@ public class BattlePhase : MonoBehaviour
         // Temporary code to directly end opponents turn upon entering battle phase
         if (!turnController.IsPlayerTurn && !this.start)
         {
-            manaBehavior.increaseMana();
-            manaBehavior.resetMana();
+            manaBehavior.IncreaseMana();
+            manaBehavior.ResetMana();
             turnController.DisableAllPhases();
             turnController.SetPhase(1);
             turnController.AlternateTurn();
