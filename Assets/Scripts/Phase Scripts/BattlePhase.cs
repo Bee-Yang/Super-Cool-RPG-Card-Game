@@ -11,7 +11,7 @@ public class BattlePhase : MonoBehaviour
     private bool start;
 
     // Temporary variable for opponent turn to function
-    private EnemyManaBehavior manaBehavior;
+    private ManaBehavior enemyMana;
 
     public GameObject notification;
 
@@ -33,7 +33,7 @@ public class BattlePhase : MonoBehaviour
         turnController = this.GetComponent<TurnControllerBehavior>();
 
         // Temporary code for opponent mana to function
-        manaBehavior = GameObject.Find("EnemyMana").GetComponent<EnemyManaBehavior>();
+        enemyMana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
     }
 
     // Update is called once per frame
@@ -44,8 +44,8 @@ public class BattlePhase : MonoBehaviour
         // Temporary code to directly end opponents turn upon entering battle phase
         if (!turnController.IsPlayerTurn && !this.start)
         {
-            manaBehavior.IncreaseMana();
-            manaBehavior.ResetMana();
+            enemyMana.IncreaseMana();
+            enemyMana.ResetMana();
             turnController.DisableAllPhases();
             turnController.SetPhase(1);
             turnController.AlternateTurn();

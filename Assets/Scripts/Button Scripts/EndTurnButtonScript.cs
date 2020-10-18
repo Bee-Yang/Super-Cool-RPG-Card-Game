@@ -8,11 +8,11 @@ public class EndTurnButtonScript : MonoBehaviour
 {
     // Start is called before the first frame update
  	private TurnControllerBehavior turnController;
-	private PlayerManaBehavior manaBehavior;
+	private ManaBehavior playerMana;
 
 	void Start () {
 		turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
-		manaBehavior = GameObject.Find("PlayerMana").GetComponent<PlayerManaBehavior>();
+		playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
 
         // Make the button not clickable
         this.GetComponent<Button>().enabled = false;
@@ -31,8 +31,8 @@ public class EndTurnButtonScript : MonoBehaviour
         this.GetComponent<Button>().enabled = false;
 
         // End turn routine
-        manaBehavior.IncreaseMana();
-        manaBehavior.ResetMana();
+        playerMana.IncreaseMana();
+        playerMana.ResetMana();
         turnController.DisableAllPhases();
         turnController.SetPhase(1);
         turnController.AlternateTurn();

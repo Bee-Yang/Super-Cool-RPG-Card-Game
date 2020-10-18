@@ -1,12 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using TMPro;
 
-public class PlayerHealthBehavior : MonoBehaviour
+public class HealthBehavior : MonoBehaviour
 {
     private TMP_Text thisText;
     private int health;
@@ -14,12 +10,12 @@ public class PlayerHealthBehavior : MonoBehaviour
     public Image Color;
     public Gradient gradient;
     private static int maxHealth = 20;
+
     public int Health
     {
         get { return health; }
         set { health = value; }
     }
-
 
     void Start()
     {
@@ -29,27 +25,37 @@ public class PlayerHealthBehavior : MonoBehaviour
         SetHealth(health);
         SetMaxHealth(health);
     }
-    public void SetMaxHealth(int health)
-    {
-        slider.value = slider.maxValue = health;
-        Color.color = gradient.Evaluate(20f);
-    }
+
     void Update()
     {
         // update text of PlayerHealth element
         thisText.text = "Health: " + health + "/" + maxHealth;
     }
+
+    public void SetMaxHealth(int health)
+    {
+        slider.value = slider.maxValue = health;
+        Color.color = gradient.Evaluate(20f);
+    }
+
     public void SetHealth(int health)
     {
         slider.value = health;
         Color.color = gradient.Evaluate(slider.normalizedValue);
     }
 
-
     public void DecreaseHealth(int amount)
     {
 
-        if (health <= amount) health = amount;//prevents negative numbers
+        if (health <= amount)
+        {
+            health = amount;//prevents negative numbers
+        }
+        else
+        {
+            health = 0;
+        }
+
         SetHealth(health -= amount);//changes health and sets the health, don't touch
     }
 }

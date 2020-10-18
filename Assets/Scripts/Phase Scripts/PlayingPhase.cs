@@ -7,7 +7,7 @@ public class PlayingPhase : MonoBehaviour
 {
     private static double timeDelay = 0.5;
     private TurnControllerBehavior turnController;
-    private PlayerManaBehavior playerMana;
+    private ManaBehavior playerMana;
     private Timer timer;
     private Fader fader;
     private bool start;
@@ -45,7 +45,7 @@ public class PlayingPhase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerMana = GameObject.Find("PlayerMana").GetComponent<PlayerManaBehavior>();
+        playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
     }
 
     // Update is called once per frame
