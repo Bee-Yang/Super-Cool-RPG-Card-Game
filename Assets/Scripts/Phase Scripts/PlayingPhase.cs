@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayingPhase : MonoBehaviour
 {
     private static double timeDelay = 0.5;
+    private static int maxCreaturesPlayed = 9;
     private TurnControllerBehavior turnController;
     private ManaBehavior playerMana;
     private Timer timer;
@@ -152,14 +153,31 @@ public class PlayingPhase : MonoBehaviour
 
     public bool CardCanBePlayed(GameObject card)
     {
+        // Get the target playing field of the card
+        Transform field;
+
+        if (turnController.IsPlayerTurn)
+        {
+            field = GameObject.Find("PlayerPlayingField").transform;
+        }
+        else
+        {
+            field = GameObject.Find("OpponentPlayingField").transform;
+        }
+
         // Get the mana cost of the card to be played
         int manaCost = card.GetComponent<CardAttributes>().GetCost();
 
         // Get the condition for if the card can be played
-        bool canBePlayed = manaCost <= playerMana.Mana;
+        bool canBePlayed = (manaCost <= playerMana.Mana) && (field.childCount < 9);
 
         // Check to see if card can be played
-        if (playerMana.Mana <= 0)
+        if (canBePlayed)
+        {
+            // Decrease the player's mana by the card's cost
+            playerMana.DecreaseMana(manaCost);
+        }
+        else if (playerMana.Mana <= 0)
         {
             // Enable the out of mana notification
             outOfMana.transform.SetParent(GameObject.Find("Board").transform);
@@ -170,10 +188,10 @@ public class PlayingPhase : MonoBehaviour
             this.fader.SetImage(outOfMana.GetComponent<Image>());
             this.fader.enabled = true;
         }
-        else if (canBePlayed)
+        else if (field.childCount == maxCreaturesPlayed)
         {
-            // Decrease the player's mana by the card's cost
-            playerMana.DecreaseMana(manaCost);
+            // Debug statement to notify for max amount of creatures
+            Debug.Log("Cannot play any more creatures. Max amount of creatures played");
         }
         else
         {
