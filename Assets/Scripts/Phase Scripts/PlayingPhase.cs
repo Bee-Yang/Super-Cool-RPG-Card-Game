@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayingPhase : MonoBehaviour
@@ -141,7 +139,7 @@ public class PlayingPhase : MonoBehaviour
 
                     if (turnController.IsPlayerTurn)
                     {
-                        GameObject.Find("EndTurnButton").GetComponent<Button>().enabled = true;
+                        GameObject.Find("EndTurnButton").GetComponent<Button>().interactable = true;
                     }
                 }
 

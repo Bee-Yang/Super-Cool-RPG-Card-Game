@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -11,17 +9,18 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Vector3 originalScale;
 
     private Transform currParent; //To save the parent to which this card is tied before/while being dragged
-    bool inPlay;
-    bool draggable;
-    bool hoverable;
+    private bool inPlay, draggable, hoverable, canAttack, attacking;
+
     bool destroyed;
 
     void Start()
     {
-        //Set the current parent, set inPlay and destoryed flags to false
+        //Set the current parent, set inPlay, destoryed, canAttack and attacking flags to false
         currParent = this.transform.parent;
         inPlay = false;
         destroyed = false;
+        canAttack = false;
+        attacking = false;
 
         this.originalScale = this.transform.localScale;
     }
@@ -150,6 +149,38 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
     }
 
+    public void OnClick()
+    {
+        // Check if the card is able to attack
+        if (this.canAttack)
+        {
+            if (!this.attacking)
+            {
+                // Set attacking to true
+                this.attacking = true;
+
+                // Make the card image brighter
+                this.transform.GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                this.transform.GetChild(1).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+                // Set the color for the clone card to be the same as the card
+                SetCloneColor();
+            }
+            else
+            {
+                // Set attacking to false
+                this.attacking = false;
+
+                // Make the card image darker
+                this.transform.GetChild(0).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+                this.transform.GetChild(1).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+
+                // Set the color for the clone card to be the same as the card
+                SetCloneColor();
+            }
+        }
+    }
+
     public void SetDraggable(bool status)
     {
         this.draggable = status;
@@ -158,6 +189,11 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void SetHoverable(bool status)
     {
         this.hoverable = status;
+    }
+
+    public void SetCanAttack(bool status)
+    {
+        this.canAttack = status;
     }
 
     public void SetHoverAndRaycastsInPanel(GameObject panel, bool status)
@@ -191,5 +227,15 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         clone.SetHealth(original.GetCurrentHealth());
         clone.SetImage(original.GetImage());
         clone.SetBorder(original.GetBorder());
+    }
+
+    public void SetCloneColor()
+    {
+        // Get the current color of the card
+        Color currColor = this.transform.GetChild(0).GetComponent<Image>().color;
+
+        // Change the color of the clone card to the current color of the card
+        enlargedCard.transform.GetChild(0).GetComponent<Image>().color = currColor;
+        enlargedCard.transform.GetChild(1).GetComponent<Image>().color = currColor;
     }
 }
