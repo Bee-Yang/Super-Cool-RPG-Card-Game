@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class TurnControllerBehavior : MonoBehaviour
 {
     private bool isPlayerTurn;
-    private bool gameOver = false;
+    private bool gameOver;
     public const int beginning = 0, drawPhase = 1, playPhase = 2, battlePhase = 3;
     public const int win = -1, lose = -2;
 
@@ -16,6 +13,8 @@ public class TurnControllerBehavior : MonoBehaviour
     public GameObject board;
     public GameObject opponentDeck;
     public GameObject playerDeck;
+    public GameObject playerHealth;
+    public GameObject enemyHealth;
 
 
     public bool IsPlayerTurn {
@@ -32,6 +31,7 @@ public class TurnControllerBehavior : MonoBehaviour
     void Start()
     {
         isPlayerTurn = true;
+        gameOver = false;
         phase = 0;
 
         DisableAllPhases();
@@ -175,14 +175,22 @@ public class TurnControllerBehavior : MonoBehaviour
 
     public void CheckGameOverConditions()
     {
-        //Win Conditions
-        if (!isPlayerTurn && opponentDeck.transform.childCount == 0) // OR AI Health is 0
+        bool playerWin, playerLose;
+
+        // Set if the player has won based on the win conditions (enemy ran out of cards or enemy health is 0)
+        playerWin = (!isPlayerTurn && opponentDeck.transform.childCount == 0) || (enemyHealth.GetComponent<HealthBehavior>().Health == 0);
+
+        // Set if player has lost based on the lose conditions (player ran out of cards or player health is 0)
+        playerLose = (isPlayerTurn && playerDeck.transform.childCount == 0) || (playerHealth.GetComponent<HealthBehavior>().Health == 0);
+
+        // Check if the player has won
+        if (playerWin)
         {
             phase = -1;
         }
 
-        //Lose conditions
-        if (isPlayerTurn && playerDeck.transform.childCount == 0) // OR Player Health is 0*
+        // Check if the player has lost
+        if (playerLose)
         {
             phase = -2;
         }

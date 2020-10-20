@@ -3916,6 +3916,7 @@ GameObject:
   - component: {fileID: 1520734924}
   - component: {fileID: 1520734923}
   - component: {fileID: 1520734926}
+  - component: {fileID: 1520734927}
   m_Layer: 0
   m_Name: TurnController
   m_TagString: Untagged
@@ -3943,6 +3944,8 @@ MonoBehaviour:
   board: {fileID: 1568331127}
   opponentDeck: {fileID: 386898692}
   playerDeck: {fileID: 1735172682}
+  playerHealth: {fileID: 237129101}
+  enemyHealth: {fileID: 728019026}
 --- !u!4 &1520734922
 Transform:
   m_ObjectHideFlags: 0
@@ -4010,6 +4013,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notification: {fileID: 251262428}
+--- !u!114 &1520734927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1520734920}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74a0a1d0abbc119428755559f62640d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1530361546
 GameObject:
   m_ObjectHideFlags: 0
@@ -6044,11 +6059,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_DisabledColor: {r: 0.39215687, g: 0.39215687, b: 0.39215687, a: 0.5882353}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:

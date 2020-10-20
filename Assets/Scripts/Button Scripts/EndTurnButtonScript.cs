@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class EndTurnButtonScript : MonoBehaviour
@@ -15,7 +12,7 @@ public class EndTurnButtonScript : MonoBehaviour
 		playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
 
         // Make the button not clickable
-        this.GetComponent<Button>().enabled = false;
+        this.GetComponent<Button>().interactable = false;
     }
 
 	public void TaskOnClick()
@@ -28,7 +25,7 @@ public class EndTurnButtonScript : MonoBehaviour
         }
 
         // Make the button not clickable
-        this.GetComponent<Button>().enabled = false;
+        this.GetComponent<Button>().interactable = false;
 
         // End turn routine
         playerMana.IncreaseMana();
