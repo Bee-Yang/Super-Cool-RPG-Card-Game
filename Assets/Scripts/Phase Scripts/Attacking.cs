@@ -49,6 +49,24 @@ public class Attacking : MonoBehaviour
         }
     }
 
+    void OnDisable()
+    {
+        // Check if the player has creatures in play
+        if (playingField.childCount > 0)
+        {
+            Transform card;
+
+            // For loop to go through all cards on the playing field
+            for (int i = 0; i < playingField.childCount; i++)
+            {
+                card = playingField.GetChild(i);
+
+                // Set the canAttack status of the card to false
+                card.GetComponent<CardBehavior>().SetCanAttack(false);
+            }
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
