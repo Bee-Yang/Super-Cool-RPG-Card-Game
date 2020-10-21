@@ -2973,7 +2973,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -1324427539
   m_SortingLayer: 1
-  m_SortingOrder: -1
+  m_SortingOrder: 0
 --- !u!114 &1032464165
 MonoBehaviour:
   m_ObjectHideFlags: 0
