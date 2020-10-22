@@ -6,16 +6,22 @@ using TMPro;
 
 public class CardAttributes : MonoBehaviour
 {
-    private int id, cost, attack, health, currentHealth;
+    private int id, cost, attack, health, currentHealth, blockOrder;
     private string cardName, type, description;
     private Sprite cardImage, cardBorder;
 
-    public TMP_Text cardNameText, cardCostText, cardTypeText, cardDescriptionText, cardAttackText, cardHealthText;
+    public TMP_Text cardNameText, cardCostText, cardTypeText, cardDescriptionText, cardAttackText, cardHealthText, blockOrderText;
+
+    public int BlockOrder{
+        get { return this.blockOrder; }
+        set { this.blockOrder = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         this.currentHealth = this.health;
+        this.blockOrder = 0;
     }
 
     // Update is called once per frame
@@ -27,6 +33,7 @@ public class CardAttributes : MonoBehaviour
         this.cardDescriptionText.text = this.description;
         this.cardAttackText.text = "" + this.attack;
         this.cardHealthText.text = "" + this.currentHealth;
+        this.blockOrderText.text = "" + this.blockOrder;
         this.transform.Find("CardImage").transform.GetComponent<Image>().sprite = this.cardImage;
         this.transform.Find("CardBorder").transform.GetComponent<Image>().sprite = this.cardBorder;
     }

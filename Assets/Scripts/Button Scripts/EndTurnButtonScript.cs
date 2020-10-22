@@ -7,25 +7,24 @@ public class EndTurnButtonScript : MonoBehaviour
  	private TurnControllerBehavior turnController;
 	private ManaBehavior playerMana;
 
-	void Start () {
-		turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
-		playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
+    private void Awake()
+    {
+        turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
+        playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
 
         // Make the button not clickable
         this.GetComponent<Button>().interactable = false;
     }
 
+    void Start ()
+    {
+    }
+
 	public void TaskOnClick()
     {
-        // Disable dragging for player before ending the turn if the player is in playing phase
-        if (turnController.GetPhase() == 2)
-        {
-            turnController.DisableDraggingForPlayer();
-            turnController.DisableAllNotifications();
-        }
-
-        // Make the button not clickable
+        // Make the buttons not clickable
         this.GetComponent<Button>().interactable = false;
+        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
 
         // End turn routine
         playerMana.IncreaseMana();
