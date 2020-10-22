@@ -151,9 +151,12 @@ public class TurnControllerBehavior : MonoBehaviour
     {
         Transform hand = GameObject.Find("PlayerHand").transform;
 
-        for (int i = 0; i < hand.childCount; ++i)
+        if (hand.childCount > 0)
         {
-            hand.GetChild(i).GetComponent<CardBehavior>().SetDraggable(true);
+            for (int i = 0; i < hand.childCount; ++i)
+            {
+                hand.GetChild(i).GetComponent<CardBehavior>().SetDraggable(true);
+            }
         }
     }
 
@@ -162,9 +165,12 @@ public class TurnControllerBehavior : MonoBehaviour
     {
         Transform hand = GameObject.Find("PlayerHand").transform;
 
-        for (int i = 0; i < hand.childCount; ++i)
+        if (hand.childCount > 0)
         {
-            hand.GetChild(i).GetComponent<CardBehavior>().SetDraggable(false);
+            for (int i = 0; i < hand.childCount; ++i)
+            {
+                hand.GetChild(i).GetComponent<CardBehavior>().SetDraggable(false);
+            }
         }
     }
 

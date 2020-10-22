@@ -7,10 +7,21 @@ public class BattleController : MonoBehaviour
     public int phase;
     public const int attacking = 1, defending = 2, dmgCalc = 3;
 
+    void OnEnable()
+    {
+        Debug.Log("Battle Controller Enabled.");
+
+        this.phase = 1;
+    }
+
+    void OnDisable()
+    {
+        this.DisableAllPhases();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        phase = 1;
     }
 
     // Update is called once per frame
@@ -18,7 +29,6 @@ public class BattleController : MonoBehaviour
     {
         switch (phase)
         {
-            // Enable the script for drawing 5 cards at the beginning of the duel
             case attacking:
                 this.GetComponent<Attacking>().enabled = true;
                 break;
@@ -38,7 +48,17 @@ public class BattleController : MonoBehaviour
         }
     }
 
-    void DisableAllPhases()
+    public int GetPhase()
+    {
+        return this.phase;
+    }
+
+    public void SetPhase(int newPhase)
+    {
+        this.phase = newPhase;
+    }
+
+    public void DisableAllPhases()
     {
         this.GetComponent<Attacking>().enabled = false;
         this.GetComponent<Defending>().enabled = false;
