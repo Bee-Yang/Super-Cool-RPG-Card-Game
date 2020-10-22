@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseMenuBehavior : MonoBehaviour
@@ -11,7 +12,7 @@ public class PauseMenuBehavior : MonoBehaviour
     private TurnControllerBehavior turnController;
 
     void Start () {
-        pauseMenu.SetActive(false);
+        pauseMenu.GetComponent<Canvas>().enabled = false;
         turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
     }
 
@@ -27,12 +28,12 @@ public class PauseMenuBehavior : MonoBehaviour
     }
 
     public void Resume() {
-        pauseMenu.SetActive(false);
+        pauseMenu.GetComponent<Canvas>().enabled = false;
         isPaused = false;
     }
 
     void Pause() {
-        pauseMenu.SetActive(true);
+        pauseMenu.GetComponent<Canvas>().enabled = true;
         isPaused = true;
     }
 
