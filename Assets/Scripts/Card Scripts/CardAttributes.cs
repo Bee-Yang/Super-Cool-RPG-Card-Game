@@ -36,6 +36,16 @@ public class CardAttributes : MonoBehaviour
         this.blockOrderText.text = "" + this.blockOrder;
         this.transform.Find("CardImage").transform.GetComponent<Image>().sprite = this.cardImage;
         this.transform.Find("CardBorder").transform.GetComponent<Image>().sprite = this.cardBorder;
+    
+	CardBehavior card = this.GetComponent<CardBehavior>();
+	// if card is destroyed, move to graveyard
+	if(card.IsDestroyed()) {
+		// move to graveyard
+ 		Vector3 newPos = new Vector3(137,323,0);
+		card.transform.position = newPos;
+		//card.PutOutOfPlay();
+	}
+	
     }
 
     public string GetName()
@@ -127,4 +137,5 @@ public class CardAttributes : MonoBehaviour
     {
         this.cardBorder = newBorder;
     }
+
 }

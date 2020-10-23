@@ -12,12 +12,12 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     // Status flags for the card
     private bool inPlay, draggable, hoverable, canAttack, attacking, canBlock, blocked, destroyed;
 
-    public bool Attacking{
+    public bool Attacking {
         get { return this.attacking; }
         set { this.attacking = value; }
     }
 
-    public bool Blocked{
+    public bool Blocked {
         get { return this.blocked; }
         set { this.blocked = value; }
     }
@@ -36,7 +36,18 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     void Update()
     {
-        //TODO
+	// Check to see whether the card is destroyed or not
+	CardAttributes card1 = this.gameObject.GetComponent<CardAttributes>();
+	if(card1.GetCurrentHealth() <= 0)
+	{
+		this.destroyed = true;
+		this.inPlay = false;
+        		this.canAttack = false;
+       		this.attacking = false;
+     		this.canBlock = false;
+      		this.blocked = false;
+		
+	}
     }
 
     //Flips the card to show face or back
@@ -56,10 +67,28 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
     }
 
-    //Sets the InPlay flag
+    //Sets the InPlay flag to true
     public void PutInPlay()
     {
         inPlay = true;
+    }
+
+    //Sets the InPlay flag to false
+    public void PutOutOfPlay()
+    {
+        inPlay = false;
+    }
+
+    //Check if InPlay is true
+    public bool IsInPlay()
+    {
+	return inPlay;
+    }
+
+    //Check if destroyed
+    public bool IsDestroyed()
+    {
+	return destroyed;
     }
 
     public Transform GetCurrParent()
