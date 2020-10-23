@@ -1,39 +1,42 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayingPhase : MonoBehaviour
 {
     private static double timeDelay = 0.5;
+    private static int maxCreaturesPlayed = 9;
     private TurnControllerBehavior turnController;
-    private PlayerManaBehavior playerMana;
+    private ManaBehavior playerMana;
     private Timer timer;
     private Fader fader;
     private bool start;
 
     public GameObject playerTurn, enemyTurn, notEnoughManaNotification, outOfMana;
 
+    void Awake()
+    {
+        // Assign the turnController
+        turnController = this.GetComponent<TurnControllerBehavior>();
+
+        timer = GameObject.Find("Utility").GetComponent<Timer>();
+
+        fader = GameObject.Find("Utility").GetComponent<Fader>();
+    }
+
     void OnEnable()
     {
-        if (!turnController)
-        {
-            turnController = this.GetComponent<TurnControllerBehavior>();
-        }
-
-        if (!timer)
-        {
-            timer = GameObject.Find("Utility").GetComponent<Timer>();
-        }
-
-        if (!fader)
-        {
-            fader = GameObject.Find("Utility").GetComponent<Fader>();
-        }
-
+        // Check if it is the player's turn
         if (turnController.IsPlayerTurn)
         {
+            // Enable dragging for the player
             turnController.EnableDraggingForPlayer();
+
+            // Assign the playerMana
+            playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
+        }
+        else
+        {
+            playerMana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
         }
 
         start = true;
@@ -41,54 +44,75 @@ public class PlayingPhase : MonoBehaviour
         timer.SetTimeDelay(timeDelay);
         timer.enabled = true;
     }
- 
+
+    void OnDisable()
+    {
+        // Check if it is the player's playing phase
+        if(turnController.IsPlayerTurn)
+        {
+            // Disable dragging for the player
+            turnController.DisableDraggingForPlayer();
+        }
+
+        timer.enabled = false;
+
+        DisableTurnNotifications();
+        DisableManaNotifications();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        playerMana = GameObject.Find("PlayerMana").GetComponent<PlayerManaBehavior>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        TurnNotification();
-
-        // Temporary code to directly enter battle phase on opponents turn after draw phase
-        if (!turnController.IsPlayerTurn && !this.start)
+        if (this.start)
         {
-            turnController.DisableAllPhases();
-            turnController.SetPhase(3);
+            TurnNotification();
         }
-
-        // Check to see if the notification is active
-        if (outOfMana.activeSelf)
+        else
         {
-            // Get the current color of the image
-            Color curColor = outOfMana.GetComponent<Image>().color;
-
-            // Check to see if the image has faded out yet
-            if (curColor.a < 0.01)
+            /**********************************************************************/
+            // Temporary code to directly enter battle phase on opponents turn after draw phase
+            if (!turnController.IsPlayerTurn)
             {
-                // Disable the notification and fader
-                outOfMana.SetActive(false);
-                outOfMana.transform.SetParent(GameObject.Find("HUD").transform);
-                this.fader.enabled = false;
+                turnController.DisableAllPhases();
+                turnController.SetPhase(3);
             }
-        }
-    
-        // Check to see if the notification is active
-        if (notEnoughManaNotification.activeSelf)
-        {
-            // Get the current color of the image
-            Color curColor = notEnoughManaNotification.GetComponent<Image>().color;
+            /**********************************************************************/
 
-            // Check to see if the image has faded out yet
-            if (curColor.a < 0.01)
+            // Check to see if the notification is active
+            if (outOfMana.activeSelf)
             {
-                // Disable the notification and fader
-                notEnoughManaNotification.SetActive(false);
-                notEnoughManaNotification.transform.SetParent(GameObject.Find("HUD").transform);
-                this.fader.enabled = false;
+                // Get the current color of the image
+                Color curColor = outOfMana.GetComponent<Image>().color;
+
+                // Check to see if the image has faded out yet
+                if (curColor.a < 0.01)
+                {
+                    // Disable the notification and fader
+                    outOfMana.SetActive(false);
+                    outOfMana.transform.SetParent(GameObject.Find("HUD").transform);
+                    this.fader.enabled = false;
+                }
+            }
+
+            // Check to see if the notification is active
+            if (notEnoughManaNotification.activeSelf)
+            {
+                // Get the current color of the image
+                Color curColor = notEnoughManaNotification.GetComponent<Image>().color;
+
+                // Check to see if the image has faded out yet
+                if (curColor.a < 0.01)
+                {
+                    // Disable the notification and fader
+                    notEnoughManaNotification.SetActive(false);
+                    notEnoughManaNotification.transform.SetParent(GameObject.Find("HUD").transform);
+                    this.fader.enabled = false;
+                }
             }
         }
     }
@@ -100,8 +124,6 @@ public class PlayingPhase : MonoBehaviour
 
     public void TurnNotification()
     {
-        if (this.start)
-        {
             if (this.timer.Delayed())
             {
                 // Notify the user about whose turn it is by enabling/disabling the turn notification after a time delay
@@ -138,28 +160,47 @@ public class PlayingPhase : MonoBehaviour
                     this.start = false;
                     this.timer.enabled = false;
 
+                    // Check if it is the player's turn
                     if (turnController.IsPlayerTurn)
                     {
-                        GameObject.Find("EndTurnButton").GetComponent<Button>().enabled = true;
+                        // Enable the start battle and end turn buttons
+                        GameObject.Find("EndTurnButton").GetComponent<Button>().interactable = true;
+                        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
                     }
                 }
 
                 // Reset the timer
                 this.timer.ResetTimer();
             }
-        }
     }
 
     public bool CardCanBePlayed(GameObject card)
     {
+        // Get the target playing field of the card
+        Transform field;
+
+        if (turnController.IsPlayerTurn)
+        {
+            field = GameObject.Find("PlayerPlayingField").transform;
+        }
+        else
+        {
+            field = GameObject.Find("OpponentPlayingField").transform;
+        }
+
         // Get the mana cost of the card to be played
         int manaCost = card.GetComponent<CardAttributes>().GetCost();
 
         // Get the condition for if the card can be played
-        bool canBePlayed = manaCost <= playerMana.Mana;
+        bool canBePlayed = (manaCost <= playerMana.Mana) && (field.childCount < 9);
 
         // Check to see if card can be played
-        if (playerMana.Mana <= 0)
+        if (canBePlayed)
+        {
+            // Decrease the player's mana by the card's cost
+            playerMana.DecreaseMana(manaCost);
+        }
+        else if (playerMana.Mana <= 0)
         {
             // Enable the out of mana notification
             outOfMana.transform.SetParent(GameObject.Find("Board").transform);
@@ -170,10 +211,10 @@ public class PlayingPhase : MonoBehaviour
             this.fader.SetImage(outOfMana.GetComponent<Image>());
             this.fader.enabled = true;
         }
-        else if (canBePlayed)
+        else if (field.childCount == maxCreaturesPlayed)
         {
-            // Decrease the player's mana by the card's cost
-            playerMana.DecreaseMana(manaCost);
+            // Debug statement to notify for max amount of creatures
+            Debug.Log("Cannot play any more creatures. Max amount of creatures played");
         }
         else
         {
@@ -189,6 +230,14 @@ public class PlayingPhase : MonoBehaviour
 
         // Return condition of whether the card can be played
         return canBePlayed;
+    }
+
+    public void DisableTurnNotifications()
+    {
+        playerTurn.transform.SetParent(GameObject.Find("HUD").transform);
+        playerTurn.SetActive(false);
+        enemyTurn.transform.SetParent(GameObject.Find("HUD").transform);
+        enemyTurn.SetActive(false);
     }
 
     public void DisableManaNotifications()

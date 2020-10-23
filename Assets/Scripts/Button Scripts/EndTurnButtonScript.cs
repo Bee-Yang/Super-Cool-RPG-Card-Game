@@ -1,38 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class EndTurnButtonScript : MonoBehaviour
 {
     // Start is called before the first frame update
  	private TurnControllerBehavior turnController;
-	private PlayerManaBehavior manaBehavior;
+	private ManaBehavior playerMana;
 
-	void Start () {
-		turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
-		manaBehavior = GameObject.Find("PlayerMana").GetComponent<PlayerManaBehavior>();
+    private void Awake()
+    {
+        turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
+        playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
 
         // Make the button not clickable
-        this.GetComponent<Button>().enabled = false;
+        this.GetComponent<Button>().interactable = false;
+    }
+
+    void Start ()
+    {
     }
 
 	public void TaskOnClick()
     {
-        // Disable dragging for player before ending the turn if the player is in playing phase
-        if (turnController.GetPhase() == 2)
-        {
-            turnController.DisableDraggingForPlayer();
-            turnController.DisableAllNotifications();
-        }
-
-        // Make the button not clickable
-        this.GetComponent<Button>().enabled = false;
+        // Make the buttons not clickable
+        this.GetComponent<Button>().interactable = false;
+        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
 
         // End turn routine
-        manaBehavior.IncreaseMana();
-        manaBehavior.ResetMana();
+        playerMana.IncreaseMana();
+        playerMana.ResetMana();
         turnController.DisableAllPhases();
         turnController.SetPhase(1);
         turnController.AlternateTurn();

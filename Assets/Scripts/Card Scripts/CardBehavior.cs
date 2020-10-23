@@ -1,29 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private GameObject enlargedCard;
-    private static float scale = 0.8f;
-    private Vector3 originalScale;
+    private GameObject enlargedCard; // Enlarged clone of the card for hover
+    private static float scale = 0.8f; // Scale for enlarged card
 
-    private Transform currParent; //To save the parent to which this card is tied before/while being dragged
-    bool inPlay;
-    bool draggable;
-    bool hoverable;
-    bool destroyed;
+    private Transform currParent; // To save the parent to which this card is tied before/while being dragged
+
+    // Status flags for the card
+    private bool inPlay, draggable, hoverable, canAttack, attacking, canBlock, blocked, destroyed;
+
+    public bool Attacking{
+        get { return this.attacking; }
+        set { this.attacking = value; }
+    }
+
+    public bool Blocked{
+        get { return this.blocked; }
+        set { this.blocked = value; }
+    }
 
     void Start()
     {
-        //Set the current parent, set inPlay and destoryed flags to false
+        //Set the current parent, set inPlay, destoryed, canAttack, attacking, canBlock, and blocked flags to false
         currParent = this.transform.parent;
         inPlay = false;
         destroyed = false;
-
-        this.originalScale = this.transform.localScale;
+        canAttack = false;
+        attacking = false;
+        canBlock = false;
+        blocked = false;
     }
 
     void Update()
@@ -118,7 +126,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnPointerEnter()
     {
-        if (!hoverable) { return; }
+        if (!hoverable) { return; } // Do nothing if the card is not hoverable
 
         // Create a clone card onto the board and disable all its behaviors
         enlargedCard = Instantiate(this.gameObject, this.transform.root, true);
@@ -138,7 +146,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnPointerExit()
     {
-        if (!hoverable) { return; }
+        if (!hoverable) { return; } // Do nothing if the card is not hoverable
 
         // Get an array of all of the clone cards currently on the board
         GameObject[] clones = GameObject.FindGameObjectsWithTag("Clone");
@@ -150,6 +158,21 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
     }
 
+    public void OnClick()
+    {
+        // Check if the card is able to attack or block
+        if (this.canAttack)
+        {
+            // Call the attack routine
+            AttackClickRoutine();
+        }
+        else if (this.canBlock)
+        {
+            // Call the block routine
+            BlockClickRoutine();
+        }
+    }
+
     public void SetDraggable(bool status)
     {
         this.draggable = status;
@@ -158,6 +181,16 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void SetHoverable(bool status)
     {
         this.hoverable = status;
+    }
+
+    public void SetCanAttack(bool status)
+    {
+        this.canAttack = status;
+    }
+
+    public void SetCanBlock(bool status)
+    {
+        this.canBlock = status;
     }
 
     public void SetHoverAndRaycastsInPanel(GameObject panel, bool status)
@@ -191,5 +224,94 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         clone.SetHealth(original.GetCurrentHealth());
         clone.SetImage(original.GetImage());
         clone.SetBorder(original.GetBorder());
+    }
+
+    public void SetCloneColor()
+    {
+        // Get the current color of the card
+        Color currColor = this.transform.GetChild(0).GetComponent<Image>().color;
+
+        // Change the color of the clone card to the current color of the card
+        enlargedCard.transform.GetChild(0).GetComponent<Image>().color = currColor;
+        enlargedCard.transform.GetChild(1).GetComponent<Image>().color = currColor;
+    }
+
+    private void AttackClickRoutine()
+    {
+        if (!this.attacking)
+        {
+            // Set attacking to true
+            this.attacking = true;
+
+            // Make the card image brighter
+            this.transform.GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            this.transform.GetChild(1).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+            // Set the color for the clone card to be the same as the card
+            if (this.enlargedCard)
+            {
+                SetCloneColor();
+            }
+        }
+        else
+        {
+            // Set attacking to false
+            this.attacking = false;
+
+            // Make the card image darker
+            this.transform.GetChild(0).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+            this.transform.GetChild(1).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+
+            // Set the color for the clone card to be the same as the card
+            if (this.enlargedCard)
+            {
+                SetCloneColor();
+            }
+        }
+    }
+
+    private void BlockClickRoutine()
+    {
+        Defending block = GameObject.Find("TurnController").GetComponent<Defending>();
+
+        if(!block.BlockingCards.Contains(this.gameObject))
+        {
+            // Select this card as the blocking card if there is no blocking card yet
+            block.BlockingCards.Add(this.gameObject);
+
+            this.GetComponent<CardAttributes>().BlockOrder = (block.BlockingCards.IndexOf(this.gameObject) + 1);
+            this.transform.Find("BlockingOrder").gameObject.SetActive(true);
+            this.GetComponent<Outline>().enabled = true;
+
+            // Enable the outline for the clone card
+            if (this.enlargedCard)
+            {
+                this.enlargedCard.GetComponent<CardAttributes>().BlockOrder = this.GetComponent<CardAttributes>().BlockOrder;
+                this.enlargedCard.transform.Find("BlockingOrder").gameObject.SetActive(true);
+                this.enlargedCard.GetComponent<Outline>().enabled = true;
+            }
+        }
+        else if(block.BlockingCards.Contains(this.gameObject))
+        {
+            // Deselect this card as the blocking card if it is the blocking card
+            block.BlockingCards.Remove(this.gameObject);
+
+            this.GetComponent<CardAttributes>().BlockOrder = 0;
+            this.transform.Find("BlockingOrder").gameObject.SetActive(false);
+            this.GetComponent<Outline>().enabled = false;
+
+            // Disable the outline for the clone card
+            if (this.enlargedCard)
+            {
+                this.enlargedCard.GetComponent<CardAttributes>().BlockOrder = this.GetComponent<CardAttributes>().BlockOrder;
+                this.enlargedCard.transform.Find("BlockingOrder").gameObject.SetActive(false);
+                this.enlargedCard.GetComponent<Outline>().enabled = false;
+            }
+
+            foreach(GameObject card in block.BlockingCards)
+            {
+                card.GetComponent<CardAttributes>().BlockOrder = (block.BlockingCards.IndexOf(card) + 1);
+            }
+        }
     }
 }
