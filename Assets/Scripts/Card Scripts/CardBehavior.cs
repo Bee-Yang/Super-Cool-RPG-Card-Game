@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private GameObject enlargedCard; // Enlarged clone of the card for hover
-    private static float scale = 0.8f; // Scale for enlarged card
+    private static float scale = 0.9f; // Scale for enlarged card
 
     private Transform currParent; // To save the parent to which this card is tied before/while being dragged
 
@@ -87,15 +87,20 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
             // Disable hover for all cards in player hand
             GameObject panel = GameObject.Find("PlayerHand");
-            SetHoverAndRaycastsInPanel(panel, false);
+            SetRaycastsInPanel(panel, false);
 
             // Disable hover for all cards in player playing field
             panel = GameObject.Find("PlayerPlayingField");
-            SetHoverAndRaycastsInPanel(panel, false);
+            SetRaycastsInPanel(panel, false);
 
             // Disable hover for all cards in opponent playing field
             panel = GameObject.Find("OpponentPlayingField");
-            SetHoverAndRaycastsInPanel(panel, false);
+            SetRaycastsInPanel(panel, false);
+
+            /************************* Temporary Code *********************************/
+            panel = GameObject.Find("OpponentHand");
+            SetRaycastsInPanel(panel, false);
+            /************************* Temporary Code *********************************/
         }
     }
 
@@ -113,15 +118,20 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         // Enable hover for all cards in player hand
         GameObject panel = GameObject.Find("PlayerHand");
-        SetHoverAndRaycastsInPanel(panel, true);
+        SetRaycastsInPanel(panel, true);
 
         // Enable hover for all cards in player playing field
         panel = GameObject.Find("PlayerPlayingField");
-        SetHoverAndRaycastsInPanel(panel, true);
+        SetRaycastsInPanel(panel, true);
 
         // Enable hover for all cards in opponent playing field
         panel = GameObject.Find("OpponentPlayingField");
-        SetHoverAndRaycastsInPanel(panel, true);
+        SetRaycastsInPanel(panel, true);
+
+        /************************* Temporary Code *********************************/
+        panel = GameObject.Find("OpponentHand");
+        SetRaycastsInPanel(panel, true);
+        /************************* Temporary Code *********************************/
     }
 
     public void OnPointerEnter()
@@ -141,7 +151,16 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         // Set the scale and position of the clone card
         enlargedCard.transform.localScale = new Vector3(scale, scale, 1.0f);
-        enlargedCard.transform.localPosition += new Vector3(0.0f, 25.0f, 0.0f);
+
+        if (this.tag == "Player")
+        {
+            enlargedCard.transform.localPosition += new Vector3(0.0f, 45.0f, 0.0f);
+        }
+        else
+        {
+            enlargedCard.transform.localPosition += new Vector3(0.0f, -45.0f, 0.0f);
+            enlargedCard.transform.Rotate(0.0f, 0.0f, 180.0f);
+        }
     }
 
     public void OnPointerExit()
@@ -193,7 +212,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         this.canBlock = status;
     }
 
-    public void SetHoverAndRaycastsInPanel(GameObject panel, bool status)
+    public void SetRaycastsInPanel(GameObject panel, bool status)
     {
         // Check if the panel has no cards
         if (panel.transform.childCount > 0)
@@ -201,7 +220,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             // Set the hoverable and raycast to given status for all cards in the panel
             for (int i = 0; i < panel.transform.childCount; ++i)
             {
-                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(status);
                 panel.transform.GetChild(i).GetComponent<CanvasGroup>().blocksRaycasts = status;
             }
         }

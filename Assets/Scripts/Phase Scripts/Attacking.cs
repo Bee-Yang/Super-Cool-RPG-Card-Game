@@ -18,7 +18,6 @@ public class Attacking : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("Attacking.");
         // Find the playing field of the current player
         if (turnController.IsPlayerTurn)
         {

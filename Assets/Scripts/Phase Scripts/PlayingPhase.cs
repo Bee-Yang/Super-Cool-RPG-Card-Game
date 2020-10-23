@@ -6,17 +6,28 @@ public class PlayingPhase : MonoBehaviour
     private static double timeDelay = 0.5;
     private static int maxCreaturesPlayed = 9;
     private TurnControllerBehavior turnController;
+    private GameObject AI;
     private ManaBehavior playerMana;
     private Timer timer;
     private Fader fader;
-    private bool start;
+    private bool start, firstTurn;
 
     public GameObject playerTurn, enemyTurn, notEnoughManaNotification, outOfMana;
+
+    public bool FirstTurn{
+        get { return this.firstTurn; }
+        set { this.firstTurn = value; }
+    }
 
     void Awake()
     {
         // Assign the turnController
         turnController = this.GetComponent<TurnControllerBehavior>();
+
+        // Assign the playerMana
+        playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
+
+        AI = GameObject.Find("AI");
 
         timer = GameObject.Find("Utility").GetComponent<Timer>();
 
@@ -25,20 +36,6 @@ public class PlayingPhase : MonoBehaviour
 
     void OnEnable()
     {
-        // Check if it is the player's turn
-        if (turnController.IsPlayerTurn)
-        {
-            // Enable dragging for the player
-            turnController.EnableDraggingForPlayer();
-
-            // Assign the playerMana
-            playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
-        }
-        else
-        {
-            playerMana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
-        }
-
         start = true;
 
         timer.SetTimeDelay(timeDelay);
@@ -54,7 +51,10 @@ public class PlayingPhase : MonoBehaviour
             turnController.DisableDraggingForPlayer();
         }
 
-        timer.enabled = false;
+        if (timer.enabled)
+        {
+            timer.enabled = false;
+        }
 
         DisableTurnNotifications();
         DisableManaNotifications();
@@ -68,50 +68,51 @@ public class PlayingPhase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Check if it is the start of the playing phase
         if (this.start)
         {
             TurnNotification();
         }
         else
         {
-            /**********************************************************************/
-            // Temporary code to directly enter battle phase on opponents turn after draw phase
+            // Check if it is the AI's turn
             if (!turnController.IsPlayerTurn)
             {
-                turnController.DisableAllPhases();
-                turnController.SetPhase(3);
+                // Do the AI play phase routine
+                AIPlayPhaseRoutine();
             }
-            /**********************************************************************/
-
-            // Check to see if the notification is active
-            if (outOfMana.activeSelf)
+            else
             {
-                // Get the current color of the image
-                Color curColor = outOfMana.GetComponent<Image>().color;
-
-                // Check to see if the image has faded out yet
-                if (curColor.a < 0.01)
+                // Check to see if the notification is active
+                if (outOfMana.activeSelf)
                 {
-                    // Disable the notification and fader
-                    outOfMana.SetActive(false);
-                    outOfMana.transform.SetParent(GameObject.Find("HUD").transform);
-                    this.fader.enabled = false;
+                    // Get the current color of the image
+                    Color curColor = outOfMana.GetComponent<Image>().color;
+
+                    // Check to see if the image has faded out yet
+                    if (curColor.a < 0.01)
+                    {
+                        // Disable the notification and fader
+                        outOfMana.SetActive(false);
+                        outOfMana.transform.SetParent(GameObject.Find("HUD").transform);
+                        this.fader.enabled = false;
+                    }
                 }
-            }
 
-            // Check to see if the notification is active
-            if (notEnoughManaNotification.activeSelf)
-            {
-                // Get the current color of the image
-                Color curColor = notEnoughManaNotification.GetComponent<Image>().color;
-
-                // Check to see if the image has faded out yet
-                if (curColor.a < 0.01)
+                // Check to see if the notification is active
+                if (notEnoughManaNotification.activeSelf)
                 {
-                    // Disable the notification and fader
-                    notEnoughManaNotification.SetActive(false);
-                    notEnoughManaNotification.transform.SetParent(GameObject.Find("HUD").transform);
-                    this.fader.enabled = false;
+                    // Get the current color of the image
+                    Color curColor = notEnoughManaNotification.GetComponent<Image>().color;
+
+                    // Check to see if the image has faded out yet
+                    if (curColor.a < 0.01)
+                    {
+                        // Disable the notification and fader
+                        notEnoughManaNotification.SetActive(false);
+                        notEnoughManaNotification.transform.SetParent(GameObject.Find("HUD").transform);
+                        this.fader.enabled = false;
+                    }
                 }
             }
         }
@@ -124,54 +125,66 @@ public class PlayingPhase : MonoBehaviour
 
     public void TurnNotification()
     {
-            if (this.timer.Delayed())
+        if (this.timer.Delayed())
+        {
+            // Notify the user about whose turn it is by enabling/disabling the turn notification after a time delay
+            if (turnController.IsPlayerTurn)
             {
-                // Notify the user about whose turn it is by enabling/disabling the turn notification after a time delay
-                if (turnController.IsPlayerTurn)
+                if (!playerTurn.activeSelf)
                 {
-                    if (!playerTurn.activeSelf)
-                    {
-                        playerTurn.transform.SetParent(GameObject.Find("Board").transform);
-                    }
-                    else
-                    {
-                        playerTurn.transform.SetParent(GameObject.Find("HUD").transform);
-                    }
-
-                    playerTurn.SetActive(!playerTurn.activeSelf);
+                    playerTurn.transform.SetParent(GameObject.Find("Board").transform);
                 }
                 else
                 {
-                    if (!enemyTurn.activeSelf)
+                    playerTurn.transform.SetParent(GameObject.Find("HUD").transform);
+                }
+
+                playerTurn.SetActive(!playerTurn.activeSelf);
+            }
+            else
+            {
+                if (!enemyTurn.activeSelf)
+                {
+                    enemyTurn.transform.SetParent(GameObject.Find("Board").transform);
+                }
+                else
+                {
+                    enemyTurn.transform.SetParent(GameObject.Find("HUD").transform);
+                }
+
+                enemyTurn.SetActive(!enemyTurn.activeSelf);
+            }
+
+            // Disable this method once user has been notified about whose turn it is
+            if (!playerTurn.activeSelf && !enemyTurn.activeSelf)
+            {
+                this.start = false;
+                this.timer.enabled = false;
+
+                // Check if it is the player's turn
+                if (turnController.IsPlayerTurn)
+                {
+                    // Enable dragging for the player
+                    turnController.EnableDraggingForPlayer();
+
+                    // Enable the start battle and end turn buttons
+                    GameObject.Find("EndTurnButton").GetComponent<Button>().interactable = true;
+
+                    // Check if it is the first turn of the duel
+                    if (!this.firstTurn)
                     {
-                        enemyTurn.transform.SetParent(GameObject.Find("Board").transform);
+                        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
                     }
                     else
                     {
-                        enemyTurn.transform.SetParent(GameObject.Find("HUD").transform);
-                    }
-
-                    enemyTurn.SetActive(!enemyTurn.activeSelf);
-                }
-
-                // Disable this method once user has been notified about whose turn it is
-                if (!playerTurn.activeSelf && !enemyTurn.activeSelf)
-                {
-                    this.start = false;
-                    this.timer.enabled = false;
-
-                    // Check if it is the player's turn
-                    if (turnController.IsPlayerTurn)
-                    {
-                        // Enable the start battle and end turn buttons
-                        GameObject.Find("EndTurnButton").GetComponent<Button>().interactable = true;
-                        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
+                        this.firstTurn = false;
                     }
                 }
-
-                // Reset the timer
-                this.timer.ResetTimer();
             }
+
+            // Reset the timer
+            this.timer.ResetTimer();
+        }
     }
 
     public bool CardCanBePlayed(GameObject card)
@@ -200,6 +213,11 @@ public class PlayingPhase : MonoBehaviour
             // Decrease the player's mana by the card's cost
             playerMana.DecreaseMana(manaCost);
         }
+        else if (field.childCount == maxCreaturesPlayed)
+        {
+            // Debug statement to notify for max amount of creatures
+            Debug.Log("Cannot play any more creatures. Max amount of creatures played");
+        }
         else if (playerMana.Mana <= 0)
         {
             // Enable the out of mana notification
@@ -210,11 +228,6 @@ public class PlayingPhase : MonoBehaviour
             // Enable the fader to fade out the notification
             this.fader.SetImage(outOfMana.GetComponent<Image>());
             this.fader.enabled = true;
-        }
-        else if (field.childCount == maxCreaturesPlayed)
-        {
-            // Debug statement to notify for max amount of creatures
-            Debug.Log("Cannot play any more creatures. Max amount of creatures played");
         }
         else
         {
@@ -255,5 +268,23 @@ public class PlayingPhase : MonoBehaviour
         }
 
         this.fader.enabled = false;
+    }
+
+    public void AIPlayPhaseRoutine()
+    {
+        // Check if the AI playing phase script is enabled
+        if (!AI.GetComponent<AIPlayPhase>().enabled)
+        {
+            // Enable the AI playing phase script
+            AI.GetComponent<AIPlayPhase>().enabled = true;
+        }
+        // Check if the AI is done with the playing phase
+        else if (AI.GetComponent<AIPlayPhase>().Done)
+        {
+            // Disable the AI playing phase script and go into the battle phase
+            AI.GetComponent<AIPlayPhase>().enabled = false;
+            turnController.DisableAllPhases();
+            turnController.SetPhase(3);
+        }
     }
 }

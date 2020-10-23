@@ -40,8 +40,6 @@ public class Defending : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("Defending");
-
         // Reset the values for the variables
         this.currentAttackCard = null;
         this.blockingCards.Clear();
@@ -58,9 +56,6 @@ public class Defending : MonoBehaviour
         {
             attackingField = GameObject.Find("OpponentPlayingField").transform;
             blockingField = GameObject.Find("PlayerPlayingField").transform;
-
-            // Enable the start battle button to click after the player finishes choosing the blocking creatures
-            GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
         }
 
         // Find the attacking card
@@ -125,6 +120,11 @@ public class Defending : MonoBehaviour
                 }
             }
         }
+
+        if (timer.enabled)
+        {
+            timer.enabled = false;
+        }
     }
 
     // Start is called before the first frame update
@@ -141,6 +141,7 @@ public class Defending : MonoBehaviour
             if(timer.Delayed())
             {
                 this.start = false;
+                timer.enabled = false;
             }
         }
         else
@@ -171,6 +172,11 @@ public class Defending : MonoBehaviour
                 /**************** Temporary Code ******************/
                 battleController.SetPhase(3);
                 /**************** Temporary Code ******************/
+            }
+            else
+            {
+                // Enable the start battle button to click after the player finishes choosing the blocking creatures
+                GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
             }
         }
     }
