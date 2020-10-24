@@ -9,8 +9,6 @@ public class BattleController : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("Battle Controller Enabled.");
-
         this.phase = 1;
     }
 

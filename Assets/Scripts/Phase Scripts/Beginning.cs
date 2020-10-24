@@ -9,6 +9,11 @@ public class Beginning : MonoBehaviour
     private TurnControllerBehavior turnController;
     private Timer timer;
 
+    void OnDisable()
+    {
+        this.GetComponent<PlayingPhase>().FirstTurn = true;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
