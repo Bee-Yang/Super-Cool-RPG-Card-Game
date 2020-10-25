@@ -39,6 +39,7 @@ public class PauseMenuBehavior : MonoBehaviour
 
     public void ForfeitGame(){
         Debug.Log("Forfeiting game...");
+        pauseMenu.GetComponent<Canvas>().enabled = false;
         turnController.SetPhase(-2);
     }
 
