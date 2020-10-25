@@ -2861,8 +2861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ba83ba22cbf94140a8da450ddf8d50c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startBattleButton: {fileID: 0}
-  turnController: {fileID: 0}
+  buttonText: {fileID: 1387993595}
 --- !u!1 &934332065
 GameObject:
   m_ObjectHideFlags: 0
