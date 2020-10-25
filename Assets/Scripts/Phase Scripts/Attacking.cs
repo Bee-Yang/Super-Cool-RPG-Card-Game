@@ -18,7 +18,6 @@ public class Attacking : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("Attacking.");
         // Find the playing field of the current player
         if (turnController.IsPlayerTurn)
         {
@@ -57,16 +56,13 @@ public class Attacking : MonoBehaviour
         if (playingField.childCount > 0)
         {
             Transform card;
-
             // For loop to go through all cards on the playing field
             for (int i = 0; i < playingField.childCount; i++)
             {
                 // Get the card at index i
                 card = playingField.GetChild(i);
-
                 // Set the canAttack status of the card to true
                 card.GetComponent<CardBehavior>().SetCanAttack(true);
-
                 // Make the image of the card darker
                 card.GetChild(0).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
                 card.GetChild(1).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
@@ -104,7 +100,7 @@ public class Attacking : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame

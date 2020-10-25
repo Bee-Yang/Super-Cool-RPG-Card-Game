@@ -54,6 +54,8 @@ public class DeckBehavior : MonoBehaviour
             // Create the card onto the board
             card = Instantiate(prefab, this.transform);
 
+            card.tag = this.tag;
+
             // Find the cardAttribute component in order to modify the card
             cardAttribute = card.GetComponent<CardAttributes>();
 
@@ -101,7 +103,7 @@ public class DeckBehavior : MonoBehaviour
             Transform card = this.transform.GetChild(top);
 
             // Enable dragging for the card if it is the player's card
-            if (hand.tag == "Player")
+            if (card.tag == "Player")
             {
                 //card.GetComponent<CardBehavior>().SetDraggable(true);
                 card.GetComponent<CardBehavior>().SetHoverable(true);

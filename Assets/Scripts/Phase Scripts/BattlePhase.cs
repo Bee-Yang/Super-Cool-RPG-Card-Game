@@ -30,9 +30,14 @@ public class BattlePhase : MonoBehaviour
 
     void OnDisable()
     {
-        timer.enabled = false;
+        if (timer.enabled)
+        {
+            timer.enabled = false;
+        }
+
         turnController.GetComponent<BattleController>().enabled = false;
 
+        GameObject.Find("EndTurnButton").GetComponent<Button>().interactable = false;
         GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
 
         RestoreColorForAttackCards();
@@ -108,7 +113,7 @@ public class BattlePhase : MonoBehaviour
     {
         Transform attackingField;
 
-        if(turnController.IsPlayerTurn)
+        if (turnController.IsPlayerTurn)
         {
             attackingField = GameObject.Find("PlayerPlayingField").transform;
         }

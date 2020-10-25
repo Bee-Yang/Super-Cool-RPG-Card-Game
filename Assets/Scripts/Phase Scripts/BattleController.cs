@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BattleController : MonoBehaviour
 {
@@ -9,8 +7,6 @@ public class BattleController : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("Battle Controller Enabled.");
-
         this.phase = 1;
     }
 
