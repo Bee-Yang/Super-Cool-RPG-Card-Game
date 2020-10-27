@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private GameObject enlargedCard; // Enlarged clone of the card for hover
-    private static float scale = 0.8f; // Scale for enlarged card
+    private static float scale = 0.9f; // Scale for enlarged card
 
     private Transform currParent; // To save the parent to which this card is tied before/while being dragged
 
@@ -176,7 +176,15 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         // Set the scale and position of the clone card
         enlargedCard.transform.localScale = new Vector3(scale, scale, 1.0f);
-        enlargedCard.transform.localPosition += new Vector3(0.0f, 25.0f, 0.0f);
+
+        if (this.tag == "Player")
+        {
+            enlargedCard.transform.localPosition += new Vector3(0.0f, 45.0f, 0.0f);
+        }
+        else
+        {
+            enlargedCard.transform.localPosition += new Vector3(0.0f, -45.0f, 0.0f);
+        }
     }
 
     public void OnPointerExit()

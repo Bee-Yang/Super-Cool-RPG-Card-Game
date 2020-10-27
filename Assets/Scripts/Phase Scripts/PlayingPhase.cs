@@ -284,8 +284,9 @@ public class PlayingPhase : MonoBehaviour
         {
             // Disable the AI playing phase script and go into the battle phase
             AI.GetComponent<AIPlayPhase>().enabled = false;
-            turnController.DisableAllPhases();
             turnController.SetPhase(3);
+
+            this.enabled = false;
         }
     }
 }

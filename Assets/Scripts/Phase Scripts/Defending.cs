@@ -58,6 +58,8 @@ public class Defending : MonoBehaviour
         {
             attackingField = GameObject.Find("OpponentPlayingField").transform;
             blockingField = GameObject.Find("PlayerPlayingField").transform;
+
+            GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
         }
 
         // Find the attacking card
@@ -174,11 +176,6 @@ public class Defending : MonoBehaviour
                 /**************** Temporary Code ******************/
                 battleController.SetPhase(3);
                 /**************** Temporary Code ******************/
-            }
-            else
-            {
-                // Enable the start battle button to click after the player finishes choosing the blocking creatures
-                GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
             }
         }
     }
