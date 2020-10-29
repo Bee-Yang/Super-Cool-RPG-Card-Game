@@ -15,6 +15,7 @@ public class TurnControllerBehavior : MonoBehaviour
     public GameObject playerDeck;
     public GameObject playerHealth;
     public GameObject enemyHealth;
+    public GameObject coinFlip;
 
 
     public bool IsPlayerTurn {
@@ -30,9 +31,11 @@ public class TurnControllerBehavior : MonoBehaviour
 
     void Start()
     {
-        isPlayerTurn = true;
+        isPlayerTurn = false;
         gameOver = false;
-        phase = 0;
+        phase = -3;
+
+        GameObject tmp = Instantiate(coinFlip, board.transform) as GameObject;
 
         DisableAllPhases();
     }
