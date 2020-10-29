@@ -39,11 +39,24 @@ public class CardAttributes : MonoBehaviour
     
 	CardBehavior card = this.GetComponent<CardBehavior>();
 	// if card is destroyed, move to graveyard
-	if(card.IsDestroyed()) {
-		// move to graveyard
- 		Vector3 newPos = new Vector3(137,323,0);
-		card.transform.position = newPos;
-		//card.PutOutOfPlay();
+	if(card.IsDestroyed() == true) {
+		
+		TurnControllerBehavior turnController = this.GetComponent<TurnControllerBehavior>();
+		// check for who's card it is and move it to their graveyard
+		if(card.GetCurrParent() == GameObject.Find("PlayerPlayingField").transform)
+		{
+			
+			Transform Graveyard = GameObject.Find("PlayerGraveyard").transform;
+			card.SetCurrParent(Graveyard);
+			card.PutOutOfPlay();
+		}
+		else
+		{
+			Transform Graveyard = GameObject.Find("OpponentGraveyard").transform;
+			card.SetCurrParent(Graveyard);
+			card.PutOutOfPlay();
+		}
+
 	}
 	
     }

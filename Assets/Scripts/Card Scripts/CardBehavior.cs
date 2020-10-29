@@ -97,6 +97,12 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 	return destroyed;
     }
 
+    //Set to destroyed
+    public void SetDestroyed()
+    {
+	this.destroyed = true;
+    }
+
     public Transform GetCurrParent()
     {
         return currParent;
