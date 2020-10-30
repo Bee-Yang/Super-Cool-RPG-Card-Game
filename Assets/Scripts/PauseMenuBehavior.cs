@@ -30,11 +30,15 @@ public class PauseMenuBehavior : MonoBehaviour
     public void Resume() {
         pauseMenu.GetComponent<Canvas>().enabled = false;
         isPaused = false;
+        Time.timeScale = 1f;
+        turnController.EnableDraggingForPlayer();
     }
 
     void Pause() {
         pauseMenu.GetComponent<Canvas>().enabled = true;
         isPaused = true;
+        Time.timeScale = 0f;
+        turnController.DisableDraggingForPlayer();
     }
 
     public void ForfeitGame(){
