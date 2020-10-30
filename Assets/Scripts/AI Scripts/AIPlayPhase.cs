@@ -10,7 +10,8 @@ public class AIPlayPhase : MonoBehaviour
     private Timer timer;
     private bool done;
 
-    public bool Done{
+    public bool Done
+    {
         get { return this.done; }
         set { this.done = value; }
     }
@@ -41,13 +42,12 @@ public class AIPlayPhase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(this.timer.Delayed() && !this.done)
+        if (this.timer.Delayed() && !this.done)
         {
             PlayCard();
         }
@@ -60,7 +60,7 @@ public class AIPlayPhase : MonoBehaviour
         Transform temp, card;
         int tempCost, cardCost;
 
-        if(AIHand.childCount > 0)
+        if (AIHand.childCount > 0)
         {
             card = AIHand.GetChild(0);
             cardCost = card.GetComponent<CardAttributes>().GetCost();

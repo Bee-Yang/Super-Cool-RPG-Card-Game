@@ -16,12 +16,14 @@ public class Defending : MonoBehaviour
 
     private List<GameObject> blockingCards;
 
-    public GameObject CurrentAttackCard{
+    public GameObject CurrentAttackCard
+    {
         get { return this.currentAttackCard; }
         set { this.currentAttackCard = value; }
     }
 
-    public List<GameObject> BlockingCards{
+    public List<GameObject> BlockingCards
+    {
         get { return this.blockingCards; }
         set { this.blockingCards = value; }
     }
@@ -56,6 +58,8 @@ public class Defending : MonoBehaviour
         {
             attackingField = GameObject.Find("OpponentPlayingField").transform;
             blockingField = GameObject.Find("PlayerPlayingField").transform;
+
+            GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
         }
 
         // Find the attacking card
@@ -138,7 +142,7 @@ public class Defending : MonoBehaviour
     {
         if (this.start)
         {
-            if(timer.Delayed())
+            if (timer.Delayed())
             {
                 this.start = false;
                 timer.enabled = false;

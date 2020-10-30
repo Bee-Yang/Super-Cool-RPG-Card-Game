@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-
 public class Beginning : MonoBehaviour
 {
     private static double timeDelay = 0.5;
