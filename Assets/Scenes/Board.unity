@@ -4747,6 +4747,8 @@ MonoBehaviour:
   playerDeck: {fileID: 1735172682}
   playerHealth: {fileID: 237129101}
   enemyHealth: {fileID: 728019026}
+  coinFlip: {fileID: 4643960145218931744, guid: 3004fc8defc058f4ea241cf12c18def8,
+    type: 3}
 --- !u!4 &1520734922
 Transform:
   m_ObjectHideFlags: 0
@@ -4851,6 +4853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   phase: 0
+  turnController: {fileID: 1520734921}
 --- !u!114 &1520734930
 MonoBehaviour:
   m_ObjectHideFlags: 0

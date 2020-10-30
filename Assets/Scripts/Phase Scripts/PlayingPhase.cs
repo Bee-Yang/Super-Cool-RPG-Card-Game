@@ -284,7 +284,23 @@ public class PlayingPhase : MonoBehaviour
         {
             // Disable the AI playing phase script and go into the battle phase
             AI.GetComponent<AIPlayPhase>().enabled = false;
-            turnController.SetPhase(3);
+
+            if (this.firstTurn)
+            {
+                ManaBehavior mana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
+
+                mana.IncreaseMana();
+                mana.ResetMana();
+
+                turnController.SetPhase(1);
+                turnController.AlternateTurn();
+
+                this.firstTurn = false;
+            }
+            else
+            {
+                turnController.SetPhase(3);
+            }
 
             this.enabled = false;
         }
