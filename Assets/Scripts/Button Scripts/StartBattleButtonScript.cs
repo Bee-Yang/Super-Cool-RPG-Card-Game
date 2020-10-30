@@ -24,7 +24,7 @@ public class StartBattleButtonScript : MonoBehaviour
 
     void Update()
     {
-        if (turnController.GetPhase() == 3 && this.GetComponent<Button>().interactable == true)
+        if (turnController.IsPlayerTurn && turnController.GetPhase() == 3)
         {
             this.buttonText.text = "End Selection";
         }
@@ -36,9 +36,6 @@ public class StartBattleButtonScript : MonoBehaviour
 
     public void TaskOnClick()
     {
-        // Disable the start battle button
-        this.GetComponent<Button>().interactable = false;
-
         // Check which phase it is
         if (turnController.GetPhase() == 2)
         {
@@ -58,6 +55,9 @@ public class StartBattleButtonScript : MonoBehaviour
                 battleController.DisableAllPhases();
                 battleController.SetPhase(3);
             }
+
+            // Disable the start battle button
+            GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
         }
     }
 }

@@ -102,7 +102,8 @@ public class DeckBehavior : MonoBehaviour
             int top = (this.transform.childCount - 1);
             Transform card = this.transform.GetChild(top);
 
-            // Enable dragging for the card if it is the player's card
+            /*
+            // Enable hovering for the card if it is the player's card
             if (card.tag == "Player")
             {
                 card.GetComponent<CardBehavior>().SetHoverable(true);

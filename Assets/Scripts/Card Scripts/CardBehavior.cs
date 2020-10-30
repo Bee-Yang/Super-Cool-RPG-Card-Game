@@ -36,24 +36,18 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     void Update()
     {
-        // Check to see whether the card is destroyed or not
-        CardAttributes card1 = this.gameObject.GetComponent<CardAttributes>();
-        if (card1.GetCurrentHealth() <= 0)
-        {
-            this.destroyed = true;
-            this.inPlay = false;
-            this.canAttack = false;
-            this.attacking = false;
-            this.canBlock = false;
-            this.blocked = false;
-        }
-
-        // Set the color for the clone card to be the same as the card
-        if (this.enlargedCard)
-        {
-            SetCloneColor();
-            SetCloneAttributes();
-        }
+	// Check to see whether the card is destroyed or not
+	CardAttributes card1 = this.gameObject.GetComponent<CardAttributes>();
+	if(card1.GetCurrentHealth() <= 0)
+	{
+		this.destroyed = true;
+		this.inPlay = false;
+        		this.canAttack = false;
+       		this.attacking = false;
+     		this.canBlock = false;
+      		this.blocked = false;
+		
+	}
     }
 
     //Flips the card to show face or back
@@ -95,12 +89,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public bool IsDestroyed()
     {
 	return destroyed;
-    }
-
-    //Set to destroyed
-    public void SetDestroyed()
-    {
-	this.destroyed = true;
     }
 
     public Transform GetCurrParent()
@@ -200,6 +188,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         else
         {
             enlargedCard.transform.localPosition += new Vector3(0.0f, -45.0f, 0.0f);
+            enlargedCard.transform.Rotate(0.0f, 0.0f, 180.0f);
         }
     }
 
@@ -282,9 +271,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         clone.SetHealth(original.GetCurrentHealth());
         clone.SetImage(original.GetImage());
         clone.SetBorder(original.GetBorder());
-        clone.BlockOrder = original.BlockOrder;
-
-        this.enlargedCard.transform.Find("BlockingOrder").gameObject.SetActive(this.transform.Find("BlockingOrder").gameObject.activeSelf);
     }
 
     public void SetCloneColor()
@@ -295,8 +281,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         // Change the color of the clone card to the current color of the card
         enlargedCard.transform.GetChild(0).GetComponent<Image>().color = currColor;
         enlargedCard.transform.GetChild(1).GetComponent<Image>().color = currColor;
-
-        this.enlargedCard.GetComponent<Outline>().enabled = this.GetComponent<Outline>().enabled;
     }
 
     private void AttackClickRoutine()
@@ -309,6 +293,12 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             // Make the card image brighter
             this.transform.GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             this.transform.GetChild(1).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+
+            // Set the color for the clone card to be the same as the card
+            if (this.enlargedCard)
+            {
+                SetCloneColor();
+            }
         }
         else
         {
@@ -318,6 +308,12 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             // Make the card image darker
             this.transform.GetChild(0).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
             this.transform.GetChild(1).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+
+            // Set the color for the clone card to be the same as the card
+            if (this.enlargedCard)
+            {
+                SetCloneColor();
+            }
         }
     }
 
@@ -333,6 +329,14 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             this.GetComponent<CardAttributes>().BlockOrder = (block.BlockingCards.IndexOf(this.gameObject) + 1);
             this.transform.Find("BlockingOrder").gameObject.SetActive(true);
             this.GetComponent<Outline>().enabled = true;
+
+            // Enable the outline for the clone card
+            if (this.enlargedCard)
+            {
+                this.enlargedCard.GetComponent<CardAttributes>().BlockOrder = this.GetComponent<CardAttributes>().BlockOrder;
+                this.enlargedCard.transform.Find("BlockingOrder").gameObject.SetActive(true);
+                this.enlargedCard.GetComponent<Outline>().enabled = true;
+            }
         }
         else if(block.BlockingCards.Contains(this.gameObject))
         {
@@ -342,6 +346,14 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             this.GetComponent<CardAttributes>().BlockOrder = 0;
             this.transform.Find("BlockingOrder").gameObject.SetActive(false);
             this.GetComponent<Outline>().enabled = false;
+
+            // Disable the outline for the clone card
+            if (this.enlargedCard)
+            {
+                this.enlargedCard.GetComponent<CardAttributes>().BlockOrder = this.GetComponent<CardAttributes>().BlockOrder;
+                this.enlargedCard.transform.Find("BlockingOrder").gameObject.SetActive(false);
+                this.enlargedCard.GetComponent<Outline>().enabled = false;
+            }
 
             foreach(GameObject card in block.BlockingCards)
             {

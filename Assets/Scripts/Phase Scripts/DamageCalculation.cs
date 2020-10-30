@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class DamageCalculation : MonoBehaviour
 {
@@ -21,14 +20,6 @@ public class DamageCalculation : MonoBehaviour
         Debug.Log("Damage Calculation");
     }
 
-    void OnDisable()
-    {
-        /******************** Temporary Code ************************/
-        ResetBlockCardColors();
-        /******************** Temporary Code ************************/
-
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -42,27 +33,4 @@ public class DamageCalculation : MonoBehaviour
         battleController.SetPhase(0);
         /**************** Temporary Code ******************/
     }
-
-    /******************** Temporary Code ************************/
-    public void ResetBlockCardColors()
-    {
-        if (!turnController.IsPlayerTurn)
-        {
-            Transform blockField = GameObject.Find("PlayerPlayingField").transform;
-
-            CardAttributes attributes;
-
-            foreach (Transform card in blockField)
-            {
-                attributes = card.GetComponent<CardAttributes>();
-
-                card.GetComponent<Outline>().enabled = false;
-
-                card.Find("BlockingOrder").gameObject.SetActive(false);
-
-                attributes.BlockOrder = 0;
-            }
-        }
-    }
-    /******************** Temporary Code ************************/
 }

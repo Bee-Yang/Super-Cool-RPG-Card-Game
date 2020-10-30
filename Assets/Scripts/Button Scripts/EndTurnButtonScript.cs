@@ -24,6 +24,7 @@ public class EndTurnButtonScript : MonoBehaviour
     {
         // Make the buttons not clickable
         this.GetComponent<Button>().interactable = false;
+        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
 
         // End turn routine
         playerMana.IncreaseMana();
