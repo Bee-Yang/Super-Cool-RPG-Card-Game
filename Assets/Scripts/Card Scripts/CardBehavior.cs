@@ -128,15 +128,15 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
             // Disable hover for all cards in player hand
             GameObject panel = GameObject.Find("PlayerHand");
-            SetHoverAndRaycastsInPanel(panel, false);
+            SetRaycastsInPanel(panel, false);
 
             // Disable hover for all cards in player playing field
             panel = GameObject.Find("PlayerPlayingField");
-            SetHoverAndRaycastsInPanel(panel, false);
+            SetRaycastsInPanel(panel, false);
 
             // Disable hover for all cards in opponent playing field
             panel = GameObject.Find("OpponentPlayingField");
-            SetHoverAndRaycastsInPanel(panel, false);
+            SetRaycastsInPanel(panel, false);
         }
     }
 
@@ -154,15 +154,15 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         // Enable hover for all cards in player hand
         GameObject panel = GameObject.Find("PlayerHand");
-        SetHoverAndRaycastsInPanel(panel, true);
+        SetRaycastsInPanel(panel, true);
 
         // Enable hover for all cards in player playing field
         panel = GameObject.Find("PlayerPlayingField");
-        SetHoverAndRaycastsInPanel(panel, true);
+        SetRaycastsInPanel(panel, true);
 
         // Enable hover for all cards in opponent playing field
         panel = GameObject.Find("OpponentPlayingField");
-        SetHoverAndRaycastsInPanel(panel, true);
+        SetRaycastsInPanel(panel, true);
     }
 
     public void OnPointerEnter()
@@ -242,15 +242,14 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         this.canBlock = status;
     }
 
-    public void SetHoverAndRaycastsInPanel(GameObject panel, bool status)
+    public void SetRaycastsInPanel(GameObject panel, bool status)
     {
         // Check if the panel has no cards
         if (panel.transform.childCount > 0)
         {
-            // Set the hoverable and raycast to given status for all cards in the panel
+            // Set the raycast to given status for all cards in the panel
             for (int i = 0; i < panel.transform.childCount; ++i)
             {
-                panel.transform.GetChild(i).GetComponent<CardBehavior>().SetHoverable(status);
                 panel.transform.GetChild(i).GetComponent<CanvasGroup>().blocksRaycasts = status;
             }
         }

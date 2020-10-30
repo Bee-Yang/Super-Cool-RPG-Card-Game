@@ -20,8 +20,6 @@ public class DamageCalculation : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("Damage Calculation");
-
         this.handling = false;
         this.done = false;
     }
@@ -64,6 +62,8 @@ public class DamageCalculation : MonoBehaviour
                     GameObject.Find("PlayerHealth").GetComponent<HealthBehavior>().DecreaseHealth(attackValue);
                 }
             }
+
+            Debug.Log("Damage Dealt");
 
             cardData.CurrentAttackCard.GetComponent<CardBehavior>().Attacking = false;
 

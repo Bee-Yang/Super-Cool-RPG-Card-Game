@@ -59,9 +59,7 @@ public class CardAttributes : MonoBehaviour
                 card.transform.SetParent(Graveyard);
                 card.PutOutOfPlay();
 		    }
-
 	    }
-	
     }
 
     public string GetName()
