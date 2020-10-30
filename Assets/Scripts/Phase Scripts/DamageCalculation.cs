@@ -19,28 +19,45 @@ public class DamageCalculation : MonoBehaviour
     void OnEnable()
     {
         Debug.Log("Damage Calculation");
+
+        int attackValue = cardData.CurrentAttackCard.GetComponent<CardAttributes>().GetAttack();
+
+        //Iterate through each defending card, decrementing their health and decrementing attackValue
+        foreach (GameObject card in cardData.BlockingCards)
+        {
+            if (attackValue > 0)
+            {
+                attackValue = DefendAttack(attackValue, card);
+            }
+
+            card.GetComponent<CardBehavior>().Blocked = true;
+        }
+
+        //Check for spillover damage to defending player's health
+        if (attackValue > 0)
+        {
+            if (turnController.IsPlayerTurn)
+            {
+                GameObject.Find("EnemyHealth").GetComponent<HealthBehavior>().DecreaseHealth(attackValue);
+            }
+            else
+            {
+                GameObject.Find("PlayerHealth").GetComponent<HealthBehavior>().DecreaseHealth(attackValue);
+            }
+        }
+
+        battleController.SetPhase(2);
+
     }
 
     void OnDisable()
     {
-        /******************** Temporary Code ************************/
         ResetBlockCardColors();
-        /******************** Temporary Code ************************/
-
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        /**************** Temporary Code ******************/
         battleController.SetPhase(0);
-        /**************** Temporary Code ******************/
     }
 
     /******************** Temporary Code ************************/
@@ -65,4 +82,24 @@ public class DamageCalculation : MonoBehaviour
         }
     }
     /******************** Temporary Code ************************/
+
+    int DefendAttack(int attack, GameObject defender)
+    {
+        int defenderHealth = defender.GetComponent<CardAttributes>().GetCurrentHealth();
+
+        //If the attack would kill the defender, set defender health to 0
+        if (attack > defenderHealth)
+        {
+            defender.GetComponent<CardAttributes>().SetCurrentHealth(0);
+        }
+
+        //Else, set the defender's health to reflect damage taken
+        else
+        {
+            defender.GetComponent<CardAttributes>().SetCurrentHealth(defenderHealth - attack);
+        }
+
+        //Return what's left of the attack
+        return attack - defenderHealth;
+    }
 }
