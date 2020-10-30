@@ -49,13 +49,13 @@ public class HealthBehavior : MonoBehaviour
 
         if (health <= amount)
         {
-            health = amount;//prevents negative numbers
+            health = 0;//prevents negative numbers
         }
         else
         {
-            health = 0;
+            health -= amount;
         }
 
-        SetHealth(health -= amount);//changes health and sets the health, don't touch
+        SetHealth(health);//changes health and sets the health, don't touch
     }
 }
