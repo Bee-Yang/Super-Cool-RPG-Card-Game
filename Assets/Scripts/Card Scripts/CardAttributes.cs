@@ -43,7 +43,7 @@ public class CardAttributes : MonoBehaviour
 		
 		    TurnControllerBehavior turnController = this.GetComponent<TurnControllerBehavior>();
 		    // check for who's card it is and move it to their graveyard
-		    if(card.GetCurrParent() == GameObject.Find("PlayerPlayingField").transform)
+		    if (this.tag == "Player")
 		    {
 
                 card.GetComponent<Outline>().enabled = false;

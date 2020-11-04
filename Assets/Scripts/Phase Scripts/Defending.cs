@@ -58,8 +58,6 @@ public class Defending : MonoBehaviour
         {
             attackingField = GameObject.Find("OpponentPlayingField").transform;
             blockingField = GameObject.Find("PlayerPlayingField").transform;
-
-            GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
         }
 
         // Find the attacking card
@@ -129,6 +127,8 @@ public class Defending : MonoBehaviour
         {
             timer.enabled = false;
         }
+
+        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
     }
 
     // Start is called before the first frame update
@@ -176,6 +176,10 @@ public class Defending : MonoBehaviour
                 /**************** Temporary Code ******************/
                 battleController.SetPhase(3);
                 /**************** Temporary Code ******************/
+            }
+            else
+            {
+                GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
             }
         }
     }

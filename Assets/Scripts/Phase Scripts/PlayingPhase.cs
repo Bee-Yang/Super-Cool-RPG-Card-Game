@@ -57,6 +57,8 @@ public class PlayingPhase : MonoBehaviour
             timer.enabled = false;
         }
 
+        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
+
         DisableTurnNotifications();
         DisableManaNotifications();
     }

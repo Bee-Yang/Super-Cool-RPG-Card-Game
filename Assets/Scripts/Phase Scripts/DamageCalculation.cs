@@ -63,8 +63,6 @@ public class DamageCalculation : MonoBehaviour
                 }
             }
 
-            Debug.Log("Damage Dealt");
-
             cardData.CurrentAttackCard.GetComponent<CardBehavior>().Attacking = false;
 
             cardData.CurrentAttackCard.GetComponent<Outline>().enabled = false;
