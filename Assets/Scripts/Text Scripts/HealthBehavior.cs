@@ -22,7 +22,6 @@ public class HealthBehavior : MonoBehaviour
         thisText = GetComponent<TMP_Text>();
         // set health initially to be 20
         health = maxHealth;
-        SetHealth(health);
         SetMaxHealth(health);
     }
 

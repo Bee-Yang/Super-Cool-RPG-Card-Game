@@ -10,7 +10,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Transform currParent; // To save the parent to which this card is tied before/while being dragged
 
     // Status flags for the card
-    private bool inPlay, draggable, hoverable, canAttack, attacking, canBlock, blocked, destroyed;
+    private bool inPlay, draggable, hoverable, discardable, canAttack, attacking, canBlock, blocked, destroyed;
 
     public bool Attacking {
         get { return this.attacking; }
@@ -20,6 +20,11 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public bool Blocked {
         get { return this.blocked; }
         set { this.blocked = value; }
+    }
+
+    public bool Discardable {
+        get { return this.discardable; }
+        set { this.discardable = value; }
     }
 
     void Start()
@@ -209,7 +214,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnClick()
     {
-        // Check if the card is able to attack or block
+        // Check if the card is able to attack, block, or be discarded
         if (this.canAttack)
         {
             // Call the attack routine
@@ -219,6 +224,10 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             // Call the block routine
             BlockClickRoutine();
+        }
+        else if (this.discardable)
+        {
+            DiscardRoutine();
         }
     }
 
@@ -338,5 +347,11 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                 card.GetComponent<CardAttributes>().BlockOrder = (block.BlockingCards.IndexOf(card) + 1);
             }
         }
+    }
+
+    public void DiscardRoutine()
+    {
+        this.destroyed = true;
+        this.discardable = false;
     }
 }
