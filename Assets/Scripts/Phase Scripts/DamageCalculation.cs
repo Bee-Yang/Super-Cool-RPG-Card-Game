@@ -80,7 +80,6 @@ public class DamageCalculation : MonoBehaviour
         }
     }
 
-    /******************** Temporary Code ************************/
     public void ResetBlockCardColors()
     {
         if (!turnController.IsPlayerTurn)
@@ -101,22 +100,35 @@ public class DamageCalculation : MonoBehaviour
             }
         }
     }
-    /******************** Temporary Code ************************/
 
     int DefendAttack(int attack, GameObject defender)
     {
         int defenderHealth = defender.GetComponent<CardAttributes>().GetCurrentHealth();
+        int defenderAttack = defender.GetComponent<CardAttributes>().GetAttack();
+        int attackerHealth = cardData.CurrentAttackCard.GetComponent<CardAttributes>().GetCurrentHealth();
 
-        //If the attack would kill the defender, set defender health to 0
+        // If the attack would kill the defender, set defender health to 0
         if (attack > defenderHealth)
         {
             defender.GetComponent<CardAttributes>().SetCurrentHealth(0);
         }
 
-        //Else, set the defender's health to reflect damage taken
+        // Else, set the defender's health to reflect damage taken
         else
         {
             defender.GetComponent<CardAttributes>().SetCurrentHealth(defenderHealth - attack);
+        }
+
+        // If the defender would kill the attacker, set the attacker health to 0
+        if (defenderAttack > attackerHealth)
+        {
+            cardData.CurrentAttackCard.GetComponent<CardAttributes>().SetCurrentHealth(0);
+        }
+
+        // Else, set the attacker's health to reflect the damage taken
+        else
+        {
+            cardData.CurrentAttackCard.GetComponent<CardAttributes>().SetCurrentHealth(attackerHealth - defenderAttack);
         }
 
         //Return what's left of the attack
