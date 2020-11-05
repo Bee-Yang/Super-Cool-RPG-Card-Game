@@ -45,10 +45,6 @@ public class CardAttributes : MonoBehaviour
 		    // check for who's card it is and move it to their graveyard
 		    if (this.tag == "Player")
 		    {
-
-                card.GetComponent<Outline>().enabled = false;
-                card.transform.Find("BlockingOrder").gameObject.SetActive(false);
-                BlockOrder = 0;
                 Transform Graveyard = GameObject.Find("PlayerGraveyard").transform;
                 card.transform.SetParent(Graveyard);
 			    card.PutOutOfPlay();
@@ -59,7 +55,14 @@ public class CardAttributes : MonoBehaviour
                 card.transform.SetParent(Graveyard);
                 card.PutOutOfPlay();
 		    }
-	    }
+
+            // Restore the card's colors
+            card.transform.GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            card.transform.GetChild(1).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            card.GetComponent<Outline>().enabled = false;
+            card.transform.Find("BlockingOrder").gameObject.SetActive(false);
+            BlockOrder = 0;
+        }
     }
 
     public string GetName()

@@ -13,10 +13,5 @@ MonoBehaviour:
   m_Name: 6Cards
   m_EditorClassIdentifier: 
   id: 2
-  cards:
-  - {fileID: 11400000, guid: 3834796eb28336545acdd5b28c4ee1ac, type: 2}
-  - {fileID: 11400000, guid: 3834796eb28336545acdd5b28c4ee1ac, type: 2}
-  - {fileID: 11400000, guid: 093b7e4a95112c84d85b7f31d212de98, type: 2}
-  - {fileID: 11400000, guid: 46577f0a968f15f49a79ca13c2979b99, type: 2}
-  - {fileID: 11400000, guid: b3e26c0152298a4428422f096eca5203, type: 2}
-  - {fileID: 11400000, guid: 19153629ccb054744bb0cf353544fa16, type: 2}
+  cardID: 0000000001000000020000000300000004000000
+  quantity: 0200000001000000010000000100000001000000

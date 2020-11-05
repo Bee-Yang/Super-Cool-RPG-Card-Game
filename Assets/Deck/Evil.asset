@@ -13,24 +13,5 @@ MonoBehaviour:
   m_Name: Evil
   m_EditorClassIdentifier: 
   id: 1
-  cards:
-  - {fileID: 11400000, guid: 6bcbed1e2d8da7e4c87050aaf55f0af7, type: 2}
-  - {fileID: 11400000, guid: 6bcbed1e2d8da7e4c87050aaf55f0af7, type: 2}
-  - {fileID: 11400000, guid: 6bcbed1e2d8da7e4c87050aaf55f0af7, type: 2}
-  - {fileID: 11400000, guid: 6bcbed1e2d8da7e4c87050aaf55f0af7, type: 2}
-  - {fileID: 11400000, guid: 6bcbed1e2d8da7e4c87050aaf55f0af7, type: 2}
-  - {fileID: 11400000, guid: 6bcbed1e2d8da7e4c87050aaf55f0af7, type: 2}
-  - {fileID: 11400000, guid: 6c9ec7ceb89bc3447b28ac80ad010036, type: 2}
-  - {fileID: 11400000, guid: 6c9ec7ceb89bc3447b28ac80ad010036, type: 2}
-  - {fileID: 11400000, guid: 6c9ec7ceb89bc3447b28ac80ad010036, type: 2}
-  - {fileID: 11400000, guid: 6c9ec7ceb89bc3447b28ac80ad010036, type: 2}
-  - {fileID: 11400000, guid: a4c5395a7cf8b7f488b0f0ec7c94f4b1, type: 2}
-  - {fileID: 11400000, guid: a4c5395a7cf8b7f488b0f0ec7c94f4b1, type: 2}
-  - {fileID: 11400000, guid: a4c5395a7cf8b7f488b0f0ec7c94f4b1, type: 2}
-  - {fileID: 11400000, guid: a4c5395a7cf8b7f488b0f0ec7c94f4b1, type: 2}
-  - {fileID: 11400000, guid: ea81d5eb6c07e7a459022972a4192576, type: 2}
-  - {fileID: 11400000, guid: ea81d5eb6c07e7a459022972a4192576, type: 2}
-  - {fileID: 11400000, guid: ea81d5eb6c07e7a459022972a4192576, type: 2}
-  - {fileID: 11400000, guid: ea81d5eb6c07e7a459022972a4192576, type: 2}
-  - {fileID: 11400000, guid: e7bef7c2d52ddab4ebb339f4ea2fdcab, type: 2}
-  - {fileID: 11400000, guid: e7bef7c2d52ddab4ebb339f4ea2fdcab, type: 2}
+  cardID: 0500000006000000070000000800000009000000
+  quantity: 0600000004000000040000000400000002000000
