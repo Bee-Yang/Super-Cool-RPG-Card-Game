@@ -1,19 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BattleController : MonoBehaviour
 {
     public int phase;
+    public TurnControllerBehavior turnController;
     public const int attacking = 1, defending = 2, dmgCalc = 3;
 
     void OnEnable()
     {
+        turnController = transform.GetComponent<TurnControllerBehavior>();
         this.phase = 1;
     }
 
     void OnDisable()
     {
+        resetBlocks();
         this.DisableAllPhases();
     }
 
@@ -61,5 +62,25 @@ public class BattleController : MonoBehaviour
         this.GetComponent<Attacking>().enabled = false;
         this.GetComponent<Defending>().enabled = false;
         this.GetComponent<DamageCalculation>().enabled = false;
+    }
+
+    public void resetBlocks()
+    {
+        if (turnController.IsPlayerTurn)
+        {
+            foreach (Transform card in GameObject.Find("OpponentPlayingField").transform)
+            {
+                card.GetComponent<CardBehavior>().SetCanBlock(true);
+                card.GetComponent<CardBehavior>().Blocked = false;
+            }
+        }
+        else
+        {
+            foreach (Transform card in GameObject.Find("PlayerPlayingField").transform)
+            {
+                card.GetComponent<CardBehavior>().SetCanBlock(true);
+                card.GetComponent<CardBehavior>().Blocked = false;
+            }
+        }
     }
 }

@@ -7,5 +7,6 @@ using UnityEngine;
 public class Deck : ScriptableObject
 {
     public int id;
-    public List<Card> cards;
+    public List<int> cardID;
+    public List<int> quantity;
 }

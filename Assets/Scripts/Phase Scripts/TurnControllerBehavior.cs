@@ -15,6 +15,7 @@ public class TurnControllerBehavior : MonoBehaviour
     public GameObject playerDeck;
     public GameObject playerHealth;
     public GameObject enemyHealth;
+    public GameObject coinFlip;
 
 
     public bool IsPlayerTurn {
@@ -30,9 +31,11 @@ public class TurnControllerBehavior : MonoBehaviour
 
     void Start()
     {
-        isPlayerTurn = true;
+        isPlayerTurn = false;
         gameOver = false;
-        phase = 0;
+        phase = -3;
+
+        GameObject tmp = Instantiate(coinFlip, board.transform) as GameObject;
 
         DisableAllPhases();
     }
@@ -181,13 +184,26 @@ public class TurnControllerBehavior : MonoBehaviour
 
     public void CheckGameOverConditions()
     {
-        bool playerWin, playerLose;
+        bool playerWin, playerLose, enemyNoCards, playerNoCards;
+
+        enemyNoCards = playerNoCards = false;
+
+        if (!isPlayerTurn && opponentDeck.transform.childCount == 0 && this.phase == 1)
+        {
+            enemyNoCards = true;
+        }
+
+        if(isPlayerTurn && playerDeck.transform.childCount == 0 && this.phase == 1)
+        {
+            playerNoCards = true;
+        }
+        
 
         // Set if the player has won based on the win conditions (enemy ran out of cards or enemy health is 0)
-        playerWin = (!isPlayerTurn && opponentDeck.transform.childCount == 0) || (enemyHealth.GetComponent<HealthBehavior>().Health == 0);
+        playerWin = enemyNoCards || (enemyHealth.GetComponent<HealthBehavior>().Health == 0);
 
         // Set if player has lost based on the lose conditions (player ran out of cards or player health is 0)
-        playerLose = (isPlayerTurn && playerDeck.transform.childCount == 0) || (playerHealth.GetComponent<HealthBehavior>().Health == 0);
+        playerLose = playerNoCards || (playerHealth.GetComponent<HealthBehavior>().Health == 0);
 
         // Check if the player has won
         if (playerWin)

@@ -16,12 +16,14 @@ public class Defending : MonoBehaviour
 
     private List<GameObject> blockingCards;
 
-    public GameObject CurrentAttackCard{
+    public GameObject CurrentAttackCard
+    {
         get { return this.currentAttackCard; }
         set { this.currentAttackCard = value; }
     }
 
-    public List<GameObject> BlockingCards{
+    public List<GameObject> BlockingCards
+    {
         get { return this.blockingCards; }
         set { this.blockingCards = value; }
     }
@@ -125,6 +127,8 @@ public class Defending : MonoBehaviour
         {
             timer.enabled = false;
         }
+
+        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
     }
 
     // Start is called before the first frame update
@@ -138,7 +142,7 @@ public class Defending : MonoBehaviour
     {
         if (this.start)
         {
-            if(timer.Delayed())
+            if (timer.Delayed())
             {
                 this.start = false;
                 timer.enabled = false;
@@ -175,7 +179,6 @@ public class Defending : MonoBehaviour
             }
             else
             {
-                // Enable the start battle button to click after the player finishes choosing the blocking creatures
                 GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
             }
         }

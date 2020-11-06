@@ -37,15 +37,32 @@ public class CardAttributes : MonoBehaviour
         this.transform.Find("CardImage").transform.GetComponent<Image>().sprite = this.cardImage;
         this.transform.Find("CardBorder").transform.GetComponent<Image>().sprite = this.cardBorder;
     
-	CardBehavior card = this.GetComponent<CardBehavior>();
-	// if card is destroyed, move to graveyard
-	if(card.IsDestroyed()) {
-		// move to graveyard
- 		Vector3 newPos = new Vector3(137,323,0);
-		card.transform.position = newPos;
-		//card.PutOutOfPlay();
-	}
-	
+	    CardBehavior card = this.GetComponent<CardBehavior>();
+	    // if card is destroyed, move to graveyard
+	    if(card.IsDestroyed() == true) {
+		
+		    TurnControllerBehavior turnController = this.GetComponent<TurnControllerBehavior>();
+		    // check for who's card it is and move it to their graveyard
+		    if (this.tag == "Player")
+		    {
+                Transform Graveyard = GameObject.Find("PlayerGraveyard").transform;
+                card.transform.SetParent(Graveyard);
+			    card.PutOutOfPlay();
+		    }
+		    else
+		    {
+			    Transform Graveyard = GameObject.Find("OpponentGraveyard").transform;
+                card.transform.SetParent(Graveyard);
+                card.PutOutOfPlay();
+		    }
+
+            // Restore the card's colors
+            card.transform.GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            card.transform.GetChild(1).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+            card.GetComponent<Outline>().enabled = false;
+            card.transform.Find("BlockingOrder").gameObject.SetActive(false);
+            BlockOrder = 0;
+        }
     }
 
     public string GetName()

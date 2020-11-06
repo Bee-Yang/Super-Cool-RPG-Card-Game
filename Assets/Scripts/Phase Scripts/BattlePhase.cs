@@ -5,11 +5,9 @@ public class BattlePhase : MonoBehaviour
 {
     private static double timeDelay = 0.5;
     private TurnControllerBehavior turnController;
+    private ManaBehavior mana;
     private Timer timer;
     private bool start;
-
-    // Temporary variable for opponent turn to function
-    private ManaBehavior playerMana, enemyMana;
 
     public GameObject notification;
 
@@ -23,6 +21,15 @@ public class BattlePhase : MonoBehaviour
 
     void OnEnable()
     {
+        if (turnController.IsPlayerTurn)
+        {
+            mana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
+        }
+        else
+        {
+            mana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
+        }
+
         start = true;
         timer.SetTimeDelay(timeDelay);
         timer.enabled = true;
@@ -47,8 +54,6 @@ public class BattlePhase : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerMana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
-        enemyMana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
     }
 
     // Update is called once per frame
@@ -62,16 +67,8 @@ public class BattlePhase : MonoBehaviour
         // Check if the battle phase is over
         else if (this.GetComponent<BattleController>().GetPhase() == 0)
         {
-            if (turnController.IsPlayerTurn)
-            {
-                playerMana.IncreaseMana();
-                playerMana.ResetMana();
-            }
-            else
-            {
-                enemyMana.IncreaseMana();
-                enemyMana.ResetMana();
-            }
+            mana.IncreaseMana();
+            mana.ResetMana();
 
             turnController.DisableAllPhases();
             turnController.SetPhase(1);
@@ -113,7 +110,7 @@ public class BattlePhase : MonoBehaviour
     {
         Transform attackingField;
 
-        if(turnController.IsPlayerTurn)
+        if (turnController.IsPlayerTurn)
         {
             attackingField = GameObject.Find("PlayerPlayingField").transform;
         }

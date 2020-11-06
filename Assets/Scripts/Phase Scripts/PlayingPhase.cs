@@ -14,7 +14,8 @@ public class PlayingPhase : MonoBehaviour
 
     public GameObject playerTurn, enemyTurn, notEnoughManaNotification, outOfMana;
 
-    public bool FirstTurn{
+    public bool FirstTurn
+    {
         get { return this.firstTurn; }
         set { this.firstTurn = value; }
     }
@@ -45,7 +46,7 @@ public class PlayingPhase : MonoBehaviour
     void OnDisable()
     {
         // Check if it is the player's playing phase
-        if(turnController.IsPlayerTurn)
+        if (turnController.IsPlayerTurn)
         {
             // Disable dragging for the player
             turnController.DisableDraggingForPlayer();
@@ -55,6 +56,8 @@ public class PlayingPhase : MonoBehaviour
         {
             timer.enabled = false;
         }
+
+        GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
 
         DisableTurnNotifications();
         DisableManaNotifications();
@@ -283,8 +286,25 @@ public class PlayingPhase : MonoBehaviour
         {
             // Disable the AI playing phase script and go into the battle phase
             AI.GetComponent<AIPlayPhase>().enabled = false;
-            turnController.DisableAllPhases();
-            turnController.SetPhase(3);
+
+            if (this.firstTurn)
+            {
+                ManaBehavior mana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
+
+                mana.IncreaseMana();
+                mana.ResetMana();
+
+                turnController.SetPhase(1);
+                turnController.AlternateTurn();
+
+                this.firstTurn = false;
+            }
+            else
+            {
+                turnController.SetPhase(3);
+            }
+
+            this.enabled = false;
         }
     }
 }

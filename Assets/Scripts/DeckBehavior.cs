@@ -49,25 +49,31 @@ public class DeckBehavior : MonoBehaviour
         GameObject card;
         CardAttributes cardAttribute;
 
-        for (int i = 0; i < decklist.cards.Count; ++i)
+        // For loop to go through all the cardID in decklist
+        for (int i = 0; i < decklist.cardID.Count; ++i)
         {
-            // Create the card onto the board
-            card = Instantiate(prefab, this.transform);
+            // For loop to create the correct quantity of each card based on the decklist
+            for (int j = 0; j < decklist.quantity[i]; ++j)
+            {
+                // Create the card onto the board
+                card = Instantiate(prefab, this.transform);
 
-            card.tag = this.tag;
+                card.tag = this.tag;
 
-            // Find the cardAttribute component in order to modify the card
-            cardAttribute = card.GetComponent<CardAttributes>();
+                // Find the cardAttribute component in order to modify the card
+                cardAttribute = card.GetComponent<CardAttributes>();
 
-            // Set the attributes of the card
-            SetCardAttributes(cardAttribute, decklist.cards[i]);
+                // Set the attributes of the card
+                SetCardAttributes(cardAttribute, Database.GetCardByID(decklist.cardID[i]));
 
-            // Make the card back image visible while the card is in the deck
-            card.GetComponent<CardBehavior>().FlipCard("back");
+                // Make the card back image visible while the card is in the deck
+                card.GetComponent<CardBehavior>().FlipCard("back");
 
-            // Disable the card dragging script
-            card.GetComponent<CardBehavior>().SetDraggable(false);
-            card.GetComponent<CardBehavior>().SetHoverable(false);
+                // Disable the card dragging script
+                card.GetComponent<CardBehavior>().SetDraggable(false);
+                card.GetComponent<CardBehavior>().SetHoverable(false);
+                card.GetComponent<CardBehavior>().Discardable = false;
+            }
         }
     }
 
@@ -102,17 +108,13 @@ public class DeckBehavior : MonoBehaviour
             int top = (this.transform.childCount - 1);
             Transform card = this.transform.GetChild(top);
 
-            /*
-            // Enable hovering for the card if it is the player's card
+            // Enable dragging for the card if it is the player's card
             if (card.tag == "Player")
             {
+                //card.GetComponent<CardBehavior>().SetDraggable(true);
                 card.GetComponent<CardBehavior>().SetHoverable(true);
                 card.GetComponent<CardBehavior>().FlipCard("front");
             }
-            */
-
-            card.GetComponent<CardBehavior>().SetHoverable(true);
-            card.GetComponent<CardBehavior>().FlipCard("front");
 
             // Move the card from the deck into the hand
             card.SetParent(hand.transform);

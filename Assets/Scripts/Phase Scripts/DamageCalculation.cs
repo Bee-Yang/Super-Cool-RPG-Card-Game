@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DamageCalculation : MonoBehaviour
 {
     private TurnControllerBehavior turnController;
     private BattleController battleController;
     private Defending cardData;
+
+    private bool handling, done;
 
     void Awake()
     {
@@ -17,20 +20,121 @@ public class DamageCalculation : MonoBehaviour
 
     void OnEnable()
     {
-        Debug.Log("Damage Calculation");
+        this.handling = false;
+        this.done = false;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    void OnDisable()
     {
-        
+        ResetBlockCardColors();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        /**************** Temporary Code ******************/
-        battleController.SetPhase(0);
-        /**************** Temporary Code ******************/
+        turnController.CheckGameOverConditions();
+
+        if (!this.handling)
+        {
+            this.handling = true;
+
+            int attackValue = cardData.CurrentAttackCard.GetComponent<CardAttributes>().GetAttack();
+
+            //Iterate through each defending card, decrementing their health and decrementing attackValue
+            foreach (GameObject card in cardData.BlockingCards)
+            {
+                if (attackValue > 0)
+                {
+                    attackValue = DefendAttack(attackValue, card);
+                }
+
+                card.GetComponent<CardBehavior>().Blocked = true;
+            }
+
+            //Check for spillover damage to defending player's health
+            if (attackValue > 0)
+            {
+                if (turnController.IsPlayerTurn)
+                {
+                    GameObject.Find("EnemyHealth").GetComponent<HealthBehavior>().DecreaseHealth(attackValue);
+                }
+                else
+                {
+                    GameObject.Find("PlayerHealth").GetComponent<HealthBehavior>().DecreaseHealth(attackValue);
+                }
+            }
+
+            cardData.CurrentAttackCard.GetComponent<CardBehavior>().Attacking = false;
+
+            cardData.CurrentAttackCard.GetComponent<Outline>().enabled = false;
+
+            cardData.CurrentAttackCard.transform.GetChild(0).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+            cardData.CurrentAttackCard.transform.GetChild(1).GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1.0f);
+
+            this.done = true;
+        }
+        else if (this.done)
+        {
+            battleController.DisableAllPhases();
+            battleController.SetPhase(2);
+            this.enabled = false;
+        }
+    }
+
+    public void ResetBlockCardColors()
+    {
+        if (!turnController.IsPlayerTurn)
+        {
+            Transform blockField = GameObject.Find("PlayerPlayingField").transform;
+
+            CardAttributes attributes;
+
+            foreach (Transform card in blockField)
+            {
+                attributes = card.GetComponent<CardAttributes>();
+
+                card.GetComponent<Outline>().enabled = false;
+
+                card.Find("BlockingOrder").gameObject.SetActive(false);
+
+                attributes.BlockOrder = 0;
+            }
+        }
+    }
+
+    int DefendAttack(int attack, GameObject defender)
+    {
+        int remainingAttack;
+        int defenderHealth = defender.GetComponent<CardAttributes>().GetCurrentHealth();
+        int defenderAttack = defender.GetComponent<CardAttributes>().GetAttack();
+        int attackerHealth = cardData.CurrentAttackCard.GetComponent<CardAttributes>().GetCurrentHealth();
+
+        // If the attack would kill the defender, set defender health to 0
+        if (attack > defenderHealth)
+        {
+            defender.GetComponent<CardAttributes>().SetCurrentHealth(0);
+        }
+
+        // Else, set the defender's health to reflect damage taken
+        else
+        {
+            defender.GetComponent<CardAttributes>().SetCurrentHealth(defenderHealth - attack);
+        }
+
+        // If the defender would kill the attacker, set the attacker health to 0 and set the remaining attack to 0
+        if (defenderAttack > attackerHealth)
+        {
+            cardData.CurrentAttackCard.GetComponent<CardAttributes>().SetCurrentHealth(0);
+            remainingAttack = 0;
+        }
+
+        // Else, set the attacker's health to reflect the damage taken and set the remaining attack to reflect the correct amount
+        else
+        {
+            cardData.CurrentAttackCard.GetComponent<CardAttributes>().SetCurrentHealth(attackerHealth - defenderAttack);
+            remainingAttack = attack - defenderHealth;
+        }
+
+        //Return what's left of the attack
+        return remainingAttack;
     }
 }
