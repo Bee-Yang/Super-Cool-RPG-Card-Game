@@ -125,7 +125,7 @@ public class DamageCalculation : MonoBehaviour
         }
 
         // If the defender would kill the attacker, set the attacker health to 0 and set the remaining attack to 0
-        if (defenderAttack > attackerHealth)
+        if (defenderAttack >= attackerHealth)
         {
 
             StartCoroutine(ShowDamage(cardData.CurrentAttackCard));
