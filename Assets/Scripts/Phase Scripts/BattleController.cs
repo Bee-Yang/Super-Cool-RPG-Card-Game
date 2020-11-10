@@ -70,7 +70,6 @@ public class BattleController : MonoBehaviour
         {
             foreach (Transform card in GameObject.Find("OpponentPlayingField").transform)
             {
-                card.GetComponent<CardBehavior>().SetCanBlock(true);
                 card.GetComponent<CardBehavior>().Blocked = false;
             }
         }
@@ -78,7 +77,6 @@ public class BattleController : MonoBehaviour
         {
             foreach (Transform card in GameObject.Find("PlayerPlayingField").transform)
             {
-                card.GetComponent<CardBehavior>().SetCanBlock(true);
                 card.GetComponent<CardBehavior>().Blocked = false;
             }
         }

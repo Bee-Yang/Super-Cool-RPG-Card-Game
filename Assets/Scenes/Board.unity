@@ -1136,7 +1136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e2c99c2bf8afb4c99c269d8416752a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881, type: 3}
+  creature: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881,
+    type: 3}
+  hero: {fileID: 6325016447726898180, guid: 0bfdc9d9323b4dc43bd2adfac085687c, type: 3}
   hand: {fileID: 2112377901}
   deckID: 1
 --- !u!1 &421873991
@@ -6084,7 +6086,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e2c99c2bf8afb4c99c269d8416752a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881, type: 3}
+  creature: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881,
+    type: 3}
+  hero: {fileID: 6325016447726898180, guid: 0bfdc9d9323b4dc43bd2adfac085687c, type: 3}
   hand: {fileID: 497035321}
   deckID: 0
 --- !u!1 &1743950231

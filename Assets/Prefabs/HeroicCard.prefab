@@ -271,7 +271,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: XX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -404,7 +404,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eeb2a90942495b04db2ce5b2f05da5b6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e72fb3e370cd7034d95dec9406aac8e1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -750,7 +750,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 87b909342c5cdc942b303f4926a601a0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b5cf69db4756bec41bf678e258faf943, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -824,7 +824,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: XX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -957,7 +957,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: X
+  m_text: XX
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1040,12 +1040,13 @@ GameObject:
   - component: {fileID: -3445787957005589923}
   - component: {fileID: 3429011280549366855}
   - component: {fileID: 2445553653362389864}
+  - component: {fileID: 5650035415307723666}
   - component: {fileID: 3374166258178011545}
   - component: {fileID: 6033967266142320379}
   - component: {fileID: 1120948941366999537}
   - component: {fileID: 1115904275181825691}
   m_Layer: 8
-  m_Name: Card
+  m_Name: HeroicCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1148,6 +1149,18 @@ MonoBehaviour:
   cardAttackText: {fileID: 5852655041512095988}
   cardHealthText: {fileID: 8214148357686912989}
   blockOrderText: {fileID: 1506767554589167445}
+--- !u!114 &5650035415307723666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6325016447726898180}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c147085aa656db47beaa946e245bcba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3374166258178011545
 MonoBehaviour:
   m_ObjectHideFlags: 0

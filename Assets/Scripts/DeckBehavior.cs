@@ -4,7 +4,7 @@ public class DeckBehavior : MonoBehaviour
 {
     private Deck decklist;
 
-    public GameObject prefab, hand;
+    public GameObject creature, hero, hand;
     public int deckID;
 
     // Start is called before the first frame update
@@ -46,33 +46,44 @@ public class DeckBehavior : MonoBehaviour
     private void DeckStart()
     {
         // Declare temporary card gameobjects and cardAttribute Ojbects
-        GameObject card;
+        GameObject temp;
+        Card card;
         CardAttributes cardAttribute;
 
         // For loop to go through all the cardID in decklist
         for (int i = 0; i < decklist.cardID.Count; ++i)
         {
+            // Get the card from the database
+            card = Database.GetCardByID(decklist.cardID[i]);
+
             // For loop to create the correct quantity of each card based on the decklist
             for (int j = 0; j < decklist.quantity[i]; ++j)
             {
                 // Create the card onto the board
-                card = Instantiate(prefab, this.transform);
+                if (card.type == "Hero")
+                {
+                    temp = Instantiate(hero, this.transform);
+                }
+                else
+                {
+                    temp = Instantiate(creature, this.transform);
+                }
 
-                card.tag = this.tag;
+                temp.tag = this.tag;
 
                 // Find the cardAttribute component in order to modify the card
-                cardAttribute = card.GetComponent<CardAttributes>();
+                cardAttribute = temp.GetComponent<CardAttributes>();
 
                 // Set the attributes of the card
-                SetCardAttributes(cardAttribute, Database.GetCardByID(decklist.cardID[i]));
+                SetCardAttributes(cardAttribute, card);
 
                 // Make the card back image visible while the card is in the deck
-                card.GetComponent<CardBehavior>().FlipCard("back");
+                temp.GetComponent<CardBehavior>().FlipCard("back");
 
                 // Disable the card dragging script
-                card.GetComponent<CardBehavior>().SetDraggable(false);
-                card.GetComponent<CardBehavior>().SetHoverable(false);
-                card.GetComponent<CardBehavior>().Discardable = false;
+                temp.GetComponent<CardBehavior>().SetDraggable(false);
+                temp.GetComponent<CardBehavior>().SetHoverable(false);
+                temp.GetComponent<CardBehavior>().Discardable = false;
             }
         }
     }
