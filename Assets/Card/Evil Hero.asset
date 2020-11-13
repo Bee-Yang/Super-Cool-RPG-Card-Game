@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Evil Hero
   m_EditorClassIdentifier: 
   id: 11
-  cardName: Evil Hero
+  cardName: Lycam Pnulla
   cost: 10
   type: Hero
   description: 'Effect: '
