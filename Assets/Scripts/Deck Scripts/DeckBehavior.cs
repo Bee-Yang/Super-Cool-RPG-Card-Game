@@ -14,6 +14,15 @@ public class DeckBehavior : MonoBehaviour
 
     void Awake()
     {
+        if (this.tag == "Player")
+        {
+            this.deckID = GameObject.Find("DeckChoice").GetComponent<DeckChoiceBehavior>().getPlayerDeckID();
+        }
+        else
+        {
+            this.deckID = GameObject.Find("DeckChoice").GetComponent<DeckChoiceBehavior>().getEnemyDeckID();
+        }
+
         // Load decklist from the database
         decklist = Database.GetDeckByID(deckID);
 

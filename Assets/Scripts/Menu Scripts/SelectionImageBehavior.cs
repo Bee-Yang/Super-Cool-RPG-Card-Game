@@ -19,12 +19,12 @@ public class SelectionImageBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (deckChoice.getDeckId() == 0) {
+        if (deckChoice.getPlayerDeckID() == 0) {
             nobleImage.enabled = true;
             evilImage.enabled = false;
         }
 
-        if (deckChoice.getDeckId() == 1) {
+        if (deckChoice.getPlayerDeckID() == 1) {
             nobleImage.enabled = false;
             evilImage.enabled = true;
         }

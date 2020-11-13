@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class DeckChoiceBehavior : MonoBehaviour
 {
-    private int deckId = 0;
+    private int playerDeckID = 0;
+    private int enemyDeckID = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +20,25 @@ public class DeckChoiceBehavior : MonoBehaviour
     }
 
     public void setDeckId(int id) {
-        deckId = id;
+        playerDeckID = id;
+        
+        if (id == 0)
+        {
+            enemyDeckID = 1;
+        }
+        else
+        {
+            enemyDeckID = 0;
+        }
+
         Debug.Log("Deck id is " + id);
     }
 
-    public int getDeckId() {
-        return deckId;
+    public int getPlayerDeckID() {
+        return playerDeckID;
+    }
+
+    public int getEnemyDeckID() {
+        return enemyDeckID;
     }
 }
