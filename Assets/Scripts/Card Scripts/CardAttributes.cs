@@ -110,6 +110,11 @@ public class CardAttributes : MonoBehaviour
         return this.currentHealth;
     }
 
+    public int GetID()
+    {
+        return this.id;
+    }
+
     public void SetName(string newName)
     {
         this.cardName = newName;
