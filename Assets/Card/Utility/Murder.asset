@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9e460d6050cb8bf4aa735f1551544b93, type: 3}
-  m_Name: Evil Hero
+  m_Name: Murder
   m_EditorClassIdentifier: 
-  id: 11
-  cardName: Lycam Pnulla
-  cost: 10
-  type: Hero
-  description: 'Effect: '
-  attack: 12
-  health: 8
-  cardImage: {fileID: 21300000, guid: e72fb3e370cd7034d95dec9406aac8e1, type: 3}
-  cardBorder: {fileID: 21300000, guid: b5cf69db4756bec41bf678e258faf943, type: 3}
+  id: 103
+  cardName: Murder
+  cost: 0
+  type: Utility
+  description: Destroy a creature in the enemy's field with 3 or less health.
+  attack: 0
+  health: 0
+  cardImage: {fileID: 0}
+  cardBorder: {fileID: 0}

@@ -1264,6 +1264,7 @@ MonoBehaviour:
   creature: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881,
     type: 3}
   hero: {fileID: 6325016447726898180, guid: 0bfdc9d9323b4dc43bd2adfac085687c, type: 3}
+  utility: {fileID: 6325016447726898180, guid: 564fb43b490edf34997b7483924d4084, type: 3}
   hand: {fileID: 2112377901}
   deckID: 1
 --- !u!1 &421873991
@@ -1526,6 +1527,75 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 497035321}
   m_CullTransparentMesh: 0
+--- !u!1 &515663955
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 515663956}
+  - component: {fileID: 515663957}
+  - component: {fileID: 515663959}
+  - component: {fileID: 515663958}
+  m_Layer: 0
+  m_Name: Effects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &515663956
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515663955}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 482.64597, y: 251.4943, z: -311.87512}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &515663957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515663955}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7039a6cf37139a94c880ad766b3ec1e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &515663958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515663955}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a61bf748d744f404e893c7cdcb311a54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &515663959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515663955}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34f56e762f2bcd445b2248e32aa31c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &534545919
 GameObject:
   m_ObjectHideFlags: 0
@@ -3674,6 +3744,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99ebc42188194445bc7c63da7f6083e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mana: 0
+  maxMana: 0
   slider: {fileID: 127942835}
   Color: {fileID: 856660443}
   gradient:
@@ -5981,6 +6053,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d99ebc42188194445bc7c63da7f6083e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mana: 0
+  maxMana: 0
   slider: {fileID: 2146070206}
   Color: {fileID: 801931584}
   gradient:
@@ -6215,6 +6289,7 @@ MonoBehaviour:
   creature: {fileID: 6325016447726898180, guid: c2a398ba58caaa04687715ee60537881,
     type: 3}
   hero: {fileID: 6325016447726898180, guid: 0bfdc9d9323b4dc43bd2adfac085687c, type: 3}
+  utility: {fileID: 6325016447726898180, guid: 564fb43b490edf34997b7483924d4084, type: 3}
   hand: {fileID: 497035321}
   deckID: 0
 --- !u!1 &1743950231

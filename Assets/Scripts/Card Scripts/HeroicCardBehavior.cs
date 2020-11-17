@@ -16,7 +16,7 @@ public class HeroicCardBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        turnController = this.GetComponent<TurnControllerBehavior>();
+        turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
         myAttributes = this.gameObject.GetComponent<CardAttributes>();
         myBehavior = this.gameObject.GetComponent<CardBehavior>();
         playerField = GameObject.Find("PlayerPlayingField").transform;
@@ -55,8 +55,10 @@ public class HeroicCardBehavior : MonoBehaviour
             //Set the effect to have been used already
             effectUsed = true;
         }
-
-            
+        else if (this.effectUsed)
+        {
+            this.enabled = false;
+        }
     }
 
     //Evil Heroic Card Effect:

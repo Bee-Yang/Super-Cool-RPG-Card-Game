@@ -28,16 +28,20 @@ public class CardAttributes : MonoBehaviour
     void Update()
     {
         this.cardNameText.text = this.cardName;
-        this.cardCostText.text = "" + this.cost;
         this.cardTypeText.text = this.type;
         this.cardDescriptionText.text = this.description;
-        this.cardAttackText.text = "" + this.attack;
-        this.cardHealthText.text = "" + this.currentHealth;
-        this.blockOrderText.text = "" + this.blockOrder;
         this.transform.Find("CardImage").transform.GetComponent<Image>().sprite = this.cardImage;
         this.transform.Find("CardBorder").transform.GetComponent<Image>().sprite = this.cardBorder;
-    
-	    CardBehavior card = this.GetComponent<CardBehavior>();
+
+        if (this.type == "Creature" || this.type == "Hero")
+        {
+            this.cardCostText.text = "" + this.cost;
+            this.cardAttackText.text = "" + this.attack;
+            this.cardHealthText.text = "" + this.currentHealth;
+            this.blockOrderText.text = "" + this.blockOrder;
+        }
+
+        CardBehavior card = this.GetComponent<CardBehavior>();
 	    // if card is destroyed, move to graveyard
 	    if(card.IsDestroyed() == true) {
 		
@@ -113,6 +117,11 @@ public class CardAttributes : MonoBehaviour
     public int GetID()
     {
         return this.id;
+    }
+
+    public void SetID(int newID)
+    {
+        this.id = newID;
     }
 
     public void SetName(string newName)

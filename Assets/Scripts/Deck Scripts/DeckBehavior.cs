@@ -4,7 +4,7 @@ public class DeckBehavior : MonoBehaviour
 {
     private Deck decklist;
 
-    public GameObject creature, hero, hand;
+    public GameObject creature, hero, utility, hand;
     public int deckID;
 
     // Start is called before the first frame update
@@ -41,6 +41,7 @@ public class DeckBehavior : MonoBehaviour
     private void SetCardAttributes(CardAttributes card, Card cardData)
     {
         // Set attributes of the card based on the card data retrieved from the database
+        card.SetID(cardData.id);
         card.SetName(cardData.cardName);
         card.SetCost(cardData.cost);
         card.SetCardType(cardData.type);
@@ -72,6 +73,10 @@ public class DeckBehavior : MonoBehaviour
                 if (card.type == "Hero")
                 {
                     temp = Instantiate(hero, this.transform);
+                }
+                else if(card.type == "Utility")
+                {
+                    temp = Instantiate(utility, this.transform);
                 }
                 else
                 {

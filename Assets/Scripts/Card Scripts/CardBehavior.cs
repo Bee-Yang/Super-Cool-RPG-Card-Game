@@ -195,6 +195,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         else
         {
             enlargedCard.transform.localPosition += new Vector3(0.0f, -45.0f, 0.0f);
+            enlargedCard.transform.Rotate(new Vector3(0.0f, 0.0f, 180.0f));
         }
     }
 
