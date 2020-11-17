@@ -16,7 +16,8 @@ MonoBehaviour:
   cardName: Colonel Richter
   cost: 10
   type: Hero
-  description: 'Effect: '
+  description: 'Effect: Increase the attack and health of all noble creatures on
+    the field by 1 when this card is played.'
   attack: 10
   health: 10
   cardImage: {fileID: 21300000, guid: 2f849f4beeefd844aba6c38b749d250d, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DeckChoiceBehavior : MonoBehaviour
 {
     private int playerDeckID = 0;
-    private int enemyDeckID = 0;
+    private int enemyDeckID = 1;
 
     // Start is called before the first frame update
     void Start()
