@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/HomeScreen.unity
     guid: c76aee23893c9c14892037aec6af91f8
   - enabled: 1
+    path: Assets/Scenes/DeckSelectionScreen.unity
+    guid: 43fb1c1bcd458204a87de761e186609a
+  - enabled: 1
     path: Assets/Scenes/Board.unity
     guid: f5243c68deab96b4db2b43b2f6b3cd7b
   m_configObjects: {}

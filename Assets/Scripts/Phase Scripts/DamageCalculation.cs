@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -111,18 +113,22 @@ public class DamageCalculation : MonoBehaviour
         // If the attack would kill the defender, set defender health to 0
         if (attack > defenderHealth)
         {
+            StartCoroutine(ShowDamage(defender));
             defender.GetComponent<CardAttributes>().SetCurrentHealth(0);
         }
 
         // Else, set the defender's health to reflect damage taken
         else
         {
+            StartCoroutine(ShowDamage(defender));
             defender.GetComponent<CardAttributes>().SetCurrentHealth(defenderHealth - attack);
         }
 
         // If the defender would kill the attacker, set the attacker health to 0 and set the remaining attack to 0
-        if (defenderAttack > attackerHealth)
+        if (defenderAttack >= attackerHealth)
         {
+
+            StartCoroutine(ShowDamage(cardData.CurrentAttackCard));
             cardData.CurrentAttackCard.GetComponent<CardAttributes>().SetCurrentHealth(0);
             remainingAttack = 0;
         }
@@ -130,11 +136,25 @@ public class DamageCalculation : MonoBehaviour
         // Else, set the attacker's health to reflect the damage taken and set the remaining attack to reflect the correct amount
         else
         {
+
+            StartCoroutine(ShowDamage(cardData.CurrentAttackCard));
             cardData.CurrentAttackCard.GetComponent<CardAttributes>().SetCurrentHealth(attackerHealth - defenderAttack);
             remainingAttack = attack - defenderHealth;
         }
 
         //Return what's left of the attack
         return remainingAttack;
+    }
+
+    IEnumerator ShowDamage(GameObject card)
+    {
+        TMP_Text healthTextTMP = card.transform.Find("CardBorder").Find("CardHealth").gameObject.GetComponent<TMP_Text>();
+
+        healthTextTMP.color = Color.red;
+        healthTextTMP.fontSize = 55;
+
+        yield return new WaitForSecondsRealtime(1);
+
+        healthTextTMP.fontSize = 40;
     }
 }

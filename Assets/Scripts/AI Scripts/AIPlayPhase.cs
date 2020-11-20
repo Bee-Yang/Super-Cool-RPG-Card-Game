@@ -106,6 +106,7 @@ public class AIPlayPhase : MonoBehaviour
                 card.SetParent(AIField);
                 card.GetComponent<CardBehavior>().SetHoverable(true);
                 card.GetComponent<CardBehavior>().FlipCard("front");
+                card.GetComponent<CardBehavior>().PutInPlay();
             }
             else
             {
