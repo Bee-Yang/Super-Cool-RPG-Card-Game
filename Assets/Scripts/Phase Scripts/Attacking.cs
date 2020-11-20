@@ -114,19 +114,20 @@ public class Attacking : MonoBehaviour
 
     public void AIAttackRoutine()
     {
-        // Check if the AI playing phase script is enabled
+        // Check if the AI attack script is enabled
         if (!AI.GetComponent<AIAttackScript>().enabled)
         {
-            // Enable the AI playing phase script
+            // Enable the AI attack script
             AI.GetComponent<AIAttackScript>().enabled = true;
         }
-        // Check if the AI is done with the playing phase
+        // Check if the AI is done with selecting attack cards
         else if (AI.GetComponent<AIAttackScript>().Done)
         {
-            // Disable the AI playing phase script and go into the battle phase
+            // Disable the AI attack script and go into the battle phase
             AI.GetComponent<AIAttackScript>().enabled = false;
             battleController.SetPhase(2);
 
+            // Disable this script
             this.enabled = false;
         }
     }

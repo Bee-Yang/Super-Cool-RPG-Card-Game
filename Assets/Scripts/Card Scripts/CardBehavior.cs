@@ -299,7 +299,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         this.enlargedCard.GetComponent<Outline>().enabled = this.GetComponent<Outline>().enabled;
     }
 
-    private void AttackClickRoutine()
+    public void AttackClickRoutine()
     {
         if (!this.attacking)
         {
@@ -321,7 +321,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
     }
 
-    private void BlockClickRoutine()
+    public void BlockClickRoutine()
     {
         Defending block = GameObject.Find("TurnController").GetComponent<Defending>();
 

@@ -8,6 +8,7 @@ public class Defending : MonoBehaviour
     private TurnControllerBehavior turnController;
     private BattleController battleController;
     private Transform attackingField, blockingField;
+    private GameObject AI;
     private Timer timer;
     private bool hasAttackCard, start;
     private int cardsForBlocking;
@@ -35,6 +36,8 @@ public class Defending : MonoBehaviour
         battleController = this.GetComponent<BattleController>();
 
         timer = GameObject.Find("Utility").GetComponent<Timer>();
+
+        AI = GameObject.Find("AI");
 
         // Instantiate the list
         this.blockingCards = new List<GameObject>();
@@ -171,11 +174,22 @@ public class Defending : MonoBehaviour
             // Check if the AI is the one blocking
             else if (turnController.IsPlayerTurn)
             {
-                // Enable the AI's blocking script
+                // Check if the AI defend script is enabled
+                if (!AI.GetComponent<AIDefendScript>().enabled)
+                {
+                    // Enable the AI's blocking script
+                    AI.GetComponent<AIDefendScript>().enabled = true;
+                }
+                // Check if the AI is done selecting the blocking card
+                else if (AI.GetComponent<AIDefendScript>().Done)
+                {
+                    // Disable the AI defend script and go into damage calculation
+                    AI.GetComponent<AIDefendScript>().enabled = false;
+                    battleController.SetPhase(3);
 
-                /**************** Temporary Code ******************/
-                battleController.SetPhase(3);
-                /**************** Temporary Code ******************/
+                    // Disable this script
+                    this.enabled = false;
+                }
             }
             else
             {
