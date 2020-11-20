@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class AIAttackScript : MonoBehaviour
+public class AIDefendScript : MonoBehaviour
 {
     private static double timeDelay = 0.5;
     private Transform playField;
-    private List<GameObject> attackCards;
+    private List<GameObject> blockCards;
     private Timer timer;
     private bool done;
 
@@ -21,14 +21,21 @@ public class AIAttackScript : MonoBehaviour
         this.playField = GameObject.Find("OpponentPlayingField").transform;
         this.timer = GameObject.Find("Utility").GetComponent<Timer>();
 
-        attackCards = new List<GameObject>();
+        blockCards = new List<GameObject>();
     }
 
     void OnEnable()
     {
+        CardBehavior behavior;
+
         foreach (Transform card in playField)
         {
-            attackCards.Add(card.gameObject);
+            behavior = card.GetComponent<CardBehavior>();
+
+            if (!behavior.Blocked)
+            {
+                blockCards.Add(card.gameObject);
+            }
         }
 
         this.done = false;
@@ -38,7 +45,7 @@ public class AIAttackScript : MonoBehaviour
 
     void OnDisable()
     {
-        attackCards.Clear();
+        blockCards.Clear();
 
         if (this.timer.enabled)
         {
@@ -48,7 +55,8 @@ public class AIAttackScript : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   
+    {
+        
     }
 
     // Update is called once per frame
@@ -56,22 +64,25 @@ public class AIAttackScript : MonoBehaviour
     {
         if (this.timer.Delayed() && !this.done)
         {
-            SelectAttackCard();
+            SelectBlockCard();
         }
     }
 
-    public void SelectAttackCard()
+    public void SelectBlockCard()
     {
         timer.ResetTimer();
 
-        if (attackCards.Count > 0)
+        if (blockCards.Count > 0)
         {
-            CardBehavior behavior = attackCards[0].GetComponent<CardBehavior>();
+            //Generate a random number between 0 and the highest index inclusively
+            System.Random rnd = new System.Random();
+            int rndNum = rnd.Next(0, blockCards.Count);
 
-            // Make card attack
-            behavior.AttackClickRoutine();
+            CardBehavior behavior = blockCards[rndNum].GetComponent<CardBehavior>();
 
-            attackCards.Remove(attackCards[0]);
+            behavior.BlockClickRoutine();
+
+            blockCards.Clear();
         }
         else
         {

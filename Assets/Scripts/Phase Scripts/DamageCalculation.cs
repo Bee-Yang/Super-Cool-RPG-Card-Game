@@ -142,6 +142,8 @@ public class DamageCalculation : MonoBehaviour
             remainingAttack = attack - defenderHealth;
         }
 
+        RestoreCardColors(defender);
+
         //Return what's left of the attack
         return remainingAttack;
     }
@@ -156,5 +158,15 @@ public class DamageCalculation : MonoBehaviour
         yield return new WaitForSecondsRealtime(1);
 
         healthTextTMP.fontSize = 40;
+    }
+
+    public void RestoreCardColors(GameObject card)
+    {
+        // Restore the card's colors
+        card.transform.GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        card.transform.GetChild(1).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        card.GetComponent<Outline>().enabled = false;
+        card.transform.Find("BlockingOrder").gameObject.SetActive(false);
+        card.GetComponent<CardAttributes>().BlockOrder = 0;
     }
 }
