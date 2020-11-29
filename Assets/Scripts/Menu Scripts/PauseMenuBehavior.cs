@@ -58,6 +58,6 @@ public class PauseMenuBehavior : MonoBehaviour
     {
         Debug.Log("Quitting game...");
         UnityEditor.EditorApplication.isPlaying = false;
-        Application.Quit();
+        SceneManager.LoadScene (sceneBuildIndex:0);
     }
 }
