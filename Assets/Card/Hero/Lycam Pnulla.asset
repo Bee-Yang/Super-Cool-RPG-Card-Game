@@ -16,8 +16,8 @@ MonoBehaviour:
   cardName: Lycam Pnulla
   cost: 10
   type: Hero
-  description: 'Effect: Randomly destroy an enemy creature on the field when this
-    card is played.'
+  description: 'Effect: Destroy a random enemy creature on the field when this card
+    is played.'
   attack: 12
   health: 8
   cardImage: {fileID: 21300000, guid: e72fb3e370cd7034d95dec9406aac8e1, type: 3}
