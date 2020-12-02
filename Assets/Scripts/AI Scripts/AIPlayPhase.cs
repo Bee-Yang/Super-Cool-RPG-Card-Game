@@ -83,7 +83,7 @@ public class AIPlayPhase : MonoBehaviour
                 }
             }
 
-            if (cardCost <= mana.Mana && AIField.childCount < 9)
+            if (cardCost <= mana.Mana && AIField.childCount < 9 && card.GetComponent<CardAttributes>().GetCardType() != "Utility")
             {
                 mana.DecreaseMana(cardCost);
 

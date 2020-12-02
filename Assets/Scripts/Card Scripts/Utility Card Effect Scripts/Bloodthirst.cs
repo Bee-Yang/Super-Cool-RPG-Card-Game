@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Bloodthirst : MonoBehaviour
 {
+    public bool done;
+
+    void OnDisable()
+    {
+        this.done = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,6 +21,6 @@ public class Bloodthirst : MonoBehaviour
     void Update()
     {
         // Do nothing and disable script
-        this.enabled = false;
+        this.done = false;
     }
 }

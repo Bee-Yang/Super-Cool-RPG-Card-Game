@@ -43,7 +43,7 @@ public class CardAttributes : MonoBehaviour
 
         CardBehavior card = this.GetComponent<CardBehavior>();
 	    // if card is destroyed, move to graveyard
-	    if(card.IsDestroyed() == true) {
+	    if(card.IsDestroyed()) {
 		
 		    TurnControllerBehavior turnController = this.GetComponent<TurnControllerBehavior>();
 		    // check for who's card it is and move it to their graveyard

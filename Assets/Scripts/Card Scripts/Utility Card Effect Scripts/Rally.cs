@@ -5,14 +5,26 @@ using UnityEngine;
 public class Rally : MonoBehaviour
 {
     private TurnControllerBehavior turnController;
+    private EffectTargetList targetList;
     private Transform playerField;
     private Transform opponentField;
+    private CardAttributes attributes;
+
+    private void Awake()
+    {
+        turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
+        targetList = GameObject.Find("Utility").GetComponent<EffectTargetList>();
+        playerField = GameObject.Find("PlayerPlayingField").transform;
+        opponentField = GameObject.Find("OpponentPlayingField").transform;
+    }
 
     private void OnEnable()
     {
-        turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
-        playerField = GameObject.Find("PlayerPlayingField").transform;
-        opponentField = GameObject.Find("OpponentPlayingField").transform;
+        this.targetList.enabled = true;
+    }
+
+    private void OnDisable()
+    {
     }
 
     // Update is called once per frame
@@ -22,30 +34,35 @@ public class Rally : MonoBehaviour
         if (turnController.IsPlayerTurn)
         {
             //Iterate through each card in the player's field
-            foreach (Card child in playerField)
+            foreach (Transform child in playerField)
             {
+                attributes = child.GetComponent<CardAttributes>();
+
                 //If it is not a Utility card, increase its attack by 1
-                if (child.type != "Utility")
+                if (attributes.GetCardType() != "Utility")
                 {
-                    child.attack += 1;
+                    attributes.SetAttack(attributes.GetAttack() + 1);
                 }
             }
         }
-
         else
         {
             //Iterate through each card in the opponent's field
-            foreach (Card child in opponentField)
+            foreach (Transform child in opponentField)
             {
+                attributes = child.GetComponent<CardAttributes>();
+
                 //If it is not a Utility card, increase its attack by 1
-                if (child.type != "Utility")
+                if (attributes.GetCardType() != "Utility")
                 {
-                    child.attack += 1;
+                    attributes.SetAttack(attributes.GetAttack() + 1);
                 }
             }
         }
 
-        //Disable Rally
-        this.GetComponent<Rally>().enabled = false;
+        targetList.effectDone = true;
+
+        // Disable the Rally script
+        this.enabled = false;
     }
 }
