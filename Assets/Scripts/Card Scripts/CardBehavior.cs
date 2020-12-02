@@ -10,7 +10,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private Transform currParent; // To save the parent to which this card is tied before/while being dragged
 
     // Status flags for the card
-    private bool inPlay, draggable, hoverable, discardable, canAttack, attacking, canBlock, blocked, destroyed;
+    private bool inPlay, draggable, hoverable, discardable, canAttack, attacking, canBlock, blocked, destroyed, targetable;
 
     public bool Attacking {
         get { return this.attacking; }
@@ -27,6 +27,11 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         set { this.discardable = value; }
     }
 
+    public bool Targetable {
+        get { return this.targetable; }
+        set { this.targetable = value; }
+    }
+
     void Start()
     {
         //Set the current parent, set inPlay, destoryed, canAttack, attacking, canBlock, and blocked flags to false
@@ -37,13 +42,15 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         attacking = false;
         canBlock = false;
         blocked = false;
+        discardable = false;
+        targetable = false;
     }
 
     void Update()
     {
         // Check to see whether the card is destroyed or not
         CardAttributes card1 = this.gameObject.GetComponent<CardAttributes>();
-        if (card1.GetCurrentHealth() <= 0)
+        if (card1.GetCardType() != "Utility" && card1.GetCurrentHealth() <= 0)
         {
             this.destroyed = true;
             this.inPlay = false;
@@ -230,6 +237,10 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             DiscardRoutine();
         }
+        else if (this.targetable)
+        {
+            TargetClickRoutine();
+        }
     }
 
     public void SetDraggable(bool status)
@@ -354,5 +365,40 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     {
         this.destroyed = true;
         this.discardable = false;
+    }
+
+    public void TargetClickRoutine()
+    {
+        if (this.tag == "Enemy")
+        {
+            Transform field;
+            CardBehavior behavior;
+
+            field = GameObject.Find("OpponentPlayingField").transform;
+
+            //Iterate through each card in the opponent's field
+            foreach (Transform card in field)
+            {
+                behavior = card.GetComponent<CardBehavior>();
+
+                if (behavior.Targetable)
+                {
+                    behavior.Targetable = false;
+                }
+                else
+                {
+                    // Reset the color for the image of the card
+                    card.GetChild(0).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                    card.GetChild(1).GetComponent<Image>().color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                }
+            }
+        }
+
+
+        EffectTargetList targetList = GameObject.Find("Utility").GetComponent<EffectTargetList>();
+
+        targetList.targets.Add(this.gameObject);
+
+        targetList.targetDone = true;
     }
 }
