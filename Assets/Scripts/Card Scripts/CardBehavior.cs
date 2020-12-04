@@ -369,20 +369,26 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void TargetClickRoutine()
     {
+        // Check if the target card is an enemy card
         if (this.tag == "Enemy")
         {
+            // Temporary variables
             Transform field;
             CardBehavior behavior;
 
+            // Assign the value for the AI's playing field
             field = GameObject.Find("OpponentPlayingField").transform;
 
             //Iterate through each card in the opponent's field
             foreach (Transform card in field)
             {
+                // Assign the value for the behavior of the card
                 behavior = card.GetComponent<CardBehavior>();
 
+                // Check if the card's targetable status is true
                 if (behavior.Targetable)
                 {
+                    // Make the card untargetable
                     behavior.Targetable = false;
                 }
                 else
@@ -394,11 +400,13 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             }
         }
 
-
+        // Assign the value for the effect target list
         EffectTargetList targetList = GameObject.Find("Utility").GetComponent<EffectTargetList>();
 
+        // Add the card to the effect target list
         targetList.targets.Add(this.gameObject);
 
+        // Set the target status to done
         targetList.targetDone = true;
     }
 }

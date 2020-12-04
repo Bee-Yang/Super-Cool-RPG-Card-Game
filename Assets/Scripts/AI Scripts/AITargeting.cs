@@ -38,7 +38,7 @@ public class AITargeting : MonoBehaviour
     {
         // Generate a random number between 0 and the highest index inclusively
         System.Random rnd = new System.Random();
-        int rndNum = rnd.Next(0, targetList.targets.Count);
+        int rndNum = rnd.Next(targetList.targets.Count);
 
         // Select the random card as the target
         GameObject tmp = targetList.targets[rndNum];

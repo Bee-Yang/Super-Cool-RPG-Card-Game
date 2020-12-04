@@ -12,6 +12,7 @@ public class Rally : MonoBehaviour
 
     private void Awake()
     {
+        // Set the variables to the correct values
         turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
         targetList = GameObject.Find("Utility").GetComponent<EffectTargetList>();
         playerField = GameObject.Find("PlayerPlayingField").transform;
@@ -20,7 +21,12 @@ public class Rally : MonoBehaviour
 
     private void OnEnable()
     {
+        // Enable the EffectTargetList script
         this.targetList.enabled = true;
+
+        // Set the status for cannotPlay
+        this.targetList.cannotPlay = (turnController.IsPlayerTurn && playerField.childCount == 0) ||    // If it is the player's turn and there are creatures on the player's field
+                                     (!turnController.IsPlayerTurn && opponentField.childCount == 0);   // If it is the AI's turn and there are creatures on the AI's field
     }
 
     private void OnDisable()
@@ -30,39 +36,44 @@ public class Rally : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Check if it is the player's turn or the opponent's turn
-        if (turnController.IsPlayerTurn)
+        // Check if the card can be played
+        if (!this.targetList.cannotPlay)
         {
-            //Iterate through each card in the player's field
-            foreach (Transform child in playerField)
+            //Check if it is the player's turn or the opponent's turn
+            if (turnController.IsPlayerTurn)
             {
-                attributes = child.GetComponent<CardAttributes>();
-
-                //If it is not a Utility card, increase its attack by 1
-                if (attributes.GetCardType() != "Utility")
+                //Iterate through each card in the player's field
+                foreach (Transform child in playerField)
                 {
-                    attributes.SetAttack(attributes.GetAttack() + 1);
+                    attributes = child.GetComponent<CardAttributes>();
+
+                    //If it is not a Utility card, increase its attack by 1
+                    if (attributes.GetCardType() != "Utility")
+                    {
+                        attributes.SetAttack(attributes.GetAttack() + 1);
+                    }
                 }
             }
-        }
-        else
-        {
-            //Iterate through each card in the opponent's field
-            foreach (Transform child in opponentField)
+            else
             {
-                attributes = child.GetComponent<CardAttributes>();
-
-                //If it is not a Utility card, increase its attack by 1
-                if (attributes.GetCardType() != "Utility")
+                //Iterate through each card in the opponent's field
+                foreach (Transform child in opponentField)
                 {
-                    attributes.SetAttack(attributes.GetAttack() + 1);
+                    attributes = child.GetComponent<CardAttributes>();
+
+                    //If it is not a Utility card, increase its attack by 1
+                    if (attributes.GetCardType() != "Utility")
+                    {
+                        attributes.SetAttack(attributes.GetAttack() + 1);
+                    }
                 }
             }
+
+            // Set the effect done status to true
+            targetList.effectDone = true;
+
+            // Disable the Rally script
+            this.enabled = false;
         }
-
-        targetList.effectDone = true;
-
-        // Disable the Rally script
-        this.enabled = false;
     }
 }

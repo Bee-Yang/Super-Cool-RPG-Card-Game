@@ -76,7 +76,7 @@ public class AIDefendScript : MonoBehaviour
         {
             //Generate a random number between 0 and the highest index inclusively
             System.Random rnd = new System.Random();
-            int rndNum = rnd.Next(0, blockCards.Count);
+            int rndNum = rnd.Next(blockCards.Count);
 
             CardBehavior behavior = blockCards[rndNum].GetComponent<CardBehavior>();
 
