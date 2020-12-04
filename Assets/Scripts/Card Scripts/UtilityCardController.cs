@@ -8,7 +8,7 @@ public class UtilityCardController : MonoBehaviour
     private CardAttributes myAttributes;
     private CardBehavior myBehavior;
 
-    private int myID;
+    public int myID;
 
     public bool effectUsed = false;
     public bool done = false;
@@ -20,13 +20,13 @@ public class UtilityCardController : MonoBehaviour
         this.targetList = GameObject.Find("Utility").GetComponent<EffectTargetList>();
         this.myAttributes = this.gameObject.GetComponent<CardAttributes>();
         this.myBehavior = this.gameObject.GetComponent<CardBehavior>();
-
-        this.myID = myAttributes.GetID();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        // Set the ID of the card
+        this.myID = myAttributes.GetID();
     }
 
     // Update is called once per frame
