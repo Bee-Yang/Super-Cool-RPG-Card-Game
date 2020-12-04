@@ -31,8 +31,10 @@ public class PlayingField : MonoBehaviour, IDropHandler, IPointerEnterHandler, I
             // Check if card can be played
             if (playPhase.CardCanBePlayed(card.gameObject))
             {
+                // Check if the card is a utility card
                 if (attributes.GetCardType() == "Utility")
                 {
+                    // Set the card's current parent to the board and its position to the center of the board
                     card.SetCurrParent(this.transform.root);
                     card.transform.localPosition = new Vector3(0.0f, 0.0f, 0.0f);
                 }

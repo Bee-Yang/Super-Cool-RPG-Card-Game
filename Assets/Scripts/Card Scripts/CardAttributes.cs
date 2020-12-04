@@ -27,14 +27,17 @@ public class CardAttributes : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Set the text values for the card
         this.cardNameText.text = this.cardName;
         this.cardTypeText.text = this.type;
         this.cardDescriptionText.text = this.description;
         this.transform.Find("CardImage").transform.GetComponent<Image>().sprite = this.cardImage;
         this.transform.Find("CardBorder").transform.GetComponent<Image>().sprite = this.cardBorder;
 
+        // Check if the card is a creature or hero
         if (this.type == "Creature" || this.type == "Hero")
         {
+            // Set the text values for the card
             this.cardCostText.text = "" + this.cost;
             this.cardAttackText.text = "" + this.attack;
             this.cardHealthText.text = "" + this.currentHealth;

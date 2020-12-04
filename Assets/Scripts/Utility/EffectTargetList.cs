@@ -5,13 +5,14 @@ using UnityEngine;
 public class EffectTargetList : MonoBehaviour
 {
     public List<GameObject> targets;
-    public bool targetDone, effectDone;
+    public bool targetDone, effectDone, cannotPlay;
 
     void Awake()
     {
         this.targets = new List<GameObject>();
         this.targetDone = false;
         this.effectDone = false;
+        this.cannotPlay = false;
     }
 
     void OnDisable()
@@ -19,6 +20,7 @@ public class EffectTargetList : MonoBehaviour
         this.targets.Clear();
         this.targetDone = false;
         this.effectDone = false;
+        this.cannotPlay = false;
     }
 
     // Start is called before the first frame update
