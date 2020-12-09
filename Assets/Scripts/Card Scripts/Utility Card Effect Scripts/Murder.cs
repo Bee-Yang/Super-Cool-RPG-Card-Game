@@ -8,7 +8,7 @@ public class Murder : MonoBehaviour
     private AITargeting AITarget;
     private TurnControllerBehavior turnController;
     private EffectTargetList targetList;
-    private Transform playerField, opponentField;
+    private Transform playerField, opponentField, playerHand;
     CardAttributes attributes;
     CardBehavior behavior;
     private bool effectUsed;
@@ -21,6 +21,7 @@ public class Murder : MonoBehaviour
         this.targetList = GameObject.Find("Utility").GetComponent<EffectTargetList>();
         this.playerField = GameObject.Find("PlayerPlayingField").transform;
         this.opponentField = GameObject.Find("OpponentPlayingField").transform;
+        this.playerHand = GameObject.Find("PlayerHand").transform;
         this.effectUsed = false;
     }
 
@@ -35,6 +36,14 @@ public class Murder : MonoBehaviour
             // Disable the end turn and start battle buttons
             GameObject.Find("EndTurnButton").GetComponent<Button>().interactable = false;
             GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = false;
+
+            // Disable dragging for the player
+            foreach (Transform card in this.playerHand)
+            {
+                this.behavior = card.GetComponent<CardBehavior>();
+
+                this.behavior.SetDraggable(false);
+            }
 
             //Iterate through each card in the opponent's field
             foreach (Transform card in this.opponentField)
@@ -107,6 +116,14 @@ public class Murder : MonoBehaviour
             // Enable the end turn and start battle buttons
             GameObject.Find("EndTurnButton").GetComponent<Button>().interactable = true;
             GameObject.Find("StartBattleButton").GetComponent<Button>().interactable = true;
+
+            // Enable dragging for the player
+            foreach (Transform card in this.playerHand)
+            {
+                this.behavior = card.GetComponent<CardBehavior>();
+
+                this.behavior.SetDraggable(true);
+            }
         }
         // Check if the AI targeting script is enabled
         else if (AITarget.enabled)
