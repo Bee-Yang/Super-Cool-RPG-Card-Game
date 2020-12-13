@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class DamageCalculation : MonoBehaviour
 {
     private TurnControllerBehavior turnController;
+    private NotificationBehavior notificationBehavior;
     private BattleController battleController;
     private Defending cardData;
 
@@ -16,6 +17,7 @@ public class DamageCalculation : MonoBehaviour
     {
         // Assign the controllers
         turnController = this.GetComponent<TurnControllerBehavior>();
+        notificationBehavior = this.GetComponent<NotificationBehavior>();
         battleController = this.GetComponent<BattleController>();
         cardData = this.GetComponent<Defending>();
     }
@@ -49,6 +51,7 @@ public class DamageCalculation : MonoBehaviour
                     attackValue = DefendAttack(attackValue, card);
                 }
 
+                notificationBehavior.Attack(cardData.CurrentAttackCard.GetComponent<CardAttributes>(), card.GetComponent<CardAttributes>());
                 card.GetComponent<CardBehavior>().Blocked = true;
             }
 

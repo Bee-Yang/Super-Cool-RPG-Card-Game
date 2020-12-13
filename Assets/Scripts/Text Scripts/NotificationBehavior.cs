@@ -6,20 +6,22 @@ using UnityEngine;
 public class NotificationBehavior : MonoBehaviour
 {
     private TMP_Text currText;
+    private TurnControllerBehavior turnController;
 
     // Start is called before the first frame update
     void Start()
     {
         currText = GetComponent<TMP_Text>();
+        turnController = this.GetComponent<TurnControllerBehavior>();
         currText.text = "Good luck, player. May Todd smile upon thee.";
     }
 
     //Call to show who has played which card
-    public void playCard(bool isPlayerTurn, Card card)
+    public void PlayCard(CardAttributes card)
     {
         string prefix = "";
 
-        if (isPlayerTurn)
+        if (turnController.IsPlayerTurn)
         {
             prefix = "You have played ";
         }
@@ -28,14 +30,14 @@ public class NotificationBehavior : MonoBehaviour
             prefix = "Your opponent has played ";
         }
 
-        currText.text = prefix + card.cardName;
+        currText.text = prefix + card.name;
     }
 
-    public void heroicCard(bool isPlayerTurn, Card card)
+    public void HeroicCard(CardAttributes card)
     {
         string prefix = "";
 
-        if (isPlayerTurn)
+        if (turnController.IsPlayerTurn)
         {
             prefix = "You have played ";
         }
@@ -44,15 +46,15 @@ public class NotificationBehavior : MonoBehaviour
             prefix = "Your opponent has played ";
         }
 
-        currText.text = prefix + "Heroic Card " + card.cardName + "!";
+        currText.text = prefix + "Heroic Card " + card.name + "!";
     }
 
     //Call to show who has attacked which card
-    public void attack(bool isPlayerTurn, Card attacker, Card defender)
+    public void Attack(CardAttributes attacker, CardAttributes defender)
     {
         string prefix = "";
 
-        if (isPlayerTurn)
+        if (turnController.IsPlayerTurn)
         {
             prefix = "You have attacked ";
         }
@@ -61,16 +63,16 @@ public class NotificationBehavior : MonoBehaviour
             prefix = "Your opponent has attacked ";
         }
 
-        currText.text = prefix + defender.cardName + " with " + attacker.cardName;
+        currText.text = prefix + defender.name + " with " + attacker.name;
     }
 
-    public void destroy(Card card)
+    public void Destroy(CardAttributes card)
     {
-        currText.text = card.cardName + " has been sent to the afterlife";
+        currText.text = card.name + " has been sent to the afterlife";
     }
 
     //Call to have the Notification Text display an instruction to the player
-    public void instruct(string instruction)
+    public void Instruct(string instruction)
     {
         //This will be called with an input to designate what instruction to give the player
         switch (instruction)
