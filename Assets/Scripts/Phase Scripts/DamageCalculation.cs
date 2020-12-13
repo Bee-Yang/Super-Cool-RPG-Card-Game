@@ -17,7 +17,7 @@ public class DamageCalculation : MonoBehaviour
     {
         // Assign the controllers
         turnController = this.GetComponent<TurnControllerBehavior>();
-        notificationBehavior = this.GetComponent<NotificationBehavior>();
+        notificationBehavior = GameObject.Find("NotificationText").GetComponent<NotificationBehavior>();
         battleController = this.GetComponent<BattleController>();
         cardData = this.GetComponent<Defending>();
     }

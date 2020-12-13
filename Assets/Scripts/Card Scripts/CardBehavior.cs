@@ -64,6 +64,7 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             this.canBlock = false;
             this.blocked = false;
             this.notified = false;
+            notificationBehavior.Destroy(card1);
         }
 
         // Set the color for the clone card to be the same as the card

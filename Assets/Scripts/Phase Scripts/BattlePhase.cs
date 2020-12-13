@@ -16,7 +16,7 @@ public class BattlePhase : MonoBehaviour
     {
         // Assign the turnController
         turnController = this.GetComponent<TurnControllerBehavior>();
-        notificationBehavior = this.GetComponent<NotificationBehavior>();
+        notificationBehavior = GameObject.Find("NotificationText").GetComponent<NotificationBehavior>();
 
         timer = GameObject.Find("Utility").GetComponent<Timer>();
     }
@@ -26,12 +26,12 @@ public class BattlePhase : MonoBehaviour
         if (turnController.IsPlayerTurn)
         {
             mana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
-            notificationBehavior.Instruct(1);
+            notificationBehavior.Instruct(2);
         }
         else
         {
             mana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
-            notificationBehavior.Instruct(2);
+            notificationBehavior.Instruct(1);
         }
 
         start = true;
