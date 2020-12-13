@@ -26,12 +26,12 @@ public class BattlePhase : MonoBehaviour
         if (turnController.IsPlayerTurn)
         {
             mana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
-            notificationBehavior.Instruct("defend");
+            notificationBehavior.Instruct(1);
         }
         else
         {
             mana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
-            notificationBehavior.Instruct("attack");
+            notificationBehavior.Instruct(2);
         }
 
         start = true;

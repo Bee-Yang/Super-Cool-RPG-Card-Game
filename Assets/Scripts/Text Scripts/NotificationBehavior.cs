@@ -7,12 +7,13 @@ public class NotificationBehavior : MonoBehaviour
 {
     private TMP_Text currText;
     private TurnControllerBehavior turnController;
+    const int defend = 1, attack = 2;
 
     // Start is called before the first frame update
     void Start()
     {
         currText = GetComponent<TMP_Text>();
-        turnController = this.GetComponent<TurnControllerBehavior>();
+        turnController = GameObject.Find("TurnController").GetComponent<TurnControllerBehavior>();
         currText.text = "Good luck, player. May Todd smile upon thee.";
     }
 
@@ -30,7 +31,7 @@ public class NotificationBehavior : MonoBehaviour
             prefix = "Your opponent has played ";
         }
 
-        currText.text = prefix + card.name;
+        currText.text = prefix + card.GetName();
     }
 
     public void HeroicCard(CardAttributes card)
@@ -46,7 +47,7 @@ public class NotificationBehavior : MonoBehaviour
             prefix = "Your opponent has played ";
         }
 
-        currText.text = prefix + "Heroic Card " + card.name + "!";
+        currText.text = prefix + "Heroic Card " + card.GetName() + "!";
     }
 
     //Call to show who has attacked which card
@@ -63,25 +64,25 @@ public class NotificationBehavior : MonoBehaviour
             prefix = "Your opponent has attacked ";
         }
 
-        currText.text = prefix + defender.name + " with " + attacker.name;
+        currText.text = prefix + defender.GetName() + " with " + attacker.GetName();
     }
 
     public void Destroy(CardAttributes card)
     {
-        currText.text = card.name + " has been sent to the afterlife";
+        currText.text = card.GetName() + " has been sent to the afterlife";
     }
 
     //Call to have the Notification Text display an instruction to the player
-    public void Instruct(string instruction)
+    public void Instruct(int instruction)
     {
         //This will be called with an input to designate what instruction to give the player
         switch (instruction)
         {
-            case "defend":
+            case defend:
                 currText.text = "Pick which cards will defend";
                 break;
 
-            case "attack":
+            case attack:
                 currText.text = "Pick which cards will attack";
                 break;
 

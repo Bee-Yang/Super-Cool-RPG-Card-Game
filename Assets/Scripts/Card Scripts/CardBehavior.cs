@@ -76,8 +76,6 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         //Check if card is in play, to update notification
         if (inPlay && !notified)
         {
-            Debug.Log(card1);
-            Debug.Log(card1.name);
             if (card1.GetCardType() == "Heroic")
             {
                 notificationBehavior.HeroicCard(card1);
