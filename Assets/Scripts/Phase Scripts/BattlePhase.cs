@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class BattlePhase : MonoBehaviour
 {
     private static double timeDelay = 0.5;
+    private NotificationBehavior notificationBehavior;
     private TurnControllerBehavior turnController;
     private ManaBehavior mana;
     private Timer timer;
@@ -15,6 +16,7 @@ public class BattlePhase : MonoBehaviour
     {
         // Assign the turnController
         turnController = this.GetComponent<TurnControllerBehavior>();
+        notificationBehavior = GameObject.Find("NotificationText").GetComponent<NotificationBehavior>();
 
         timer = GameObject.Find("Utility").GetComponent<Timer>();
     }
@@ -24,10 +26,12 @@ public class BattlePhase : MonoBehaviour
         if (turnController.IsPlayerTurn)
         {
             mana = GameObject.Find("PlayerMana").GetComponent<ManaBehavior>();
+            notificationBehavior.Instruct(2);
         }
         else
         {
             mana = GameObject.Find("EnemyMana").GetComponent<ManaBehavior>();
+            notificationBehavior.Instruct(1);
         }
 
         start = true;

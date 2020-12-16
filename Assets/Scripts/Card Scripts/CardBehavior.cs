@@ -7,10 +7,12 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private GameObject enlargedCard; // Enlarged clone of the card for hover
     private static float scale = 0.9f; // Scale for enlarged card
 
+    private NotificationBehavior notificationBehavior; // To display when card is played
+
     private Transform currParent; // To save the parent to which this card is tied before/while being dragged
 
     // Status flags for the card
-    private bool inPlay, draggable, hoverable, discardable, canAttack, attacking, canBlock, blocked, destroyed, targetable;
+    private bool inPlay, draggable, hoverable, discardable, canAttack, attacking, canBlock, blocked, destroyed, targetable, notified;
 
     public bool Attacking {
         get { return this.attacking; }
@@ -44,6 +46,9 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         blocked = false;
         discardable = false;
         targetable = false;
+        notified = false;
+
+        notificationBehavior = GameObject.Find("NotificationText").GetComponent<NotificationBehavior>();
     }
 
     void Update()
@@ -58,6 +63,8 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             this.attacking = false;
             this.canBlock = false;
             this.blocked = false;
+            this.notified = false;
+            notificationBehavior.Destroy(card1);
         }
 
         // Set the color for the clone card to be the same as the card
@@ -65,6 +72,21 @@ public class CardBehavior : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             SetCloneColor();
             SetCloneAttributes();
+        }
+
+        //Check if card is in play, to update notification
+        if (inPlay && !notified)
+        {
+            if (card1.GetCardType() == "Heroic")
+            {
+                notificationBehavior.HeroicCard(card1);
+            }
+            else
+            {
+                notificationBehavior.PlayCard(card1);
+            }
+
+            notified = true;
         }
     }
 
